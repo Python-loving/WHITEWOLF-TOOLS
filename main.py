@@ -3,6 +3,7 @@ import time
 import requests
 import webbrowser
 from api import api_ip, api_number, api_dns
+from sites import sites
 
 while True:
     os.system("cls")
@@ -88,38 +89,7 @@ while True:
              ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
 
             Choisis le username a lookup : """)
-            sites = {
-                "GitHub": "https://github.com/{}",
-                "Reddit": "https://reddit.com/user/{}",
-                "TikTok": "https://www.tiktok.com/@{}",
-                "Instagram": "https://www.instagram.com/{}/",
-                "X": "https://x.com/{}",
-                "Facebook": "https://www.facebook.com/{}",
-                "Pinterest": "https://www.pinterest.com/{}/",
-                "Twitch": "https://www.twitch.tv/{}",
-                "Steam": "https://steamcommunity.com/id/{}",
-                "GitLab": "https://gitlab.com/{}",
-                "Bitbucket": "https://bitbucket.org/{}",
-                "SoundCloud": "https://soundcloud.com/{}",
-                "Vimeo": "https://vimeo.com/{}",
-                "DeviantArt": "https://www.deviantart.com/{}",
-                "Medium": "https://medium.com/@{}",
-                "Patreon": "https://www.patreon.com/{}",
-                "Roblox": "https://www.roblox.com/user.aspx?username={}",
-                "Kik": "https://kik.me/{}",
-                "Pastebin": "https://pastebin.com/u/{}",
-                "Replit": "https://replit.com/@{}",
-                "DockerHub": "https://hub.docker.com/u/{}",
-                "Keybase": "https://keybase.io/{}",
-                "Codecademy": "https://www.codecademy.com/profiles/{}",
-                "TradingView": "https://www.tradingview.com/u/{}",
-                "Chess.com": "https://www.chess.com/member/{}",
-                "Lichess": "https://lichess.org/@/{}",
-                "BuyMeACoffee": "https://www.buymeacoffee.com/{}",
-                "Linktree": "https://linktr.ee/{}",
-                "AboutMe": "https://about.me/{}",
-                "Gravatar": "https://gravatar.com/{}",
-            }
+            sites = sites
             for site, url in sites.items():
                 full_url = url.format(username)
                 r = requests.get(full_url)
