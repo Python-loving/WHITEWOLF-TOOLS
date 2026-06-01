@@ -5,6 +5,9 @@ import webbrowser
 from api import api_ip, api_number, api_dns
 from sites import sites
 
+# FIXME - Add Gestions Error i d'ont have time sry ;p
+
+
 while True:
     os.system("cls")
     choix = input(f"""
