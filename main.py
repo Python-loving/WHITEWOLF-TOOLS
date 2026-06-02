@@ -3,6 +3,9 @@ import time
 import requests
 import webbrowser
 import json
+import msvcrt
+import tempfile
+import subprocess
 from api import api_ip, api_number, api_dns
 from sites import sites
 
@@ -20,7 +23,8 @@ while True:
             ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     
 
             1. [Lookup]
-            2. [Quit]
+            2. [Sécurity]
+            3. [Quit]
 
             Fais ton choix : """)
         
@@ -259,16 +263,102 @@ while True:
                 print("Aucun Resultas ou bug", response.status_codes)
                 time.sleep(5)
 
-            
         elif choix2 == "9":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
             time.sleep(2)
             break
-            
-    # Ici on a mis le quit si la personne a lancé sans fair expres
+
+    # Menu sécurity
     elif choix == "2":
+        os.system("cls")
+        choix3 = input("""
+        ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
+        ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
+        ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
+        ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝  
+        ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
+        ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
+        
+        1. [PROXY(VPN)]
+        
+        Fais ton choix : """)
+
+        if choix3 == "1":
+            os.system("cls")
+            # Plupart du code VPN A etais generer par CHATGPT :)
+            vpn = input("""
+            ██╗   ██╗██████╗ ███╗   ██╗
+            ██║   ██║██╔══██╗████╗  ██║
+            ██║   ██║██████╔╝██╔██╗ ██║
+            ╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
+             ╚████╔╝ ██║     ██║ ╚████║
+              ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
+
+            Choisis Le temps que tu a besoin : """)
+
+        try:
+            vpn = int(vpn)
+
+            proxy = "170.106.136.181:31002"
+
+            proxies = {
+                "http": f"http://{proxy}",
+                "https": f"http://{proxy}"
+            }
+
+            try:
+                r = requests.get(
+                    "https://api.ipify.org?format=json",
+                    proxies=proxies,
+                    timeout=5
+                )
+                print("Proxy OK :", r.json())
+            except:
+                print("Proxy invalide ou mort")
+                exit()
+
+            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+
+            if vpn >= 10:
+                edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                profile_dir = tempfile.mkdtemp()
+
+                subprocess.Popen([
+                    edge_path,
+                    f"--proxy-server=http://{proxy}",
+                    f"--user-data-dir={profile_dir}",
+                    "--new-window",
+                    "https://api.ipify.org"
+                ])
+
+                print("\nVPN actif... appuie sur une touche pour arrêter\n")
+
+                start = time.time()
+               # Help ai for press & retour 
+                while True:
+                    if msvcrt.kbhit():
+                        msvcrt.getch()
+                        print("Arrêt demandé retour menu")
+                        os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+                        break
+
+                    if time.time() - start >= vpn:
+                        print("Temps terminé")
+                        os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+                        break
+
+                    time.sleep(0.1)
+
+            else:
+                print("Minimum 10 secondes")
+
+        except ValueError:
+            print("Entrer un nombre valide")
+
+    # Ici on a mis le quit si la personne a lancé sans fair expres
+    elif choix == "3":
         print("Au-Revoir a bientot l'amis")
         time.sleep(2)
         break
