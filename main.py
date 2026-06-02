@@ -24,9 +24,9 @@ while True:
             ╚███╔███╔╝██║  ██║██║   ██║   ███████╗╚███╔███╔╝╚██████╔╝███████╗██║     
             ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     
 
-            1. [Lookup]
+            1. [Lookup]    4. [Quit]
             2. [Sécurity]
-            3. [Quit]
+            3. [Discord]
 
             Fais ton choix : """)
         
@@ -283,8 +283,9 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
         
-        1. [PROXY(VPN)]     3. [Status Website]
-        2. [Gen Password]   4. [Quit]
+        1. [PROXY(VPN)]     4. [Scraper]
+        2. [Gen Password]   5. [Quit]
+        3. [Status Website]   
         
         Fais ton choix : """)
 
@@ -390,6 +391,7 @@ while True:
                 print("Entre un nombre valide")
                 time.sleep(5)
         elif choix3 == "3":
+            os.system("cls")
             site = input("""
                 ██╗    ██╗███████╗██████╗     ███████╗████████╗ █████╗ ████████╗██╗   ██╗███████╗
                 ██║    ██║██╔════╝██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██║   ██║██╔════╝
@@ -410,14 +412,111 @@ while True:
                 print("Le site na pas répondu présents")
                 time.sleep(3)
 
-            
-
         elif choix3 == "4":
+            os.system("cls")
+            page = input("""
+                ███████╗ ██████╗██████╗  █████╗ ██████╗ ███████╗██████╗ 
+                ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+                ███████╗██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
+                ╚════██║██║     ██╔══██╗██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
+                ███████║╚██████╗██║  ██║██║  ██║██║     ███████╗██║  ██║
+                ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
+                    
+                Met le lien du site : """)
+            
+            response = requests.head(page)
+
+            try:
+                if response.ok:
+                    print("header du site :\n")
+                    with open("result.txt", "w", encoding="utf-8") as fichier:
+                        for key, value in response.headers.items():
+                            print(f"{key} : {value}")
+                            fichier.write(f"{key}, ; {value}\n")
+                    time.sleep(5)
+                else:
+                    print("Ca marche pas")
+            except ValueError:
+                print("Error input")
+
+        elif choix3 == "5":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
-    # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "3":
+        os.system("cls")
+        discord = input(f"""
+            ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
+            ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
+            ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║
+            ██║  ██║██║╚════██║██║     ██║   ██║██╔══██╗██║  ██║
+            ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝
+            ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
+            
+            1. [Nitro Gen]
+            2. [Spaming Webhook]
+            3. [Quit]
+
+            Choisis : """)
+
+        if discord == "1":
+            os.system("cls")
+            nombre = input("""
+                ███╗   ██╗██╗████████╗██████╗  ██████╗ 
+                ████╗  ██║██║╚══██╔══╝██╔══██╗██╔═══██╗
+                ██╔██╗ ██║██║   ██║   ██████╔╝██║   ██║
+                ██║╚██╗██║██║   ██║   ██╔══██╗██║   ██║
+                ██║ ╚████║██║   ██║   ██║  ██║╚██████╔╝
+                ╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ 
+                Met le nombre de fois que tu veux essayé : """)
+            try:
+                nombre = int(nombre)
+                for i in range(nombre):
+                    char = string.ascii_letters + string.digits
+                    result = ''.join(random.choice(char) for _ in range(16))
+                    response = requests.get(f"https://discord.gift/{result}")
+
+                    if response.ok:
+                        with open("nitro.txt", "a", encoding="utf-8") as fichier:
+                            fichier.write(f"https://discord.gift/{result}\n")
+            except:
+                print("Ca Nas pas marché sorry :)")
+        elif discord == "2":
+            os.system("cls")
+            message = input("""
+                ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗
+                ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝
+                ██║ █╗ ██║█████╗  ██████╔╝███████║██║   ██║██║   ██║█████╔╝ 
+                ██║███╗██║██╔══╝  ██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ 
+                ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗
+                ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+                
+                Choisis Le message a spam : """)
+            url = input("""
+                ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗
+                ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝
+                ██║ █╗ ██║█████╗  ██████╔╝███████║██║   ██║██║   ██║█████╔╝ 
+                ██║███╗██║██╔══╝  ██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ 
+                ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗
+                ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+                
+                Choisis L'url  : """)
+            
+            response = requests.get(url) 
+
+            if response.ok:
+                try:
+                    while True:
+                        data = {"content": message}
+                        r = requests.post(url, json=data)
+                        print(r.status_code, r.text)
+                        time.sleep(5)
+                except Exception as e:
+                    print("Ca nas pas marché", e)
+                    time.sleep(5)
+    
+    # Ici on a mis le quit si la personne a lancé sans fair expres
+    elif choix == "4":
         print("Au-Revoir a bientot l'amis")
         time.sleep(2)
         break
