@@ -10,6 +10,7 @@ import random
 import string
 from api import api_ip, api_number, api_dns
 from sites import sites
+from darkweb import links
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
@@ -443,6 +444,7 @@ while True:
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
+    # catgegories
     elif choix == "3":
         os.system("cls")
         discord = input(f"""
@@ -453,12 +455,13 @@ while True:
             ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝
             ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
             
-            1. [Nitro Gen]
+            1. [Nitro Gen]       4. [Quit]
             2. [Spaming Webhook]
-            3. [Quit]
+            3. [Darkweb]
 
             Choisis : """)
 
+        # Nitro gen
         if discord == "1":
             os.system("cls")
             nombre = input("""
@@ -481,6 +484,7 @@ while True:
                             fichier.write(f"https://discord.gift/{result}\n")
             except:
                 print("Ca Nas pas marché sorry :)")
+        # Webhook
         elif discord == "2":
             os.system("cls")
             message = input("""
@@ -492,6 +496,7 @@ while True:
                 ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
                 
                 Choisis Le message a spam : """)
+            os.system("cls")
             url = input("""
                 ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗
                 ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝
@@ -514,7 +519,30 @@ while True:
                 except Exception as e:
                     print("Ca nas pas marché", e)
                     time.sleep(5)
-    
+        elif discord == "3":
+            os.system("cls")
+            print("""
+                ██████╗  █████╗ ██████╗ ██╗  ██╗    ██╗    ██╗███████╗██████╗ 
+                ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝    ██║    ██║██╔════╝██╔══██╗
+                ██║  ██║███████║██████╔╝█████╔╝     ██║ █╗ ██║█████╗  ██████╔╝
+                ██║  ██║██╔══██║██╔══██╗██╔═██╗     ██║███╗██║██╔══╝  ██╔══██╗
+                ██████╔╝██║  ██║██║  ██║██║  ██╗    ╚███╔███╔╝███████╗██████╔╝
+                ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚══════╝╚═════╝  
+                """)
+            for category, content in links.items():
+                print(f"\n--- {category} ---")
+
+                for name, url in content.items():
+
+                    if isinstance(url, dict):
+                        print(f"\n  [{name}]")
+                        for sub_name, sub_url in url.items():
+                            print(f"   - {sub_name} : {sub_url}")
+                    else:
+                        print(f"  - {name} : {url}")
+
+            time.sleep(10)
+            
     # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "4":
         print("Au-Revoir a bientot l'amis")
