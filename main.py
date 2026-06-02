@@ -6,6 +6,8 @@ import json
 import msvcrt
 import tempfile
 import subprocess
+import random
+import string
 from api import api_ip, api_number, api_dns
 from sites import sites
 
@@ -273,7 +275,7 @@ while True:
     # Menu sécurity
     elif choix == "2":
         os.system("cls")
-        choix3 = input("""
+        choix3 = input(f"""
         ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
         ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
         ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
@@ -281,7 +283,8 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
         
-        1. [PROXY(VPN)]
+        1. [PROXY(VPN)]     3. [Status Website]
+        2. [Gen Password]   4. [Quit]
         
         Fais ton choix : """)
 
@@ -298,65 +301,121 @@ while True:
 
             Choisis Le temps que tu a besoin : """)
 
-        try:
-            vpn = int(vpn)
+            try:
+                vpn = int(vpn)
 
-            proxy = "170.106.136.181:31002"
+                proxy = "170.106.136.181:31002"
 
-            proxies = {
-                "http": f"http://{proxy}",
-                "https": f"http://{proxy}"
-            }
+                proxies = {
+                    "http": f"http://{proxy}",
+                    "https": f"http://{proxy}"
+                }
+
+                try:
+                    r = requests.get(
+                        "https://api.ipify.org?format=json",
+                        proxies=proxies,
+                        timeout=5
+                    )
+                    print("Proxy OK :", r.json())
+                except:
+                    print("Proxy invalide ou mort")
+                    exit()
+
+                os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+
+                if vpn >= 10:
+                    edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+                    profile_dir = tempfile.mkdtemp()
+
+                    subprocess.Popen([
+                        edge_path,
+                        f"--proxy-server=http://{proxy}",
+                        f"--user-data-dir={profile_dir}",
+                        "--new-window",
+                        "https://api.ipify.org"
+                    ])
+
+                    print("\nVPN actif... appuie sur une touche pour arrêter\n")
+
+                    start = time.time()
+                    # Help ai for press & retour
+                    while True:
+                        if msvcrt.kbhit():
+                            msvcrt.getch()
+                            print("Arrêt demandé retour menu")
+                            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+                            break
+
+                        if time.time() - start >= vpn:
+                            print("Temps terminé")
+                            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+                            break
+
+                        time.sleep(0.1)
+
+                else:
+                    print("Minimum 10 secondes")
+
+            except ValueError:
+                print("Entrer un nombre valide")
+        
+        elif choix3 == "2":
+            os.system("cls")
+            password = input("""
+            ██████╗  █████╗ ███████╗███████╗██╗    ██╗ ██████╗ ██████╗ ██████╗ 
+            ██╔══██╗██╔══██╗██╔════╝██╔════╝██║    ██║██╔═══██╗██╔══██╗██╔══██╗
+            ██████╔╝███████║███████╗███████╗██║ █╗ ██║██║   ██║██████╔╝██║  ██║
+            ██╔═══╝ ██╔══██║╚════██║╚════██║██║███╗██║██║   ██║██╔══██╗██║  ██║
+            ██║     ██║  ██║███████║███████║╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝
+            ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
+
+            Choisis le nombre de lettre & Chifre : """)
 
             try:
-                r = requests.get(
-                    "https://api.ipify.org?format=json",
-                    proxies=proxies,
-                    timeout=5
-                )
-                print("Proxy OK :", r.json())
-            except:
-                print("Proxy invalide ou mort")
-                exit()
+                password = int(password)
 
-            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
+                if password >= 10:
+                    chars = string.ascii_letters + string.digits + string.punctuation
 
-            if vpn >= 10:
-                edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-                profile_dir = tempfile.mkdtemp()
+                    result = ''.join(random.choice(chars) for _ in range(password))
 
-                subprocess.Popen([
-                    edge_path,
-                    f"--proxy-server=http://{proxy}",
-                    f"--user-data-dir={profile_dir}",
-                    "--new-window",
-                    "https://api.ipify.org"
-                ])
+                    print("Password :", result)
+                    time.sleep(5)
+                else:
+                    print("Min 10 char")
+                    time.sleep(5)
+                    
+            except ValueError:
+                print("Entre un nombre valide")
+                time.sleep(5)
+        elif choix3 == "3":
+            site = input("""
+                ██╗    ██╗███████╗██████╗     ███████╗████████╗ █████╗ ████████╗██╗   ██╗███████╗
+                ██║    ██║██╔════╝██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██║   ██║██╔════╝
+                ██║ █╗ ██║█████╗  ██████╔╝    ███████╗   ██║   ███████║   ██║   ██║   ██║███████╗
+                ██║███╗██║██╔══╝  ██╔══██╗    ╚════██║   ██║   ██╔══██║   ██║   ██║   ██║╚════██║
+                ╚███╔███╔╝███████╗██████╔╝    ███████║   ██║   ██║  ██║   ██║   ╚██████╔╝███████║
+                ╚══╝╚══╝ ╚══════╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
+                
+                Choisis l'url du site que tu veux check : """)
+            
+            url = site
+            response = requests.get(url)
 
-                print("\nVPN actif... appuie sur une touche pour arrêter\n")
-
-                start = time.time()
-               # Help ai for press & retour 
-                while True:
-                    if msvcrt.kbhit():
-                        msvcrt.getch()
-                        print("Arrêt demandé retour menu")
-                        os.system("taskkill /F /IM msedge.exe >nul 2>&1")
-                        break
-
-                    if time.time() - start >= vpn:
-                        print("Temps terminé")
-                        os.system("taskkill /F /IM msedge.exe >nul 2>&1")
-                        break
-
-                    time.sleep(0.1)
-
+            if response.ok:
+                print(f"Le site a répondu en : {response.elapsed.total_seconds() * 1000:.2f} ms")
+                time.sleep(3)
             else:
-                print("Minimum 10 secondes")
+                print("Le site na pas répondu présents")
+                time.sleep(3)
 
-        except ValueError:
-            print("Entrer un nombre valide")
+            
 
+        elif choix3 == "4":
+            print("Au-Revoir a bientot l'amis")
+            time.sleep(2)
+            break
     # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "3":
         print("Au-Revoir a bientot l'amis")
