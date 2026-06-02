@@ -2,6 +2,7 @@ import os
 import time
 import requests
 import webbrowser
+import json
 from api import api_ip, api_number, api_dns
 from sites import sites
 
@@ -18,10 +19,10 @@ while True:
             ╚███╔███╔╝██║  ██║██║   ██║   ███████╗╚███╔███╔╝╚██████╔╝███████╗██║     
             ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     
 
-        1. [Lookup]
-        2. [Quit]
+            1. [Lookup]
+            2. [Quit]
 
-        Fais ton choix : """)
+            Fais ton choix : """)
         
     if  choix == "1":
         os.system("cls")
@@ -34,10 +35,11 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                                                         
 
-            1. [IP]          4. [Google]      7. [Github]
-            2. [Number]      5. [Dns]         8. [Retour Menu]
-            3. [Username]    6. [DISCORD]
-            Fais ton choix : """)
+                            1. [IP]          4. [Google]      7. [Github]
+                            2. [Number]      5. [Dns]         8. [Leak Mail]
+                            3. [Username]    6. [DISCORD]     9. [Quit]
+                            
+                            Fais ton choix : """)
         if choix2 == "1":
             os.system("cls")
             choixip = input("""
@@ -234,8 +236,31 @@ while True:
             elif not response.ok:
                 print(response.status_code)
                 time.sleep(5)
-
+        # API Haveibeen pwned alt
         elif choix2 == "8":
+            os.system("cls")
+            choix_mail = input("""
+                ██╗     ███████╗ █████╗ ██╗  ██╗
+                ██║     ██╔════╝██╔══██╗██║ ██╔╝
+                ██║     █████╗  ███████║█████╔╝ 
+                ██║     ██╔══╝  ██╔══██║██╔═██╗ 
+                ███████╗███████╗██║  ██║██║  ██╗
+                ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+                Choisis Le mail que tu veux verifié : """)
+            url = f"https://leakcheck.io/api/public?check={choix_mail}" # ANCHOR - utilisé fstring Javais oubliez... A retenir 
+            response = requests.get(url)
+            data = response.json()
+            if response.ok:
+                print("Tout les données sont dasn result.json") # ANCHOR - ajouts a des fichier en type json a retenir pas fais souvent...
+                time.sleep(5)
+                with open("result.json", "w", encoding="utf-8") as fichier:
+                    json.dump(data, fichier, ensure_ascii=False, indent=4)
+            else:
+                print("Aucun Resultas ou bug", response.status_codes)
+                time.sleep(5)
+
+            
+        elif choix2 == "9":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
