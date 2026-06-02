@@ -542,6 +542,11 @@ while True:
                         print(f"  - {name} : {url}")
 
             time.sleep(10)
+        
+        elif discord == "4":
+            print("Aurevoir l'amis")
+            time.sleep(2)
+            break
             
     # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "4":
