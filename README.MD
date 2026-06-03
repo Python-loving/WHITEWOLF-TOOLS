@@ -39,7 +39,8 @@ python main.py
 │   ├── 6. Discord ─────────────► vaultcord (profil par ID)
 │   ├── 7. Github ──────────────► dernier commit public (email auteur, etc.)
 │   ├── 8. Leak Mail ───────────► leakcheck.io → result.json
-│   └── 9. Quit
+│   ├── 9. Archive Web ───────────► archive.org → (Affiche les archive des site etc.)
+│   └── 10. Quit
 │
 ├── 2. SECURITY
 │   ├── [I] Informations
