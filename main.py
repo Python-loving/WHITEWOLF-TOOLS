@@ -17,6 +17,7 @@ import  threading
 import io
 import mss
 import mss.tools
+import whois
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
@@ -340,8 +341,8 @@ while True:
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
         1. [PROXY(VPN)]     4. [Scraper]
-        2. [Gen Password]   5. [Quit]
-        3. [Status Website]   
+        2. [Gen Password]   5. [Whois]
+        3. [Status Website] 6. [Quit]  
             {white}
         Fais ton choix : """).lower()
 
@@ -494,11 +495,33 @@ while True:
                     print("Ca marche pas")
             except ValueError:
                 print("Error input")
+        
+        elif choix3 == "5":
+            whois = input(f""" {red}
+                ██╗    ██╗██╗  ██╗ ██████╗ ██╗███████╗
+                ██║    ██║██║  ██║██╔═══██╗██║██╔════╝
+                ██║ █╗ ██║███████║██║   ██║██║███████╗
+                ██║███╗██║██╔══██║██║   ██║██║╚════██║
+                ╚███╔███╔╝██║  ██║╚██████╔╝██║███████║
+                ╚══╝╚══╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚══════╝
+                
+                Met le lien de ton site : """)
+            
+            try:
+                data = whois.whois(whois)
+                print(f"Domaine : {data.domain_name}")
+                print(f"Registrar : {data.registrar}")
+                print(f"Création : {data.creation_date}")
+                print(f"Expiration : {data.expiration_date}")
+                print(f"DNS : {data.name_servers}")
+            except Exception as e:
+                print("Error", e)
+             
 
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "5":
+        elif choix3 == "6":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
