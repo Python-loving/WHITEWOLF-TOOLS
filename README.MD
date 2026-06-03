@@ -48,7 +48,8 @@ python main.py
 │   ├── 2. Gen Password ────────► mot de passe aléatoire (min. 10 car.)
 │   ├── 3. Status Website ──────► temps de réponse HTTP (ms)
 │   ├── 4. Scraper ─────────────► en-têtes HTTP → result.txt
-│   └── 5. Quit
+│   ├── 5. Whois  ─────────────► Whois → (Affichage Whois)
+│   └── 6. Quit
 │
 ├── 3. DISCORD
 │   ├── [I] Informations
