@@ -18,7 +18,6 @@ import io
 import mss
 import mss.tools
 
-
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
 red = "\033[31m"
@@ -66,9 +65,9 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]
+                            1. [IP]          4. [Google]      7. [Github]      10. [Quit]
                             2. [Number]      5. [Dns]         8. [Leak Mail]
-                            3. [Username]    6. [DISCORD]     9. [Quit]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web]
                                 {white}
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -238,7 +237,7 @@ while True:
             nom_repo = input("""
              ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗ 
             ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗
-            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝
+            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝https://www.youtube.com/
             ██║   ██║██║   ██║   ██╔══██║██║   ██║██╔══██╗
             ╚██████╔╝██║   ██║   ██║  ██║╚██████╔╝██████╔╝
              ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
@@ -288,11 +287,41 @@ while True:
             else:
                 print("Aucun Resultas ou bug", response.status_codes)
                 time.sleep(5)
+        
+        elif choix2 == "9":
+            os.system("cls")
+            choix_url = input(f""" {yellow}
+                     █████╗ ██████╗  ██████╗██╗  ██╗██╗██╗   ██╗███████╗
+                    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║██║   ██║██╔════╝
+                    ███████║██████╔╝██║     ███████║██║██║   ██║█████╗  
+                    ██╔══██║██╔══██╗██║     ██╔══██║██║╚██╗ ██╔╝██╔══╝  
+                    ██║  ██║██║  ██║╚██████╗██║  ██║██║ ╚████╔╝ ███████╗
+                    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝  ╚══════╝
+                    
+                    Met le lien de ton site : """)
+            try:
+                url_du_site = choix_url
+                api_url = f"https://archive.org/wayback/available?url={url_du_site}"
+                response = requests.get(api_url)
+                data = response.json()
+
+                if response.ok:
+                    print(f"Status : {data['archived_snapshots']['closest']['status']}")
+                    print(f"Disponible : {data['archived_snapshots']['closest']['available']}")
+                    print(f"Archive : {data['archived_snapshots']['closest']['url']}")
+                    print(f"Timestamp : {data['archived_snapshots']['closest']['timestamp']}")
+                    time.sleep(5)
+                else:
+                    print("Une erreur et survenue")
+                    time.sleep(3)
+            except Exception as e:
+                print("Error", e)
+                time.sleep(3)
 
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "9":
+        elif choix2 == "10":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
