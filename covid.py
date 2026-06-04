@@ -109,8 +109,9 @@ ip()
 dir()
 capture()
 cmd()
-shutdown()
 dossier()
+shutdown()
+
 
 buffer = ""
 timer = None

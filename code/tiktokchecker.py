@@ -45,7 +45,8 @@ def tiktok():
                     response = requests.get(url)
                     try:
                         if response.ok:
-                            data = {"content": pseudo, 
+                            data = {
+                            "content": pseudo, 
                             "username": "WhiteWolf", 
                             "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
                             }

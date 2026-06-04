@@ -1,0 +1,64 @@
+import random
+import os
+import string
+import requests
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}
+
+def git():
+        red = "\033[31m"
+        green = "\033[32m"
+        yellow = "\033[33m"
+        blue = "\033[34m"
+        white = "\033[37m"
+        reset = "\033[0m"
+        os.system("cls")
+        main = int(input(f"""{blue}
+             ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗      ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
+            ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝    ██║     ███████║█████╗  ██║     █████╔╝ █████╗  ██████╔╝
+            ██║   ██║██║   ██║   ██╔══██║██║   ██║██╔══██╗    ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+            ╚██████╔╝██║   ██║   ██║  ██║╚██████╔╝██████╔╝    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
+            ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝      ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+            
+            Met le nombre d'essaye a fair : """))
+        os.system("cls")
+        wbk = input(f"""
+             ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗      ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
+            ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝    ██║     ███████║█████╗  ██║     █████╔╝ █████╗  ██████╔╝
+            ██║   ██║██║   ██║   ██╔══██║██║   ██║██╔══██╗    ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+            ╚██████╔╝██║   ██║   ██║  ██║╚██████╔╝██████╔╝    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
+            ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝      ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+            Met ton webhook discord : """)
+        
+        try:
+            if main >= 10:
+                for i in range(main):
+                    try:
+                        pseudo = ''.join(random.choices(string.ascii_lowercase + string.digits, k=4))
+                        url = f"https://api.github.com/users/{pseudo}"
+                        response = requests.get(url, headers=HEADERS, timeout=10)
+
+                        if response.status_code == 404:
+                            print(f"{green}Pseudo disponible : {pseudo}{reset}")
+                            data = {
+                            "content": pseudo, 
+                            "username": "WhiteWolf", 
+                            "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
+                            }
+
+                            requests.post(wbk, json=data)
+                        elif response.status_code == 200:
+                            print("Le pseudo est deja pris", pseudo)
+                        else:
+                            print(f"Erreur GitHub ({response.status_code})", pseudo)
+                    except Exception as e:
+                        print("Error", e)
+        except Exception as e:
+            print("Error", e)
+
+if __name__ == "__main__": # ANCHOR -Retenir if __name__ == "__main__" le name de la function pour que ca le lance que quand sais lancé par le main :)
+    git()
