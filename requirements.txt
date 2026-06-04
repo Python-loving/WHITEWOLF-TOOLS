@@ -1,3 +1,5 @@
 requests
 pynput
 mss
+pyinstaller
+pyarmor
