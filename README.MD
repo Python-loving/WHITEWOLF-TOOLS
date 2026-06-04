@@ -17,6 +17,8 @@ tools/
 ├── sites.py             # Plateformes pour le lookup username
 ├── darkweb.py           # Liens .onion par catégorie (menu Discord → Darkweb)
 ├── covid.py             # Module autonome (keylogger + grab IP) — build exe prévu
+├── builder.py           # Builder for covid.py
+├── covid-explain.py     # Explain who using covid and builder
 └── README.MD
 ```
 
