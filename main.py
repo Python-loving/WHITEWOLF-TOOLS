@@ -20,6 +20,8 @@ import mss.tools
 import whois
 from code.discordchecker import main
 from code.tiktokchecker import tiktok
+from code.githubchecker import git
+
 
 
 
@@ -70,8 +72,8 @@ while True:
                     [I]. Informations                                      
 
                             1. [IP]          4. [Google]      7. [Github]      10. [4c Tiktok]
-                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [Quit]
-                            3. [Username]    6. [DISCORD]     9. [Archive Web]
+                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Quit]
                                 {white}
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -321,13 +323,15 @@ while True:
             except Exception as e:
                 print("Error", e)
                 time.sleep(3)
-        elif choix2 == "10":
+        elif choix2 == "11":
             tiktok()
+        elif choix2 == "12":
+            git()
 
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "11":
+        elif choix2 == "12":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
