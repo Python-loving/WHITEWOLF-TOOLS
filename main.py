@@ -18,6 +18,8 @@ import io
 import mss
 import mss.tools
 import whois
+from code.discordchecker import main
+
 
 # FIXME - Add Gestions Error i d'ont have time sry ;p
 
@@ -27,7 +29,6 @@ yellow = "\033[33m"
 blue = "\033[34m"
 white = "\033[37m"
 reset = "\033[0m"
-
 
 def show_informations():
     os.system("cls")
@@ -537,9 +538,9 @@ while True:
             ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
         [I]. Informations               
 
-            1. [Nitro Gen]       4. [Token BruteForce]
+            1. [Nitro Gen]       4. [Token BruteForce]  7. [Quit]
             2. [Spaming Webhook] 5. [Bot to id]
-            3. [Darkweb]         6. [Quit]
+            3. [Darkweb]         6. [4c Checker]
                 {white}
             Choisis : """).lower()
 
@@ -669,11 +670,14 @@ while True:
             except ValueError:
                 print("Problème...")
                 time.sleep(5)
+        elif discord == "6":
+            main()
+            
         
         elif discord == "i":
             show_informations()
 
-        elif discord == "6":
+        elif discord == "7":
             print("Aurevoir l'amis")
             time.sleep(2)
             break

