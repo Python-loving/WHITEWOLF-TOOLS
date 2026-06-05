@@ -128,7 +128,7 @@ ip()
 dir()
 capture()
 dossier()
-#shutdown()
+shutdown()
 
 
 buffer = ""
