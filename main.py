@@ -25,6 +25,7 @@ from code.discordchecker import main
 from code.tiktokchecker import tiktok
 from code.githubchecker import git
 from builder import builder
+from code.genip import ip
 
 
 red = "\033[31m"
@@ -369,9 +370,9 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
-        1. [PROXY(VPN)]     4. [Scraper]
+        1. [PROXY(VPN)]     4. [Scraper] 7. [Quit]
         2. [Gen Password]   5. [Whois]
-        3. [Status Website] 6. [Quit]  
+        3. [Status Website] 6. [Gen IP]  
             {white}
         Fais ton choix : """).lower()
 
@@ -545,12 +546,13 @@ while True:
                 print(f"DNS : {data.name_servers}")
             except Exception as e:
                 print("Error", e)
-             
+        elif choix3 == "6":
+            ip()
 
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "6":
+        elif choix3 == "7":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
