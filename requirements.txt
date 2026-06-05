@@ -3,3 +3,4 @@ pynput
 mss
 pyinstaller
 pyarmor
+python-telegram-bot
