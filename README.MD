@@ -59,7 +59,8 @@ python main.py
 │   ├── 4. Scraper ─────────────► en-têtes HTTP → result.txt
 │   ├── 5. Whois ───────────────► whois du domaine
 │   ├── 6. Gen IP ──────────────► génération d’IP (code/genip.py)
-│   └── 7. Quit
+│   ├── 7. SPAM BOT ──────────────► Telegram bot spammer
+│   └── 8. Quit
 │
 ├── 3. DISCORD
 │   ├── [I] Informations
