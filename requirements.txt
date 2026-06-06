@@ -4,3 +4,8 @@ mss
 pyinstaller
 pyarmor
 python-telegram-bot
+python-whois
+cryptography
+pillow
+pywin32
+pycryptodome

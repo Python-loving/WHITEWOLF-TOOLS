@@ -28,6 +28,7 @@ from builder import builder
 from code.genip import ip
 from code.Spamtlgrm import tlgrm
 from code.passwordmanager import passwdmanage
+from code.challange.firstchallange import osint
 
 red = "\033[31m"
 green = "\033[32m"
@@ -301,12 +302,12 @@ while True:
                 ███████╗███████╗██║  ██║██║  ██╗
                 ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
                 Choisis Le mail que tu veux verifié : """)
-            url = f"https://leakcheck.io/api/public?check={choix_mail}" # ANCHOR - utilisé fstring Javais oubliez... A retenir 
+            url = f"https://leakcheck.io/api/public?check={choix_mail}"
             response = requests.get(url)
             data = response.json()
             try:
                 if response.ok:
-                    print("Tout les données sont dasn result.json") # ANCHOR - ajouts a des fichier en type json a retenir pas fais souvent...
+                    print("Tout les données sont dasn result.json")
                     time.sleep(5)
                     with open("result.json", "w", encoding="utf-8") as fichier:
                         json.dump(data, fichier, ensure_ascii=False, indent=4)
@@ -371,9 +372,9 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
-        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]
+        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Quit]
         2. [Gen Password]   5. [Whois]   8. [Passwd Manager]
-        3. [Status Website] 6. [Gen IP]  9. [Quit]
+        3. [Status Website] 6. [Gen IP]  9. [Osint]
             {white}
         Fais ton choix : """).lower()
 
@@ -558,10 +559,13 @@ while True:
         elif choix3 == "8":
             passwdmanage()
 
+        elif choix3 == "9":
+            osint()
+
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "9":
+        elif choix3 == "10":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
