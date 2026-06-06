@@ -492,13 +492,15 @@ while True:
             
             url = site
             response = requests.get(url)
-
-            if response.ok:
-                print(f"Le site a répondu en : {response.elapsed.total_seconds() * 1000:.2f} ms")
-                time.sleep(3)
-            else:
-                print("Le site na pas répondu présents")
-                time.sleep(3)
+            try:
+                if response.ok:
+                    print(f"Le site a répondu en : {response.elapsed.total_seconds() * 1000:.2f} ms")
+                    time.sleep(3)
+                else:
+                    print("Le site na pas répondu présents")
+                    time.sleep(3)
+            except Exception as e:
+                print("Error", e)
 
         elif choix3 == "4":
             os.system("cls")
@@ -863,7 +865,7 @@ while True:
 
     # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "5":
-        print("Au-Revoir a bientot l'amis")
+        print("Au-Revoir a bientot l'ami")
         time.sleep(2)
         break
     elif choix == "i":
