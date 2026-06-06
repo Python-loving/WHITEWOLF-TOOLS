@@ -27,6 +27,7 @@ from code.githubchecker import git
 from builder import builder
 from code.genip import ip
 from code.Spamtlgrm import tlgrm
+from code.passwordmanager import passwdmanage
 
 red = "\033[31m"
 green = "\033[32m"
@@ -371,8 +372,8 @@ while True:
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
         1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]
-        2. [Gen Password]   5. [Whois]   8. [Quit]
-        3. [Status Website] 6. [Gen IP]  
+        2. [Gen Password]   5. [Whois]   8. [Passwd Manager]
+        3. [Status Website] 6. [Gen IP]  9. [Quit]
             {white}
         Fais ton choix : """).lower()
 
@@ -551,11 +552,14 @@ while True:
 
         elif choix3 == "7":
             tlgrm()
+        
+        elif choix3 == "8":
+            passwdmanage()
 
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "8":
+        elif choix3 == "9":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
