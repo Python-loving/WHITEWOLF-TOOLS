@@ -61,6 +61,7 @@ def builder():
         "--hidden-import=pynput.keyboard",
         "--hidden-import=mss",
         "--hidden-import=sqlite3",
+        "--hidden-import=webbrowser",
 
         "--collect-binaries", "sqlite3",
 
