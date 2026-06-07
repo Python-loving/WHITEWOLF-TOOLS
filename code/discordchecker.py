@@ -59,7 +59,7 @@ def main():
                         
                         data = response.json()
                         
-                        if response == True:
+                        if response.status_code == 200:
                             data = {
                                 "content": data, 
                                 "username": "WhiteWolf", 
