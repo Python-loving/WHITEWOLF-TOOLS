@@ -316,6 +316,11 @@ Utilise ces outils uniquement sur des systèmes et des données **dont tu as l'a
 
 Consulte [`SECURITY.md`](SECURITY.md) pour les conditions complètes d'utilisation et de responsabilité.
 
+## Image
+
+<img src="image/whitewolf.png" />
+
+
 ---
 
 _Love My friends :)_ — _Don't wait, just do it :)_

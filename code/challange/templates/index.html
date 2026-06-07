@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pentest</title>
+    <link rel="icon" href="https://i.pinimg.com/736x/80/87/40/808740d5a997c01735b9674bcee73fd1.jpg" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .id {
+            color: white;
+            text-align: center;
+        }
+
+        input {
+            background-color: black;
+            color: white;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid white;
+        }
+
+        input::placeholder {
+            color: lightgray;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        hr {
+            margin-top: 20px;
+        }
+
+        #result {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<img src="https://i.postimg.cc/BZwT2zP9/82336a6ddfb039c79da577debd4b97ee.jpg"
+     alt="bg"
+     width="100%"
+     height="100%"
+     style="position:fixed; top:0; left:0; z-index:-1; opacity:0.9;">
+
+<h1 style="color:white; text-align:center;">
+    Challenge Web - JS Authentication
+</h1>
+
+<p style="color:white; text-align:center;">
+    Connectez-vous pour accéder à l'espace administrateur.
+</p>
+
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Connexion</button>
+
+<hr>
+
+<div id="result"></div>
+
+<script>
+
+const _0xflag = [
+    "RkxBR3tK",
+    "U19SRVZF",
+    "UlNFX01F",
+    "XzIwMjZ9"
+];
+
+function decode(arr){
+    return atob(arr.join(""));
+}
+
+function getFlag(){
+    return decode(_0xflag);
+}
+
+function login(){
+
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    let session = {
+        username: user,
+        role: "user"
+    };
+
+    if(checkPassword(pass)){
+        session.authenticated = true;
+    }
+
+    accessPanel(session);
+}
+
+function checkPassword(password){
+
+    const hash =
+        password
+        .split("")
+        .reverse()
+        .join("");
+
+    return hash === "321nimda";
+}
+
+function accessPanel(session){
+
+    if(
+        session.authenticated &&
+        session.role === "admin"
+    ){
+        document.getElementById("result").innerHTML =
+            '<h2 class="id">Admin Panel</h2><p class="id">' +
+            getFlag() +
+            '</p>';
+    }
+    else{
+        document.getElementById("result").innerHTML =
+            '<p class="id">Access denied.</p>';
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -29,6 +29,7 @@ from code.genip import ip
 from code.Spamtlgrm import tlgrm
 from code.passwordmanager import passwdmanage
 from code.challange.firstchallange import osint
+from code.challange.pentestchallange import main
 
 red = "\033[31m"
 green = "\033[32m"
@@ -73,9 +74,9 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]      10. [4c Tiktok]
+                            1. [IP]          4. [Google]      7. [Github]      10. [4c Tiktok]  13. [Quit]
                             2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]
-                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Quit]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github Checker]
                                 {white}
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -345,9 +346,10 @@ while True:
             except Exception as e:
                 print("Error", e)
                 time.sleep(3)
-        elif choix2 == "11":
+        elif choix2 == "10":
             tiktok()
-        elif choix2 == "12":
+        
+        elif choix2 == "11":
             git()
 
         elif choix2 == "i":
@@ -371,8 +373,8 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
-        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Quit]
-        2. [Gen Password]   5. [Whois]   8. [Passwd Manager]
+        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Pentest Web]
+        2. [Gen Password]   5. [Whois]   8. [Passwd Manager] 11. [Quit]
         3. [Status Website] 6. [Gen IP]  9. [Osint]
             {white}
         Fais ton choix : """).lower()
@@ -561,10 +563,13 @@ while True:
         elif choix3 == "9":
             osint()
 
+        elif choix3 == "10":
+            main()
+
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "10":
+        elif choix3 == "11":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
