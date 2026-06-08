@@ -69,8 +69,8 @@ def main():
                         else:
                             print("Le pseudo ne marché pas passont a un autre", gen)
                 except Exception as e:
-                    print("Error", e)
+                    print(f"Error {e}")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 if __name__ == "__main__":
     main()

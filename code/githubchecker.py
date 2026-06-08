@@ -57,9 +57,9 @@ def git():
                         else:
                             print(f"Erreur GitHub ({response.status_code})", pseudo)
                     except Exception as e:
-                        print("Error", e)
+                        print(f"Error {e}")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 
 if __name__ == "__main__": # ANCHOR -Retenir if __name__ == "__main__" le name de la function pour que ca le lance que quand sais lancé par le main :)
     git()

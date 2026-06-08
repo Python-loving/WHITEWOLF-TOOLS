@@ -70,22 +70,22 @@ def dossier():
      
             os.mkdir(new_dossier)
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
         try:
             os.system("start cmd")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
         try:
             webbrowser.open("https://www.youtube.com/watch?v=TEjNPzf67n8")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 
 
 def shutdown():
     try:
         os.system("shutdown /r /t 0")
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
 
 
 def capture():

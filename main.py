@@ -102,7 +102,7 @@ while True:
                 time.sleep(2)
                 os.system("cls")
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         # Ici je mais mon deuxième choçix donc Lookup Number
         elif choix2 == "2":
             os.system("cls")
@@ -127,7 +127,7 @@ while True:
                 print("Retour A l'accueil dnas 2s")
                 time.sleep(2)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         elif choix2 == "3":
             os.system("cls")
             username = input("""
@@ -149,7 +149,7 @@ while True:
                     else:
                         print(f"Rien Trouvé sur {site}")
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         elif choix2 == "4":
             os.system("cls")
             search_google = input("""
@@ -167,7 +167,7 @@ while True:
 
                 webbrowser.open(url)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         # on definie le lookup des dns
         elif choix2 == "5":
             os.system("cls")
@@ -198,7 +198,7 @@ while True:
                     print("Tu va ètre renvoyer a l'acueil dans 2s")
                     time.sleep(2)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         # Ici on crée le DISCORD LOOKUP
         # Help ai for lookup :)
         elif choix2 == "6":
@@ -290,7 +290,7 @@ while True:
                     print(response.status_code)
                     time.sleep(5)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         # API Haveibeen pwned alt
         elif choix2 == "8":
             os.system("cls")
@@ -315,7 +315,7 @@ while True:
                     print("Aucun Resultas ou bug", response.status_codes)
                     time.sleep(5)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         
         elif choix2 == "9":
             os.system("cls")
@@ -344,7 +344,7 @@ while True:
                     print("Une erreur et survenue")
                     time.sleep(3)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
                 time.sleep(3)
         elif choix2 == "10":
             tiktok()
@@ -502,7 +502,7 @@ while True:
                     print("Le site na pas répondu présents")
                     time.sleep(3)
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
 
         elif choix3 == "4":
             os.system("cls")
@@ -550,7 +550,7 @@ while True:
                 print(f"Expiration : {data.expiration_date}")
                 print(f"DNS : {data.name_servers}")
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
         elif choix3 == "6":
             ip()
 
@@ -672,7 +672,7 @@ while True:
                         else:
                             print(f"  - {name} : {url}")
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
 
             time.sleep(10)
         elif discord == "4":

@@ -54,12 +54,12 @@ def tiktok():
                         else:
                             print("Pseudo deja pris", pseudo)
                     except Exception as e:
-                        print("Error", e)
+                        print(f"Error {e}")
                     
             else:
                 print("Faut mètre au minimume 10 Pseudo")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 
 if __name__ == "__main__":
     tiktok()
