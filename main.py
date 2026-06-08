@@ -395,7 +395,7 @@ while True:
             try:
                 vpn = int(vpn)
 
-                proxy = "38.19.238.5:999"
+                proxy = "80.92.227.185:5678"
 
                 proxies = {
                     "http": f"http://{proxy}",
