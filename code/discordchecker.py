@@ -59,7 +59,7 @@ def main():
                         
                         data = response.json()
                         
-                        if response == True:
+                        if response.status_code == 200:
                             data = {
                                 "content": data, 
                                 "username": "WhiteWolf", 
@@ -69,8 +69,8 @@ def main():
                         else:
                             print("Le pseudo ne marché pas passont a un autre", gen)
                 except Exception as e:
-                    print("Error", e)
+                    print(f"Error {e}")
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 if __name__ == "__main__":
     main()

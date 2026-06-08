@@ -55,12 +55,12 @@ def ip():
                         else:
                             print("Ip invalide")
                     except Exception as e:
-                        print("Error", e)
+                        print(f"Error {e}")
             else:
                 print("Error")
 
         except Exception as e:
-            print("Error", e)
+            print(f"Error {e}")
 
 if __name__ == "__main__":
     ip()

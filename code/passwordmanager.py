@@ -32,7 +32,7 @@ def passwdmanage():
             with open("key.txt", "w", encoding="utf-8") as fichier:
                     fichier.write(key.decode())
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
     try: 
         if choix == "2":
             os.system("cls")
@@ -67,9 +67,9 @@ def passwdmanage():
                     fichier.write(encrypted.decode())
             
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
 
     try:    
         if choix == "3":
@@ -94,17 +94,17 @@ def passwdmanage():
                 print("Mdps :", decrypted)
                 
             except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
 
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
 
     try:
         if choix == "4":
             print("Au-Revoir Frro...")
             time.sleep(2)
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
 
 if __name__ == "__main__":
     passwdmanage()
