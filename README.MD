@@ -1,6 +1,6 @@
 # WhiteWolf Tools
 
-Suite d'outils en ligne de commande (CLI) pour **OSINT**, **sécurité**, **Discord** et utilitaires divers. Interface en menus ASCII — lance tout depuis `main.py`.
+Suite d'outils en ligne de commande (CLI) pour **OSINT**, **sécurité**, **Discord** et utilitaires divers. Nouveau lanceur Tkinter disponible dans `main-tool.py` — l'interface reste aussi accessible en menu ASCII via `main.py`.
 
 > **Python 3 requis** — Windows recommandé (certaines fonctions utilisent `msvcrt`, Microsoft Edge, `taskkill`, `mss`, etc.).
 
@@ -10,14 +10,17 @@ Suite d'outils en ligne de commande (CLI) pour **OSINT**, **sécurité**, **Disc
 
 ```
 WHITEWOLF-TOOLS/
-├── main.py                        # Point d'entrée — menus et logique interactive
+├── main.py                        # Point d'entrée CLI — menus et logique interactive
+├── main-tool.py                   # Interface graphique Tkinter d'accueil
 ├── api.py                         # Clés API (ipify, apilayer, viewdns) — ignoré par Git
 ├── sites.py                       # Plateformes pour le lookup username
 ├── darkweb.py                     # Liens .onion par catégorie (menu Discord → Darkweb)
 ├── covid.py                       # Script autonome (voir section Covid)
 ├── scanner.py                     # Scan de tokens Discord (navigateurs + app Discord)
 ├── builder.py                     # Build .exe de covid.py (PyArmor + PyInstaller)
-├── Icon.ico                       # Icône du projet
+├── Icon.ico                       # Icône du projet (console / packaging)
+├── icon-tool.ico                  # Icône de la fenêtre Tkinter
+├── back.gif                       # Fond animé du launcher Tkinter
 ├── Virus-explain.md               # Guide rapide pour covid.py + builder
 ├── SECURITY.md                    # Avertissements légaux et responsabilité
 ├── requirements.txt               # Dépendances pip
@@ -33,6 +36,23 @@ WHITEWOLF-TOOLS/
 │       └── osint.png              # Image du challenge OSINT
 └── README.MD
 ```
+
+---
+
+## Interface graphique Tkinter (`main-tool.py`)
+
+Lancez l'interface graphique avec :
+
+```bash
+python main-tool.py
+```
+
+Le lanceur Tkinter affiche un écran d'accueil animé et un bouton **INVESTIGUER**. En cliquant sur ce bouton, il ouvre une fenêtre de terminal et démarre le menu ASCII principal défini dans `main.py`.
+
+### Fichiers associés
+- `main-tool.py` : code du launcher Tkinter
+- `icon-tool.ico` : icône de la fenêtre Tkinter
+- `back.gif` : arrière-plan animé du launcher
 
 ---
 
@@ -317,6 +337,8 @@ Utilise ces outils uniquement sur des systèmes et des données **dont tu as l'a
 Consulte [`SECURITY.md`](SECURITY.md) pour les conditions complètes d'utilisation et de responsabilité.
 
 ## Image
+
+<img src="image/image.png" />
 
 <img src="image/whitewolf.png" />
 
