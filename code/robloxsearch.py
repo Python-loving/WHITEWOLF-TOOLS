@@ -3,8 +3,6 @@ import requests
 import time
 from colorama import Fore, Back, Style
 import questionary
-from bs4 import BeautifulSoup
-
 
 def roblox():
     os.system("cls")
