@@ -6,6 +6,7 @@ import json
 import msvcrt
 import tempfile
 import subprocess
+from pypresence import Presence
 import random
 import string
 import base64
@@ -38,6 +39,26 @@ yellow = "\033[33m"
 blue = "\033[34m"
 white = "\033[37m"
 reset = "\033[0m"
+
+def rpc():
+    rpc = Presence("1441226984024965221")
+    rpc.connect()
+
+    rpc.update(
+        state="White Wolf",
+        details="Best Tools",
+        large_image="tools",
+        large_text="by xql",
+        buttons=[
+            {"label": "Repository", "url": "https://github.com/Python-loving/WHITEWOLF-TOOLS"},
+            {"label": "Telegram", "url": "https://t.me/whitewolf_tools"}
+        ]
+    )
+
+    while True:
+        time.sleep(15)
+
+threading.Thread(target=rpc, daemon=True).start()
 
 def show_informations():
     os.system("cls")
