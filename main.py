@@ -33,6 +33,7 @@ from code.challange.firstchallange import osint
 from code.challange.pentestchallange import main
 from code.ipscanner import ip
 from code.letsenscript import domaine
+from code.robloxsearch import roblox
 
 red = "\033[31m"
 green = "\033[32m"
@@ -97,9 +98,9 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]
+                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]   16. [Quit]
                             2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [SSL / TLS]
-                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github]     15. [Quit]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github]     15. [Roblox Search]
                                 {white}
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -384,10 +385,13 @@ while True:
         elif choix2 == "14":
             domaine()
 
+        elif choix2 == "15":
+            roblox()
+
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "15":
+        elif choix2 == "16":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
