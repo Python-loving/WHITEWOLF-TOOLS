@@ -46,5 +46,9 @@ def roblox():
         except Exception as e:
             print(f"Error {e}")
                 
+    if choix == "Quit":
+        print("Au-Revoir")
+        time.sleep(2)
+        
 if __name__ == "__main__":
     roblox()
