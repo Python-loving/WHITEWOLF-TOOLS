@@ -30,6 +30,7 @@ from code.Spamtlgrm import tlgrm
 from code.passwordmanager import passwdmanage
 from code.challange.firstchallange import osint
 from code.challange.pentestchallange import main
+from code.ipscanner import ip
 
 red = "\033[31m"
 green = "\033[32m"
@@ -74,9 +75,9 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]      10. [4c Tiktok]  13. [Quit]
-                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]
-                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github Checker]
+                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]
+                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [Quit]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github Check]
                                 {white}
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -351,11 +352,17 @@ while True:
         
         elif choix2 == "11":
             git()
+        
+        elif choix2 == "12":
+            main()
+
+        elif choix2 == "13":
+            ip()
 
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "12":
+        elif choix2 == "14":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
