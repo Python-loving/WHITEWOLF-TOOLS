@@ -46,9 +46,9 @@ def tlgrm():
                 app.run_polling()
 
         except Exception as e:
-                print("Error", e)
+                print(f"Error {e}")
     except Exception as e:
-        print("Error", e)
+        print(f"Error {e}")
 
 if __name__ == "__main__":
     tlgrm()
