@@ -237,7 +237,7 @@ while True:
                         
                         Choisis L'id Du gars que tu veux lookup : """)
 
-            url = f"https://api.vaultcord.com/webhooks/public-self/{lookup}"
+            url = f"https://api.vaultcord.com/webhooks/public-lookup/{lookup}"
 
             try:
                 headers = {
