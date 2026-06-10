@@ -428,11 +428,21 @@ while True:
               ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
 
             Choisis Le temps que tu a besoin : """)
+            os.system("cls")
+            prx = input("""
+            ██╗   ██╗██████╗ ███╗   ██╗
+            ██║   ██║██╔══██╗████╗  ██║
+            ██║   ██║██████╔╝██╔██╗ ██║
+            ╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
+             ╚████╔╝ ██║     ██║ ╚████║
+              ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
+
+            Choisis Le Proxy que tu veux : """)
 
             try:
                 vpn = int(vpn)
 
-                proxy = "80.92.227.185:5678"
+                proxy = prx
 
                 proxies = {
                     "http": f"http://{proxy}",
