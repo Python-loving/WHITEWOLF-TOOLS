@@ -937,6 +937,7 @@ while True:
                 }, files=files)
         elif covid == "4":
             try:
+                os.system("cls")
                 webhook = input(f"""{Fore.MAGENTA}
                                                                                 
                 ██  ██ ██ █████▄  ██  ██ ▄█████   █████▄ ██  ██ ██ ██     ████▄  
