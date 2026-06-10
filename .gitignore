@@ -19,7 +19,6 @@ nitro.txt
 *.json
 *.txt
 
-.vscode/
 .idea/
 *.swp
 *.swo
