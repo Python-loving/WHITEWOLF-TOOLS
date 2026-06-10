@@ -1,6 +1,7 @@
 import os
 import subprocess
 import shutil
+import json
 from tkinter import Tk, filedialog
 
 
@@ -21,6 +22,11 @@ def builder():
 
     if not icon_path:
         print("Aucune icône choisie")
+        return
+
+    config_path = os.path.abspath("config.json")
+
+    if not os.path.exists(config_path):
         return
 
     output_dir = "covid-exe"
@@ -66,10 +72,12 @@ def builder():
         "--collect-binaries", "sqlite3",
 
         "--add-data", f"{scanner_path};.",
+        "--add-data", f"{config_path};.",
 
         target_file
     ])
-    print(f"\n[✓] Terminé -> {output_dir}/Tools.exe")
+
+    print(f"\nTerminé -> {output_dir}/Tools.exe")
 
 
 if __name__ == "__main__":

