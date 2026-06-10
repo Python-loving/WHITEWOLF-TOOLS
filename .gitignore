@@ -16,6 +16,7 @@ tmp/
 result.json
 result.txt
 nitro.txt
+*.json
 *.txt
 
 .idea/
