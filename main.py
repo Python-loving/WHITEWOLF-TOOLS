@@ -89,7 +89,7 @@ while True:
             1. [Lookup]    4. [Covid]
             2. [Sécurity]  5. [Quit]
             3. [Discord]
-                {white}
+
             Fais ton choix : """).lower()
         
     if  choix == "1":
@@ -106,7 +106,7 @@ while True:
                             1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]   16. [AI]
                             2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [SSL / TLS]    17. [Quit]
                             3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github]     15. [Roblox Search]
-                                {white}
+
                             Fais ton choix : """).lower()
         if choix2 == "1":
             os.system("cls")
