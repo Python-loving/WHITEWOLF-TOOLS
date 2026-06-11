@@ -35,6 +35,7 @@ from code.ipscanner import ip
 from code.letsenscript import domaine
 from code.robloxsearch import roblox
 from colorama import Fore
+from code.ai import ai
 
 
  # ANCHOR - Change color in Colorama please :) i d'ont have time
@@ -102,8 +103,8 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]   16. [Quit]
-                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [SSL / TLS]
+                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]   16. [AI]
+                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [SSL / TLS]    17. [Quit]
                             3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github]     15. [Roblox Search]
                                 {white}
                             Fais ton choix : """).lower()
@@ -392,10 +393,13 @@ while True:
         elif choix2 == "15":
             roblox()
 
+        elif choix2 == "16":
+            ai()
+
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "16":
+        elif choix2 == "17":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
