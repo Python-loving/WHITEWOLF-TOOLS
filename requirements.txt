@@ -12,3 +12,4 @@ pycryptodome
 pypresence
 holehe
 whois
+pyfiglet

@@ -38,7 +38,8 @@ from colorama import Fore
 from code.ai import ai
 from code.checking import holehe
 from code.rpc import rpc_conf
-
+from code.webcamcapt import webcam
+from pyfiglet import Figlet
 
  # ANCHOR - Change color in Colorama please :) i d'ont have time
  
@@ -66,6 +67,17 @@ def rpc():
 
     while True:
         time.sleep(15)
+
+def devtools():
+    os.system("cls")
+    choix = input(f"""{Fore.MAGENTA}
+    ████▄  ██████ ██  ██ ██████ ▄████▄ ▄████▄ ██     ▄█████ 
+    ██  ██ ██▄▄   ██▄▄██   ██   ██  ██ ██  ██ ██     ▀▀▀▄▄▄ 
+    ████▀  ██▄▄▄▄  ▀██▀    ██   ▀████▀ ▀████▀ ██████ █████▀ 
+                                                        
+    Devtools for xql : """)
+    f = Figlet(font="slant")
+    print(f.renderText(choix))
 
 threading.Thread(target=rpc, daemon=True).start()
 
@@ -423,8 +435,8 @@ while True:
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
         1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Pentest Web]
-        2. [Gen Password]   5. [Whois]   8. [Passwd Manager] 11. [Quit]
-        3. [Status Website] 6. [Gen IP]  9. [Osint]
+        2. [Gen Password]   5. [Whois]   8. [Passwd Manager] 11. [Webcam]
+        3. [Status Website] 6. [Gen IP]  9. [Osint]          12. [Quit]
             {white}
         Fais ton choix : """).lower()
 
@@ -633,11 +645,14 @@ while True:
 
         elif choix3 == "10":
             main()
+        
+        elif choix3 == "11":
+            webcam()
 
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "11":
+        elif choix3 == "12":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break

