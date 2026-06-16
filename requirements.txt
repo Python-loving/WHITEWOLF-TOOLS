@@ -11,3 +11,4 @@ pywin32
 pycryptodome
 pypresence
 holehe
+whois
