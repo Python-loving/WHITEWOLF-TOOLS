@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE WOLF</title>
+
+    <link rel="stylesheet" href="static/styles.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+
+    <style>
+        body{
+            margin:0;
+            background: beige;
+            color:black;
+            font-family:Arial, sans-serif;
+        }
+
+        .hero{
+            text-align:center;
+            padding:50px 20px;
+        }
+
+        .markdown-body{
+            max-width:1000px;
+            margin:40px auto;
+            padding:40px;
+            background:#161b22;
+            border-radius:12px;
+            box-shadow:0 0 20px rgba(0,0,0,.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/archive/refs/heads/main.zip" style="display:block;width:max-content;margin:20px auto 0 auto;padding:12px 20px;background:#161b22;color:white;text-decoration:none;border-radius:8px;">install Tools</a>
+
+    <div class="hero">
+        <h1>What is WHITE-WOLF ?</h1>
+
+        <p>
+            White Wolf is a tools for cyber security, discord and lookup.
+        </p>
+    </div>
+
+    <article class="markdown-body" id="markdown-content"></article>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        fetch("README.md")
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById("markdown-content").innerHTML = marked.parse(markdown);
+            });
+    </script>
+
+</body>
+</html>
