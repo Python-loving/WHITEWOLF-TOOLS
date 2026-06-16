@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributeurs</title>
+
+  <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 15px;
+      width: 180px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #58a6ff;
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #30363d;
+    }
+
+    .name {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .contrib {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Contributeurs GitHub</h1>
+
+  <div class="container">
+    <div class="grid" id="list"></div>
+  </div>
+
+<script>
+async function loadContributors() {
+  const res = await fetch("https://api.github.com/repos/Python-loving/WHITEWOLF-TOOLS/contributors");
+  const data = await res.json();
+
+  const list = document.getElementById("list");
+
+  data.forEach(user => {
+    const card = document.createElement("a");
+    card.href = user.html_url;
+    card.target = "_blank";
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${user.avatar_url}" alt="avatar">
+      <div class="name">${user.login}</div>
+      <div class="contrib">${user.contributions} contributions</div>
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+loadContributors();
+</script>
+
+</body>
+</html>
