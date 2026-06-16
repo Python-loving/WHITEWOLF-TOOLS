@@ -14,7 +14,7 @@ from api import api_ip, api_number, api_dns
 from sites import sites
 from darkweb import links
 from pynput import keyboard
-import  threading
+import threading
 import io
 import mss
 import mss.tools
@@ -37,6 +37,7 @@ from code.robloxsearch import roblox
 from colorama import Fore
 from code.ai import ai
 from code.checking import holehe
+from code.rpc import rpc_conf
 
 
  # ANCHOR - Change color in Colorama please :) i d'ont have time
@@ -790,11 +791,13 @@ while True:
         elif discord == "6":
             main()
             
+        elif discord == "7":
+            rpc_conf()
         
         elif discord == "i":
             show_informations()
 
-        elif discord == "7":
+        elif discord == "8":
             print("Aurevoir l'amis")
             time.sleep(2)
             break
