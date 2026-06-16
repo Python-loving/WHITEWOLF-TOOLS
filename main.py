@@ -79,6 +79,8 @@ def devtools():
     f = Figlet(font="slant")
     print(f.renderText(choix))
 
+# Just for xql devtools()
+
 threading.Thread(target=rpc, daemon=True).start()
 
 def show_informations():
