@@ -71,6 +71,22 @@
       text-decoration: none;
       color: inherit;
     }
+    .back-btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px 15px;
+    background: #4268e6;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+
+  .back-btn:hover {
+    background: black;
+    transform: translateY(-2px);
+  }
   </style>
 </head>
 
@@ -78,6 +94,9 @@
 
   <h1>Contributeurs GitHub</h1>
 
+  <a class="back-btn" href="https://python-loving.github.io/WHITEWOLF-TOOLS/">
+  ⬅ Retour au site
+  </a>
   <div class="container">
     <div class="grid" id="list"></div>
   </div>
