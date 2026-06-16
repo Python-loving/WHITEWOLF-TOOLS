@@ -40,6 +40,7 @@ from code.checking import holehe
 from code.rpc import rpc_conf
 from code.webcamcapt import webcam
 from pyfiglet import Figlet
+from code.tokencheck import tokenchecker
 
  # ANCHOR - Change color in Colorama please :) i d'ont have time
  
@@ -81,6 +82,7 @@ def devtools():
 
 # Just for xql devtools()
 
+# ANCHOR - Command thread 
 threading.Thread(target=rpc, daemon=True).start()
 
 def show_informations():
@@ -670,9 +672,9 @@ while True:
             ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
         [I]. Informations               
 
-            1. [Nitro Gen]       4. [Token BruteForce]  7. [Quit]
-            2. [Spaming Webhook] 5. [Bot to id]
-            3. [Darkweb]         6. [4c Checker]
+            1. [Nitro Gen]       4. [Token BruteForce]  7. [rpc_conf]
+            2. [Spaming Webhook] 5. [Bot to id]         8. [Token check]
+            3. [Darkweb]         6. [4c Checker]        9. [Quit]
                 {white}
             Choisis : """).lower()
 
@@ -811,10 +813,13 @@ while True:
         elif discord == "7":
             rpc_conf()
         
+        elif discord == "8":
+            tokenchecker()
+        
         elif discord == "i":
             show_informations()
 
-        elif discord == "8":
+        elif discord == "9":
             print("Aurevoir l'amis")
             time.sleep(2)
             break
