@@ -13,3 +13,6 @@ pypresence
 holehe
 whois
 pyfiglet
+colorama
+questionary
+opencv-python
