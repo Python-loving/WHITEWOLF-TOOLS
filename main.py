@@ -81,7 +81,7 @@ def devtools():
     f = Figlet(font="slant")
     print(f.renderText(choix))
 
-# Just for xql devtools()
+# Just for xql ( devtools() )
 
 # ANCHOR - Command thread 
 threading.Thread(target=rpc, daemon=True).start()
