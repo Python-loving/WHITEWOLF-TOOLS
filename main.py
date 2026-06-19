@@ -41,6 +41,7 @@ from code.rpc import rpc_conf
 from code.webcamcapt import webcam
 from pyfiglet import Figlet
 from code.tokencheck import tokenchecker
+from code.embedsender import sender
 
  # ANCHOR - Change color in Colorama please :) i d'ont have time
  
@@ -672,9 +673,9 @@ while True:
             ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
         [I]. Informations               
 
-            1. [Nitro Gen]       4. [Token BruteForce]  7. [rpc_conf]
+            1. [Nitro Gen]       4. [Token BruteForce]  7. [rpc_conf]   10. [Quit]
             2. [Spaming Webhook] 5. [Bot to id]         8. [Token check]
-            3. [Darkweb]         6. [4c Checker]        9. [Quit]
+            3. [Darkweb]         6. [4c Checker]        9. [Webhook sender]
                 {white}
             Choisis : """).lower()
 
@@ -816,10 +817,13 @@ while True:
         elif discord == "8":
             tokenchecker()
         
+        elif discord == "9":
+            sender()
+        
         elif discord == "i":
             show_informations()
 
-        elif discord == "9":
+        elif discord == "10":
             print("Aurevoir l'amis")
             time.sleep(2)
             break
