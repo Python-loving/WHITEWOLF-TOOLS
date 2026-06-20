@@ -34,7 +34,6 @@ from code.challange.pentestchallange import main as pentest_web
 from code.ipscanner import ip
 from code.letsenscript import domaine
 from code.robloxsearch import roblox
-
 from code.ai import ai
 from code.checking import holehe
 from code.rpc import rpc_conf
