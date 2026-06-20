@@ -6,63 +6,220 @@
     <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
     <title>WHITE WOLF</title>
 
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
 
     <style>
-        body{
-            margin:0;
-            background: beige;
-            color:black;
-            font-family:Arial, sans-serif;
+        :root {
+            --bg: #0d0d0d;
+            --surface: #141414;
+            --border: #2a2a2a;
+            --text: #d4d4d4;
+            --muted: #555;
+            --white: #f0f0f0;
+            --glow1: #7df9ff;
+            --glow2: #ff3df2;
         }
 
-        .hero{
-            text-align:center;
-            padding:50px 20px;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .markdown-body{
-            max-width:1000px;
-            margin:40px auto;
-            padding:40px;
-            background:#161b22;
-            border-radius:12px;
-            box-shadow:0 0 20px rgba(0,0,0,.3);
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .85rem;
+            color: var(--white);
+            letter-spacing: .1em;
+            text-decoration: none;
+        }
+
+        .btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .75rem;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .btn-fill { background: var(--white); color: #000; }
+        .btn-outline { border: 1px solid var(--border); color: var(--text); }
+
+        .hero {
+            padding: 64px 40px 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ascii-wrap {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .ascii-layer {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .6rem;
+            line-height: 1.2;
+            white-space: pre;
+            user-select: none;
+        }
+
+        #ascii {
+            color: var(--white);
+            position: relative;
+            animation: flicker 0.12s infinite;
+        }
+
+        .glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .7;
+            pointer-events: none;
+        }
+
+        .g1 {
+            color: var(--glow1);
+            animation: move1 .25s infinite linear;
+        }
+
+        .g2 {
+            color: var(--glow2);
+            animation: move2 .18s infinite linear;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: .85; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes move1 {
+            0% { transform: translate(0,0); }
+            25% { transform: translate(2px,-1px); }
+            50% { transform: translate(-2px,1px); }
+            75% { transform: translate(1px,2px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes move2 {
+            0% { transform: translate(0,0); }
+            25% { transform: translate(-3px,2px); }
+            50% { transform: translate(3px,-2px); }
+            75% { transform: translate(-1px,-2px); }
+            100% { transform: translate(0,0); }
+        }
+
+        .hero-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(2rem,5vw,3.5rem);
+            color: var(--white);
+            margin-bottom: 10px;
+            letter-spacing: .08em;
+        }
+
+        .hero-desc {
+            color: var(--muted);
+            max-width: 420px;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .markdown-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 6px;
         }
     </style>
 </head>
+
 <body>
-    <div style="display:flex;justify-content:center;gap:15px;margin-top:20px;">
-    <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/archive/refs/heads/main.zip"
-        style="padding:12px 20px;background:#161b22;color:white;text-decoration:none;border-radius:8px;">
-        install Tools
-    </a>
 
-    <a href="contributeur.html"
-        style="padding:12px 20px;background:#161b22;color:white;text-decoration:none;border-radius:8px;">
-        Contributeur
-    </a>
+<nav>
+    <a class="nav-logo">WHITE WOLF</a>
+    <div>
+        <a class="btn btn-fill" href="https://github.com/Python-loving/WHITEWOLF-TOOLS/archive/refs/heads/main.zip">install</a>
+        <a class="btn btn-outline" href="contributeur.html">contributors</a>
     </div>
-    <div class="hero">
-        <h1>What is WHITE-WOLF ?</h1>
+</nav>
 
-        <p>
-            White Wolf is a tools for cyber security, discord and lookup.
-        </p>
+<div class="hero">
+
+    <div class="ascii-wrap">
+        <pre id="ascii" class="ascii-layer">
+    ██╗    ██╗██╗  ██╗██╗████████╗███████╗    ██╗    ██╗ ██████╗ ██╗     ███████╗
+    ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝    ██║    ██║██╔═══██╗██║     ██╔════╝
+    ██║ █╗ ██║███████║██║   ██║   █████╗      ██║ █╗ ██║██║   ██║██║     █████╗
+    ██║███╗██║██╔══██║██║   ██║   ██╔══╝      ██║███╗██║██║   ██║██║     ██╔══╝
+    ╚███╔███╔╝██║  ██║██║   ██║   ███████╗    ╚███╔███╔╝╚██████╔╝███████╗██║
+     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝     ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝
+        </pre>
+
+        <pre class="ascii-layer glitch g1">
+    ██╗    ██╗██╗  ██╗██╗████████╗███████╗    ██╗    ██╗ ██████╗ ██╗     ███████╗
+    ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝    ██║    ██║██╔═══██╗██║     ██╔════╝
+    ██║ █╗ ██║███████║██║   ██║   █████╗      ██║ █╗ ██║██║   ██║██║     █████╗
+    ██║███╗██║██╔══██║██║   ██║   ██╔══╝      ██║███╗██║██║   ██║██║     ██╔══╝
+    ╚███╔███╔╝██║  ██║██║   ██║   ███████╗    ╚███╔███╔╝╚██████╔╝███████╗██║
+     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝     ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝
+        </pre>
+
+        <pre class="ascii-layer glitch g2">
+    ██╗    ██╗██╗  ██╗██╗████████╗███████╗    ██╗    ██╗ ██████╗ ██╗     ███████╗
+    ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝    ██║    ██║██╔═══██╗██║     ██╔════╝
+    ██║ █╗ ██║███████║██║   ██║   █████╗      ██║ █╗ ██║██║   ██║██║     █████╗
+    ██║███╗██║██╔══██║██║   ██║   ██╔══╝      ██║███╗██║██║   ██║██║     ██╔══╝
+    ╚███╔███╔╝██║  ██║██║   ██║   ███████╗    ╚███╔███╔╝╚██████╔╝███████╗██║
+     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝     ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝
+        </pre>
     </div>
 
-    <article class="markdown-body" id="markdown-content"></article>
+    <h1 class="hero-title">WHITE WOLF</h1>
+    <p class="hero-desc">
+        Toolkit open source pour la cybersécurité,<br>
+        les outils Discord et le lookup réseau.
+    </p>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<div class="content-wrapper">
+    <article class="markdown-body" id="markdown-content">
+        <p>chargement…</p>
+    </article>
+</div>
 
-    <script>
-        fetch("README.md")
-            .then(response => response.text())
-            .then(markdown => {
-                document.getElementById("markdown-content").innerHTML = marked.parse(markdown);
-            });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+    fetch("README.md")
+        .then(r => r.text())
+        .then(md => {
+            document.getElementById("markdown-content").innerHTML =
+                window.marked.parse(md);
+        });
+});
+</script>
 
 </body>
 </html>

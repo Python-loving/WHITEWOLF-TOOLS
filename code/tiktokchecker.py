@@ -3,17 +3,12 @@ import time
 import requests
 import random
 import string
-
+from code.colors import *
 def tiktok():
-        red = "\033[31m"
-        green = "\033[32m"
-        yellow = "\033[33m"
-        blue = "\033[34m"
-        white = "\033[37m"
-        reset = "\033[0m"
+       
 
         os.system("cls")
-        choix = int(input(f""" {red}
+        choix = int(input(f""" {RED}
 
             ████████╗██╗██╗  ██╗████████╗ ██████╗ ██╗  ██╗
             ╚══██╔══╝██║██║ ██╔╝╚══██╔══╝██╔═══██╗██║ ██╔╝
@@ -24,7 +19,7 @@ def tiktok():
                                                                
             Met Le nombre de pseudo que tu veux cherché : """))
         os.system("cls")
-        webhookdsc = input(f""" {red}
+        webhookdsc = input(f""" {RED}
                     
             ████████╗██╗██╗  ██╗████████╗ ██████╗ ██╗  ██╗
             ╚══██╔══╝██║██║ ██╔╝╚══██╔══╝██╔═══██╗██║ ██╔╝

@@ -1,131 +1,216 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contributeurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
+    <title>WHITE WOLF — Contributors</title>
 
-  <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
-    }
+    <style>
+        :root {
+            --bg:      #0d0d0d;
+            --surface: #141414;
+            --border:  #2a2a2a;
+            --text:    #d4d4d4;
+            --muted:   #555;
+            --white:   #f0f0f0;
+        }
 
-    h1 {
-      text-align: center;
-      margin-top: 30px;
-    }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
+        }
 
-    .card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 15px;
-      width: 180px;
-      text-align: center;
-      transition: 0.2s;
-    }
+        .nav-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .85rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: .1em;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #58a6ff;
-    }
+        .btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .75rem;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: opacity .15s;
+            letter-spacing: .04em;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .btn:hover { opacity: .7; }
 
-    .card img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid #30363d;
-    }
+        .page-header {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 56px 40px 40px;
+        }
 
-    .name {
-      margin-top: 10px;
-      font-weight: bold;
-    }
+        .page-header h1 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: .06em;
+            margin-bottom: 10px;
+        }
 
-    .contrib {
-      font-size: 13px;
-      color: #8b949e;
-      margin-top: 5px;
-    }
+        .page-header p {
+            font-size: .88rem;
+            color: var(--muted);
+        }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .back-btn {
-    display: inline-block;
-    margin: 15px;
-    padding: 10px 15px;
-    background: #4268e6;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-  }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
 
-  .back-btn:hover {
-    background: black;
-    transform: translateY(-2px);
-  }
-  </style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px 14px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color .15s, opacity .15s;
+            display: block;
+        }
+
+        .card:hover {
+            border-color: #444;
+            opacity: .85;
+        }
+
+        .card img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 0 auto 12px;
+        }
+
+        .card .name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .78rem;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+
+        .card .contrib {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .68rem;
+            color: var(--muted);
+        }
+
+        .status {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .8rem;
+            color: var(--muted);
+            padding: 40px 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        footer span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .7rem;
+            color: var(--muted);
+            letter-spacing: .05em;
+        }
+
+        @media (max-width: 600px) {
+            nav, .page-header, .container, footer { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <h1>Contributeurs GitHub</h1>
+    <nav>
+        <a href="index.html" class="nav-logo">WHITE WOLF</a>
+        <a href="index.html" class="btn">← retour</a>
+    </nav>
 
-  <a class="back-btn" href="https://python-loving.github.io/WHITEWOLF-TOOLS/">
-  ⬅ Retour au site
-  </a>
-  <div class="container">
-    <div class="grid" id="list"></div>
-  </div>
+    <div class="page-header">
+        <h1>contributors</h1>
+        <p>Les gens qui ont participé au projet.</p>
+    </div>
 
-<script>
-async function loadContributors() {
-  const res = await fetch("https://api.github.com/repos/Python-loving/WHITEWOLF-TOOLS/contributors");
-  const data = await res.json();
+    <div class="container">
+        <div class="grid" id="list">
+            <p class="status">chargement…</p>
+        </div>
+    </div>
 
-  const list = document.getElementById("list");
+    <footer>
+        <span>WHITE WOLF — open source</span>
+        <span>MIT license</span>
+    </footer>
 
-  data.forEach(user => {
-    const card = document.createElement("a");
-    card.href = user.html_url;
-    card.target = "_blank";
-    card.className = "card";
+    <script>
+        async function loadContributors() {
+            const list = document.getElementById("list");
+            try {
+                const res  = await fetch("https://api.github.com/repos/Python-loving/WHITEWOLF-TOOLS/contributors");
+                const data = await res.json();
 
-    card.innerHTML = `
-      <img src="${user.avatar_url}" alt="avatar">
-      <div class="name">${user.login}</div>
-      <div class="contrib">${user.contributions} contributions</div>
-    `;
+                list.innerHTML = '';
 
-    list.appendChild(card);
-  });
-}
+                data.forEach(user => {
+                    const card = document.createElement("a");
+                    card.href      = user.html_url;
+                    card.target    = "_blank";
+                    card.className = "card";
+                    card.innerHTML = `
+                        <img src="${user.avatar_url}" alt="${user.login}">
+                        <div class="name">${user.login}</div>
+                        <div class="contrib">${user.contributions} commits</div>
+                    `;
+                    list.appendChild(card);
+                });
+            } catch {
+                list.innerHTML = '<p class="status">impossible de charger les contributeurs.</p>';
+            }
+        }
 
-loadContributors();
-</script>
-
+        loadContributors();
+    </script>
 </body>
 </html>

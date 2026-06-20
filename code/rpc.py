@@ -1,60 +1,60 @@
 from pypresence import Presence
 import os
 import time
-from colorama import Fore
+from code.colors import *
 
 def rpc_conf():
     os.system("cls")
-    id_presence = input(f"""{Fore.RED}
+    id_presence = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ton id de bot : """)
     os.system("cls")
-    name = input(f"""{Fore.RED}
+    name = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met le nom de ton rpc : """)
     os.system("cls")
-    image = input(f"""{Fore.RED}
+    image = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ta grande image : """)
     os.system("cls")
-    image_petite = input(f"""{Fore.RED}
+    image_petite = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ta petite image : """)
     os.system("cls")
-    name_button1 = input(f"""{Fore.RED}
+    name_button1 = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ton premier nom de bouton : """)
     os.system("cls")
-    name_button2 = input(f"""{Fore.RED}
+    name_button2 = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ton deuxième nom de bouton : """)
     os.system("cls")
-    lien_button1 = input(f"""{Fore.RED}
+    lien_button1 = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  
                                                                       
         Met ton lien du premier button : """)
     os.system("cls")
-    lien_button2 = input(f"""{Fore.RED}
+    lien_button2 = input(f"""{RED}
         █████▄  █████▄ ▄█████   ████▄  ██ ▄█████ ▄█████ ▄████▄ █████▄  ████▄  
         ██▄▄██▄ ██▄▄█▀ ██       ██  ██ ██ ▀▀▀▄▄▄ ██     ██  ██ ██▄▄██▄ ██  ██ 
         ██   ██ ██     ▀█████   ████▀  ██ █████▀ ▀█████ ▀████▀ ██   ██ ████▀  

