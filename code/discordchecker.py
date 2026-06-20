@@ -2,17 +2,12 @@ import random
 import os
 import string
 import requests
-
+from code.colors import *
 def main():
-        red = "\033[31m"
-        green = "\033[32m"
-        yellow = "\033[33m"
-        blue = "\033[34m"
-        white = "\033[37m"
-        reset = "\033[0m"
+       
 
         os.system("cls")
-        quatre_lettre = input(f""" {green}
+        quatre_lettre = input(f""" {GREEN}
            
             ▓█████▄  ██▓  ██████  ▄████▄   ▒█████   ██▀███  ▓█████▄     ██▓███    ██████ ▓█████  █    ██ ▓█████▄  ▒█████  
             ▒██▀ ██▌▓██▒▒██    ▒ ▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▒██▀ ██▌   ▓██░  ██▒▒██    ▒ ▓█   ▀  ██  ▓██▒▒██▀ ██▌▒██▒  ██▒
@@ -27,7 +22,7 @@ def main():
         
             Met le nombre de pseudo que tu veux trouvé : """)
         os.system("cls")
-        webhook = input(f""" {blue}
+        webhook = input(f""" {BLUE}
            
             ▓█████▄  ██▓  ██████  ▄████▄   ▒█████   ██▀███  ▓█████▄     ██▓███    ██████ ▓█████  █    ██ ▓█████▄  ▒█████  
             ▒██▀ ██▌▓██▒▒██    ▒ ▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▒██▀ ██▌   ▓██░  ██▒▒██    ▒ ▓█   ▀  ██  ▓██▒▒██▀ ██▌▒██▒  ██▒

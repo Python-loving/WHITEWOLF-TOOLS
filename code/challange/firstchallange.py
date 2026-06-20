@@ -1,13 +1,9 @@
 import os
 import time
+from code.colors import *
 
 def osint():
-    red = "\033[31m"
-    green = "\033[32m"
-    yellow = "\033[33m"
-    blue = "\033[34m"
-    white = "\033[37m"
-    reset = "\033[0m"
+   
     os.system("cls")
 
     ville_loc = "sète"
@@ -25,7 +21,7 @@ def osint():
              ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   
     """)
 
-        print(f"""{blue}
+        print(f"""{BLUE}
         Un message anonyme a été intercepté sur un forum maritime. Il ne contient qu’une seule phrase :
 
         “Là où la lumière rouge veille sur les navires blancs, la vérité est enfouie sous les pavés.”
@@ -65,7 +61,7 @@ def osint():
         L'iamge pour le challange ce trouve dans le dossier code/challange/osint.png :)
         """)
         time.sleep(10)
-        ville = input(f"""{red}
+        ville = input(f"""{RED}
             ██╗   ██╗██╗██╗     ██╗     ███████╗
             ██║   ██║██║██║     ██║     ██╔════╝
             ██║   ██║██║██║     ██║     █████╗  
@@ -83,7 +79,7 @@ def osint():
         except Exception as e:
             print(f"Error {e}")
 
-        office = input(f"""{blue}
+        office = input(f"""{BLUE}
              ██████╗ ███████╗███████╗██╗ ██████╗███████╗
             ██╔═══██╗██╔════╝██╔════╝██║██╔════╝██╔════╝
             ██║   ██║█████╗  █████╗  ██║██║     █████╗  

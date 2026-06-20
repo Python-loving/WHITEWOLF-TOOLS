@@ -34,7 +34,7 @@ from code.challange.pentestchallange import main
 from code.ipscanner import ip
 from code.letsenscript import domaine
 from code.robloxsearch import roblox
-from colorama import Fore
+
 from code.ai import ai
 from code.checking import holehe
 from code.rpc import rpc_conf
@@ -42,15 +42,9 @@ from code.webcamcapt import webcam
 from pyfiglet import Figlet
 from code.tokencheck import tokenchecker
 from code.embedsender import sender
+from code.colors import *
 
- # ANCHOR - Change color in Colorama please :) i d'ont have time
  
-red = "\033[31m"
-green = "\033[32m"
-yellow = "\033[33m"
-blue = "\033[34m"
-white = "\033[37m"
-reset = "\033[0m"
 
 def rpc():
     rpc = Presence("1441226984024965221")
@@ -72,7 +66,7 @@ def rpc():
 
 def devtools():
     os.system("cls")
-    choix = input(f"""{Fore.MAGENTA}
+    choix = input(f"""{MAGENTA}
     ████▄  ██████ ██  ██ ██████ ▄████▄ ▄████▄ ██     ▄█████ 
     ██  ██ ██▄▄   ██▄▄██   ██   ██  ██ ██  ██ ██     ▀▀▀▄▄▄ 
     ████▀  ██▄▄▄▄  ▀██▀    ██   ▀████▀ ▀████▀ ██████ █████▀ 
@@ -88,7 +82,7 @@ threading.Thread(target=rpc, daemon=True).start()
 
 def show_informations():
     os.system("cls")
-    print(f"""{red} Informations {red}
+    print(f"""{RED} Informations {RED}
             Telegram - https://t.me/whitewolf_tools
             Gunslol - https://guns.lol/xqldev
         """)
@@ -96,7 +90,7 @@ def show_informations():
 
 while True:
     os.system("cls")
-    choix = input(f""" {white}
+    choix = input(f""" {WHITE}
             ██╗    ██╗██╗  ██╗██╗████████╗███████╗██╗    ██╗ ██████╗ ██╗     ███████╗
             ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝██║    ██║██╔═══██╗██║     ██╔════╝
             ██║ █╗ ██║███████║██║   ██║   █████╗  ██║ █╗ ██║██║   ██║██║     █████╗  
@@ -113,7 +107,7 @@ while True:
         
     if  choix == "1":
         os.system("cls")
-        choix2 = input(f""" {white}
+        choix2 = input(f""" {WHITE}
                             ██╗      ██████╗  ██████╗ ██╗  ██╗██╗   ██╗██████╗ 
                             ██║     ██╔═══██╗██╔═══██╗██║ ██╔╝██║   ██║██╔══██╗
                             ██║     ██║   ██║██║   ██║█████╔╝ ██║   ██║██████╔╝
@@ -367,7 +361,7 @@ while True:
         
         elif choix2 == "9":
             os.system("cls")
-            choix_url = input(f""" {yellow}
+            choix_url = input(f""" {YELLOW}
                      █████╗ ██████╗  ██████╗██╗  ██╗██╗██╗   ██╗███████╗
                     ██╔══██╗██╔══██╗██╔════╝██║  ██║██║██║   ██║██╔════╝
                     ███████║██████╔╝██║     ███████║██║██║   ██║█████╗  
@@ -431,7 +425,7 @@ while True:
     # Menu sécurity
     elif choix == "2":
         os.system("cls")
-        choix3 = input(f""" {white}
+        choix3 = input(f""" {WHITE}
         ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
         ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
         ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
@@ -442,7 +436,7 @@ while True:
         1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Pentest Web]
         2. [Gen Password]   5. [Whois]   8. [Passwd Manager] 11. [Webcam]
         3. [Status Website] 6. [Gen IP]  9. [Osint]          12. [Quit]
-            {white}
+            {WHITE}
         Fais ton choix : """).lower()
 
         if choix3 == "1":
@@ -615,7 +609,7 @@ while True:
         
         elif choix3 == "5":
             try:
-                whois = input(f""" {red}
+                whois = input(f""" {RED}
                     ██╗    ██╗██╗  ██╗ ██████╗ ██╗███████╗
                     ██║    ██║██║  ██║██╔═══██╗██║██╔════╝
                     ██║ █╗ ██║███████║██║   ██║██║███████╗
@@ -664,7 +658,7 @@ while True:
     # catgegories
     elif choix == "3":
         os.system("cls")
-        discord = input(f""" {white}
+        discord = input(f""" {WHITE}
             ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
             ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
             ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║
@@ -676,7 +670,7 @@ while True:
             1. [Nitro Gen]       4. [Token BruteForce]  7. [rpc_conf]   10. [Quit]
             2. [Spaming Webhook] 5. [Bot to id]         8. [Token check]
             3. [Darkweb]         6. [4c Checker]        9. [Webhook sender]
-                {white}
+                {WHITE}
             Choisis : """).lower()
 
         # Nitro gen
@@ -831,7 +825,7 @@ while True:
     elif choix == "4":
         try:
             os.system("cls")
-            covid = input(f""" {white}
+            covid = input(f""" {WHITE}
                  ██████╗ ██████╗ ██╗   ██╗██╗██████╗      ██╗ █████╗ 
                 ██╔════╝██╔═══██╗██║   ██║██║██╔══██╗    ███║██╔══██╗
                 ██║     ██║   ██║██║   ██║██║██║  ██║    ╚██║╚██████║
@@ -843,7 +837,7 @@ while True:
                 2. [Grabing IP] 5. [Quit]
                 3. [ScreenShot]
 
-                    {white}
+                    {WHITE}
                 Fais ton choix : """)
         except ValueError as e:
             print(f"Error {e}")
@@ -851,7 +845,7 @@ while True:
         if covid == "1":
             try:
                 os.system("cls")
-                webhook_choice = input(f"""{blue}
+                webhook_choice = input(f"""{BLUE}
 
                 ▄████▄   ▒█████   ██▒   █▓ ██▓▓█████▄     ██▓     ▒█████    ▄████ ▓█████  ██▀███  
                 ▒██▀ ▀█  ▒██▒  ██▒▓██░   █▒▓██▒▒██▀ ██▌   ▓██▒    ▒██▒  ██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
@@ -863,7 +857,7 @@ while True:
                 ░        ░ ░ ░ ▒       ░░   ▒ ░ ░ ░  ░      ░ ░   ░ ░ ░ ▒  ░ ░   ░    ░     ░░   ░ 
                 ░ ░          ░ ░        ░   ░     ░           ░  ░    ░ ░        ░    ░  ░   ░     
                 ░                      ░        ░                                                  
-                            {blue}
+                            {BLUE}
                 Met ton webhook (Pour tester sur des gens autre que vous allez sur le covid builder): """)
             except ValueError as e:
                 print(f"Error {e}")
@@ -946,7 +940,7 @@ while True:
         elif covid == "3":
             os.system("cls")
             try:
-                screen = input(""" {red}
+                screen = input(""" {RED}
                     ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗
                     ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║
                     ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║
@@ -975,7 +969,7 @@ while True:
         elif covid == "4":
             try:
                 os.system("cls")
-                webhook = input(f"""{Fore.MAGENTA}
+                webhook = input(f"""{MAGENTA}
                                                                                 
                 ██  ██ ██ █████▄  ██  ██ ▄█████   █████▄ ██  ██ ██ ██     ████▄  
                 ██▄▄██ ██ ██▄▄██▄ ██  ██ ▀▀▀▄▄▄   ██▄▄██ ██  ██ ██ ██     ██  ██ 
