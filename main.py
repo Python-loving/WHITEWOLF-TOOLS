@@ -6,7 +6,7 @@ import json
 import msvcrt
 import tempfile
 import subprocess
-from pypresence import Presence
+from pypresence.exception import Presence,DiscordNotFound
 import random
 import string
 import base64
@@ -22,7 +22,7 @@ import whois
 import os
 import subprocess
 from tkinter import Tk, filedialog
-from code.discordchecker import main
+from code.discordchecker import main as discord_checker
 from code.tiktokchecker import tiktok
 from code.githubchecker import git
 from builder import builder
@@ -30,7 +30,7 @@ from code.genip import ip
 from code.Spamtlgrm import tlgrm
 from code.passwordmanager import passwdmanage
 from code.challange.firstchallange import osint
-from code.challange.pentestchallange import main
+from code.challange.pentestchallange import main as pentest_web
 from code.ipscanner import ip
 from code.letsenscript import domaine
 from code.robloxsearch import roblox
@@ -45,24 +45,33 @@ from code.embedsender import sender
 from code.colors import *
 
  
-
 def rpc():
-    rpc = Presence("1441226984024965221")
-    rpc.connect()
+    try:
+        rpc = Presence("1441226984024965221")
+        rpc.connect()
 
-    rpc.update(
-        state="White Wolf",
-        details="Best Tools",
-        large_image="tools",
-        large_text="by xql",
-        buttons=[
-            {"label": "Repository", "url": "https://github.com/Python-loving/WHITEWOLF-TOOLS"},
-            {"label": "Telegram", "url": "https://t.me/whitewolf_tools"}
-        ]
-    )
+        rpc.update(
+            state="White Wolf",
+            details="Best Tools",
+            large_image="tools",
+            large_text="by xql",
+            buttons=[
+                {
+                    "label": "Repository",
+                    "url": "https://github.com/Python-loving/WHITEWOLF-TOOLS"
+                },
+                {
+                    "label": "Telegram",
+                    "url": "https://t.me/whitewolf_tools"
+                }
+            ]
+        )
 
-    while True:
-        time.sleep(15)
+        while True:
+            time.sleep(15)
+
+    except DiscordNotFound:
+        return
 
 def devtools():
     os.system("cls")
@@ -643,7 +652,7 @@ while True:
             osint()
 
         elif choix3 == "10":
-            main()
+            pentest_web()
         
         elif choix3 == "11":
             webcam()
@@ -803,7 +812,7 @@ while True:
                 print("Problème...")
                 time.sleep(5)
         elif discord == "6":
-            main()
+            discord_checker()
             
         elif discord == "7":
             rpc_conf()
