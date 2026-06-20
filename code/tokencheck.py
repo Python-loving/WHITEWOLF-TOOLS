@@ -5,7 +5,7 @@ from colorama import Fore
 
 def tokenchecker():
     os.system("cls")
-    token = input(f"""{Fore.LIGHTMAGENTA_EX}
+    token = input(f"""{LIGHTMAGENTA_EX}
       ██████ ▄████▄ ██ ▄█▀ ██████ ███  ██   ▄█████ ██  ██ ██████ ▄█████ ██ ▄█▀ ██████ █████▄  
         ██   ██  ██ ████   ██▄▄   ██ ▀▄██   ██     ██████ ██▄▄   ██     ████   ██▄▄   ██▄▄██▄ 
         ██   ▀████▀ ██ ▀█▄ ██▄▄▄▄ ██   ██   ▀█████ ██  ██ ██▄▄▄▄ ▀█████ ██ ▀█▄ ██▄▄▄▄ ██   ██ 

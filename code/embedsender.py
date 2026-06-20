@@ -1,18 +1,18 @@
 import requests
 import time
 import os
-from colorama import Fore
+from code.colors import *
 
 def sender():
     os.system("cls")
-    embed_or_no = str(input(f"""{Fore.MAGENTA}
+    embed_or_no = str(input(f"""{MAGENTA}
     ██████ ██▄  ▄██ █████▄ ██████ ████▄    ▄████▄ █████▄    ███  ██ ▄████▄ 
     ██▄▄   ██ ▀▀ ██ ██▄▄██ ██▄▄   ██  ██   ██  ██ ██▄▄██▄   ██ ▀▄██ ██  ██ 
     ██▄▄▄▄ ██    ██ ██▄▄█▀ ██▄▄▄▄ ████▀    ▀████▀ ██   ██   ██   ██ ▀████▀ 
                                                                        
     Met oui pour fair un message embed et non pour un message simple (oui ou non) : """)).lower()
     os.system("cls")
-    webhook = input(f"""{Fore.RED}
+    webhook = input(f"""{RED}
     ██     ██ ██████ █████▄ ██  ██ ▄████▄ ▄████▄ ██ ▄█▀   ██  ██ █████▄  ██     
     ██ ▄█▄ ██ ██▄▄   ██▄▄██ ██████ ██  ██ ██  ██ ████     ██  ██ ██▄▄██▄ ██     
      ▀██▀██▀  ██▄▄▄▄ ██▄▄█▀ ██  ██ ▀████▀ ▀████▀ ██ ▀█▄   ▀████▀ ██   ██ ██████ 
@@ -20,35 +20,35 @@ def sender():
     Met ton url de ton webhook : """)
     os.system("cls")
     if embed_or_no == "oui":
-        title = str(input(f"""{Fore.BLUE}
+        title = str(input(f"""{BLUE}
     ██████ ██ ██████ ██     ██████ 
       ██   ██   ██   ██     ██▄▄   
       ██   ██   ██   ██████ ██▄▄▄▄ 
                                 
     Met ton title d'embed : """))
         os.system("cls")
-        description = str(input(f"""{Fore.LIGHTGREEN_EX}
+        description = str(input(f"""{LIGHTGREEN_EX}
     ████▄  ██████ ▄█████ ▄█████ █████▄  ██ █████▄ ██████ ██ ▄████▄ ███  ██ 
     ██  ██ ██▄▄   ▀▀▀▄▄▄ ██     ██▄▄██▄ ██ ██▄▄█▀   ██   ██ ██  ██ ██ ▀▄██ 
     ████▀  ██▄▄▄▄ █████▀ ▀█████ ██   ██ ██ ██       ██   ██ ▀████▀ ██   ██ 
                                                                        
     Met la description de l'embed : """))
         os.system("cls")
-        color = int(input(f"""{Fore.MAGENTA}
+        color = int(input(f"""{MAGENTA}
     ▄█████ ▄████▄ ██     ▄████▄ █████▄  
     ██     ██  ██ ██     ██  ██ ██▄▄██▄ 
     ▀█████ ▀████▀ ██████ ▀████▀ ██   ██ 
                                     
     Met ta couleur format ( 0x000000 ) : """), 16)
         os.system("cls")
-        avatar_url = input(f"""{Fore.RED}
+        avatar_url = input(f"""{RED}
     ▄████▄ ██  ██ ▄████▄ ██████ ▄████▄ █████▄    ██  ██ █████▄  ██     
     ██▄▄██ ██▄▄██ ██▄▄██   ██   ██▄▄██ ██▄▄██▄   ██  ██ ██▄▄██▄ ██     
     ██  ██  ▀██▀  ██  ██   ██   ██  ██ ██   ██   ▀████▀ ██   ██ ██████ 
                                                                     
     Met ton avatar url ( format discord ) :    """)
         os.system("cls")
-        username = input(f"""{Fore.LIGHTYELLOW_EX}
+        username = input(f"""{LIGHTYELLOW_EX}
     ██  ██ ▄█████ ██████ █████▄  ███  ██ ▄████▄ ██▄  ▄██ ██████ 
     ██  ██ ▀▀▀▄▄▄ ██▄▄   ██▄▄██▄ ██ ▀▄██ ██▄▄██ ██ ▀▀ ██ ██▄▄   
     ▀████▀ █████▀ ██▄▄▄▄ ██   ██ ██   ██ ██  ██ ██    ██ ██▄▄▄▄ 
@@ -73,14 +73,14 @@ def sender():
 
     elif embed_or_no == "non":
         os.system("cls")
-        avatar_url_no = input(f"""{Fore.GREEN}
+        avatar_url_no = input(f"""{GREEN}
     ▄████▄ ██  ██ ▄████▄ ██████ ▄████▄ █████▄    ██  ██ █████▄  ██     
     ██▄▄██ ██▄▄██ ██▄▄██   ██   ██▄▄██ ██▄▄██▄   ██  ██ ██▄▄██▄ ██     
     ██  ██  ▀██▀  ██  ██   ██   ██  ██ ██   ██   ▀████▀ ██   ██ ██████ 
                                                                     
     Met ton avatar url : """)
         os.system("cls")
-        username_no = input(f"""{Fore.RED}
+        username_no = input(f"""{RED}
     ██  ██ ▄█████ ██████ █████▄  ███  ██ ▄████▄ ██▄  ▄██ ██████ 
     ██  ██ ▀▀▀▄▄▄ ██▄▄   ██▄▄██▄ ██ ▀▄██ ██▄▄██ ██ ▀▀ ██ ██▄▄   
     ▀████▀ █████▀ ██▄▄▄▄ ██   ██ ██   ██ ██  ██ ██    ██ ██▄▄▄▄ 
