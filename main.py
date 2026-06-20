@@ -42,7 +42,7 @@ from pyfiglet import Figlet
 from code.tokencheck import tokenchecker
 from code.embedsender import sender
 from code.colors import *
-
+from code.ipreputation import ip_reputation
  
 def rpc():
     try:
@@ -438,9 +438,9 @@ while True:
         ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
         ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     [I]. Informations    
-        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Pentest Web]
+        1. [PROXY(VPN)]     4. [Scraper] 7. [Spam Telegram]  10. [Pentest Web]  13. [Quit]
         2. [Gen Password]   5. [Whois]   8. [Passwd Manager] 11. [Webcam]
-        3. [Status Website] 6. [Gen IP]  9. [Osint]          12. [Quit]
+        3. [Status Website] 6. [Gen IP]  9. [Osint]          12. [Ip reput]
             {WHITE}
         Fais ton choix : """).lower()
 
@@ -652,11 +652,14 @@ while True:
         
         elif choix3 == "11":
             webcam()
+        
+        elif choix3 == "12":
+            ip_reputation()
 
         elif choix3 == "i":
             show_informations()
 
-        elif choix3 == "12":
+        elif choix3 == "13":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
