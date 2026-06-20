@@ -6,7 +6,7 @@ import json
 import msvcrt
 import tempfile
 import subprocess
-from pypresence.exception import Presence,DiscordNotFound
+from pypresence import Presence,DiscordNotFound
 import random
 import string
 import base64
