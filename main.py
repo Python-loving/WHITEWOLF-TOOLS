@@ -124,9 +124,9 @@ while True:
                             ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
                     [I]. Informations                                      
 
-                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [IP Scanner]   16. [AI]
-                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [SSL / TLS]    17. [Holehe]
-                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [Github]     15. [Roblox]       18. [Quit]
+                            1. [IP]          4. [Google]      7. [Github]      10. [4C Tiktok]  13. [SSL / TLS]    16. [Holehe]
+                            2. [Number]      5. [Dns]         8. [Leak Mail]   11. [4C Github]  14. [Roblox]       17. [Quit]
+                            3. [Username]    6. [DISCORD]     9. [Archive Web] 12. [IP Scanner] 15. [AI]
 
                             Fais ton choix : """).lower()
         if choix2 == "1":
@@ -403,27 +403,24 @@ while True:
             git()
         
         elif choix2 == "12":
-            main()
-
-        elif choix2 == "13":
             ip()
         
-        elif choix2 == "14":
+        elif choix2 == "13":
             domaine()
 
-        elif choix2 == "15":
+        elif choix2 == "14":
             roblox()
 
-        elif choix2 == "16":
+        elif choix2 == "15":
             ai()
 
-        elif choix2 == "17":
+        elif choix2 == "16":
             holehe()
 
         elif choix2 == "i":
             show_informations()
 
-        elif choix2 == "18":
+        elif choix2 == "17":
             print("Tu va quitté le tools")
             time.sleep(2)
             print("Au-Revoir :)")
