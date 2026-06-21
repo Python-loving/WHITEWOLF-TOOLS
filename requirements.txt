@@ -13,3 +13,4 @@ pypresence
 holehe
 whois
 pyfiglet
+instagrapi

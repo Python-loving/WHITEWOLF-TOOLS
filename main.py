@@ -43,6 +43,7 @@ from code.tokencheck import tokenchecker
 from code.embedsender import sender
 from code.colors import *
 from code.ipreputation import ip_reputation
+from code.autofollowinsta import instaautomation
  
 def rpc():
     try:
@@ -108,8 +109,8 @@ while True:
         [I]. Informations                                      
 
             1. [Lookup]    4. [Covid]
-            2. [Sécurity]  5. [Quit]
-            3. [Discord]
+            2. [Sécurity]  5. [Automation]
+            3. [Discord]   6. [Quit]
 
             Fais ton choix : """).lower()
         
@@ -996,9 +997,31 @@ while True:
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
             break
+    elif choix == "5":
+        automation = input(f"""{MAGENTA}
+        ▄████▄ ██  ██ ██████ ▄████▄ ██▄  ▄██ ▄████▄ ██████ ██ ▄████▄ ███  ██ 
+        ██▄▄██ ██  ██   ██   ██  ██ ██ ▀▀ ██ ██▄▄██   ██   ██ ██  ██ ██ ▀▄██ 
+        ██  ██ ▀████▀   ██   ▀████▀ ██    ██ ██  ██   ██   ██ ▀████▀ ██   ██ 
+                                                                        
+        i. [Information]
+
+        1. [Instagram Auto Follow]           
+        2. [Quit]
+                        
+                            
+        Fais ton choix : """)
+        
+        if automation == "1":
+            instaautomation()
+        elif automation == "2":
+            print(f"Tu va quitté")
+            time.sleep(3)
+            break
+        elif automation == "i":
+            show_informations()
 
     # Ici on a mis le quit si la personne a lancé sans fair expres
-    elif choix == "5":
+    elif choix == "6":
         print("Au-Revoir a bientot l'ami")
         time.sleep(2)
         break
