@@ -44,6 +44,8 @@ from code.embedsender import sender
 from code.colors import *
 from code.ipreputation import ip_reputation
 from code.autofollowinsta import instaautomation
+from code.ip import ipchoix
+from code.number import numberchoix
  
 def rpc():
     try:
@@ -131,54 +133,12 @@ while True:
 
                             Fais ton choix : """).lower()
         if choix2 == "1":
-            os.system("cls")
-            choixip = input("""
-                    ██╗██████╗ 
-                    ██║██╔══██╗
-                    ██║██████╔╝
-                    ██║██╔═══╝ 
-                    ██║██║     
-                    ╚═╝╚═╝     
+            ipchoix()
 
-        Choisis L'ip Que tu veux lookup : """)
-            try:
-                myreq = requests.get(f"https://geo.ipify.org/api/v2/country,city,vpn?apiKey={api_ip}&ipAddress={choixip}")
-                data = myreq.json()
-                print(f"IP: {data['ip']}")
-                print(f"Pays: {data['location']['country']}")
-                print(f"Ville: {data['location']['city']}")
-                print(f"ISP: {data['isp']}")
-                time.sleep(2)
-                print("Vous allez ètre ramener a l'accueil")
-                time.sleep(2)
-                os.system("cls")
-            except Exception as e:
-                print(f"Error {e}")
         # Ici je mais mon deuxième choçix donc Lookup Number
         elif choix2 == "2":
-            os.system("cls")
-            choixnumber = input("""
-            ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗██████╗ 
-            ████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔══██╗
-            ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝█████╗  ██████╔╝
-            ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗
-            ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║
-            ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+            numberchoix()
 
-        Choisis Le numéro de téléphone que tu veux lookup : """)
-            try:
-                myreq2 = requests.get(f"http://apilayer.net/api/validate?access_key={api_number}&number={choixnumber}")
-                data2 = myreq2.json()
-                print(f"Country: {data2['country_name']}")
-                print(f"Format: {data2['local_format']}")
-                print(f"international_format: {data2['international_format']}")
-                print(f"Carrier: {data2['carrier']}")
-                time.sleep(2)
-                print("")
-                print("Retour A l'accueil dnas 2s")
-                time.sleep(2)
-            except Exception as e:
-                print(f"Error {e}")
         elif choix2 == "3":
             os.system("cls")
             username = input("""
