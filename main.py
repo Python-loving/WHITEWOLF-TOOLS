@@ -53,6 +53,15 @@ from code.discord import discord_lookup
 from code.github import githubbb
 from code.leak import leak
 from code.archive import archive
+from code.vpn import vpn
+from code.password import password
+from code.webstatus import webstatus
+from code.scraper import scraper
+from code.whois import whois
+from code.nitro import nitro
+from code.webhookspaming import webhookspam
+from code.idtotoken import idtotoken
+from code.invitbot import invit
 
 def rpc():
     try:
@@ -215,196 +224,20 @@ while True:
         Fais ton choix : """).lower()
 
         if choix3 == "1":
-            os.system("cls")
-            # Plupart du code VPN A etais generer par CHATGPT :)
-            vpn = input("""
-            ██╗   ██╗██████╗ ███╗   ██╗
-            ██║   ██║██╔══██╗████╗  ██║
-            ██║   ██║██████╔╝██╔██╗ ██║
-            ╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
-             ╚████╔╝ ██║     ██║ ╚████║
-              ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
-
-            Choisis Le temps que tu a besoin : """)
-            os.system("cls")
-            prx = input("""
-            ██╗   ██╗██████╗ ███╗   ██╗
-            ██║   ██║██╔══██╗████╗  ██║
-            ██║   ██║██████╔╝██╔██╗ ██║
-            ╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
-             ╚████╔╝ ██║     ██║ ╚████║
-              ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
-
-            Choisis Le Proxy que tu veux : """)
-
-            try:
-                vpn = int(vpn)
-
-                proxy = prx
-
-                proxies = {
-                    "http": f"http://{proxy}",
-                    "https": f"http://{proxy}"
-                }
-
-                try:
-                    r = requests.get(
-                        "https://api.ipify.org?format=json",
-                        proxies=proxies,
-                        timeout=5
-                    )
-                    print("Proxy OK :", r.json())
-                except:
-                    print("Proxy invalide ou mort")
-                    exit()
-
-                os.system("taskkill /F /IM msedge.exe >nul 2>&1")
-
-                if vpn >= 10:
-                    edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-                    profile_dir = tempfile.mkdtemp()
-
-                    subprocess.Popen([
-                        edge_path,
-                        f"--proxy-server=http://{proxy}",
-                        f"--user-data-dir={profile_dir}",
-                        "--new-window",
-                        "https://api.ipify.org"
-                    ])
-
-                    print("\nVPN actif... appuie sur une touche pour arrêter\n")
-
-                    start = time.time()
-                    # Help ai for press & retour
-                    while True:
-                        if msvcrt.kbhit():
-                            msvcrt.getch()
-                            print("Arrêt demandé retour menu")
-                            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
-                            break
-
-                        if time.time() - start >= vpn:
-                            print("Temps terminé")
-                            os.system("taskkill /F /IM msedge.exe >nul 2>&1")
-                            break
-
-                        time.sleep(0.1)
-
-                else:
-                    print("Minimum 10 secondes")
-
-            except ValueError:
-                print("Entrer un nombre valide")
+            vpn()
         
         elif choix3 == "2":
-            os.system("cls")
-            try:
-                password = input("""
-                ██████╗  █████╗ ███████╗███████╗██╗    ██╗ ██████╗ ██████╗ ██████╗ 
-                ██╔══██╗██╔══██╗██╔════╝██╔════╝██║    ██║██╔═══██╗██╔══██╗██╔══██╗
-                ██████╔╝███████║███████╗███████╗██║ █╗ ██║██║   ██║██████╔╝██║  ██║
-                ██╔═══╝ ██╔══██║╚════██║╚════██║██║███╗██║██║   ██║██╔══██╗██║  ██║
-                ██║     ██║  ██║███████║███████║╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝
-                ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
+            password()
 
-                Choisis le nombre de lettre & Chifre : """)
-            except ValueError as e:
-                print(f"Choisis un nombre valide {e}")
-
-            try:
-                password = int(password)
-
-                if password >= 10:
-                    chars = string.ascii_letters + string.digits + string.punctuation
-
-                    result = ''.join(random.choice(chars) for _ in range(password))
-
-                    print("Password :", result)
-                    time.sleep(5)
-                else:
-                    print("Min 10 char")
-                    time.sleep(5)
-                    
-            except Exception as e:
-                print(f"Error {e}")
-                time.sleep(5)
         elif choix3 == "3":
-            os.system("cls")
-            try:
-                site = input("""
-                    ██╗    ██╗███████╗██████╗     ███████╗████████╗ █████╗ ████████╗██╗   ██╗███████╗
-                    ██║    ██║██╔════╝██╔══██╗    ██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██║   ██║██╔════╝
-                    ██║ █╗ ██║█████╗  ██████╔╝    ███████╗   ██║   ███████║   ██║   ██║   ██║███████╗
-                    ██║███╗██║██╔══╝  ██╔══██╗    ╚════██║   ██║   ██╔══██║   ██║   ██║   ██║╚════██║
-                    ╚███╔███╔╝███████╗██████╔╝    ███████║   ██║   ██║  ██║   ██║   ╚██████╔╝███████║
-                    ╚══╝╚══╝ ╚══════╝╚═════╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
-                    
-                    Choisis l'url du site que tu veux check : """)
-            except ValueError as e:
-                print(f"Error {e}")
-                
-            url = site
-            response = requests.get(url)
-            try:
-                if response.ok:
-                    print(f"Le site a répondu en : {response.elapsed.total_seconds() * 1000:.2f} ms")
-                    time.sleep(3)
-                else:
-                    print("Le site na pas répondu présents")
-                    time.sleep(3)
-            except Exception as e:
-                print(f"Error {e}")
+            webstatus()
 
         elif choix3 == "4":
-            os.system("cls")
-            page = input("""
-                ███████╗ ██████╗██████╗  █████╗ ██████╗ ███████╗██████╗ 
-                ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
-                ███████╗██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
-                ╚════██║██║     ██╔══██╗██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
-                ███████║╚██████╗██║  ██║██║  ██║██║     ███████╗██║  ██║
-                ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
-                    
-                Met le lien du site : """)
-            
-            response = requests.head(page)
-
-            try:
-                if response.ok:
-                    print("header du site :\n")
-                    with open("result.txt", "w", encoding="utf-8") as fichier:
-                        for key, value in response.headers.items():
-                            print(f"{key} : {value}")
-                            fichier.write(f"{key}, ; {value}\n")
-                    time.sleep(5)
-                else:
-                    print("Ca marche pas")
-            except ValueError:
-                print("Error input")
+            scraper()
         
         elif choix3 == "5":
-            try:
-                whois = input(f""" {RED}
-                    ██╗    ██╗██╗  ██╗ ██████╗ ██╗███████╗
-                    ██║    ██║██║  ██║██╔═══██╗██║██╔════╝
-                    ██║ █╗ ██║███████║██║   ██║██║███████╗
-                    ██║███╗██║██╔══██║██║   ██║██║╚════██║
-                    ╚███╔███╔╝██║  ██║╚██████╔╝██║███████║
-                    ╚══╝╚══╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚══════╝
-                    
-                    Met le lien de ton site : """)
-            except ValueError as e:
-                print(f"Error {e}")
-            
-            try:
-                data = whois.whois(whois)
-                print(f"Domaine : {data.domain_name}")
-                print(f"Registrar : {data.registrar}")
-                print(f"Création : {data.creation_date}")
-                print(f"Expiration : {data.expiration_date}")
-                print(f"DNS : {data.name_servers}")
-            except Exception as e:
-                print(f"Error {e}")
+            whois()
+
         elif choix3 == "6":
             ip()
 
@@ -453,62 +286,12 @@ while True:
 
         # Nitro gen
         if discord == "1":
-            os.system("cls")
-            nombre = input("""
-                ███╗   ██╗██╗████████╗██████╗  ██████╗ 
-                ████╗  ██║██║╚══██╔══╝██╔══██╗██╔═══██╗
-                ██╔██╗ ██║██║   ██║   ██████╔╝██║   ██║
-                ██║╚██╗██║██║   ██║   ██╔══██╗██║   ██║
-                ██║ ╚████║██║   ██║   ██║  ██║╚██████╔╝
-                ╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ 
-                Met le nombre de fois que tu veux essayé : """)
-            try:
-                nombre = int(nombre)
-                for i in range(nombre):
-                    char = string.ascii_letters + string.digits
-                    result = ''.join(random.choice(char) for _ in range(16))
-                    response = requests.get(f"https://discord.gift/{result}")
+            nitro()
 
-                    if response.ok:
-                        with open("nitro.txt", "a", encoding="utf-8") as fichier:
-                            fichier.write(f"https://discord.gift/{result}\n")
-            except:
-                print("Ca Nas pas marché sorry :)")
         # Webhook
         elif discord == "2":
-            os.system("cls")
-            message = input("""
-                ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗
-                ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝
-                ██║ █╗ ██║█████╗  ██████╔╝███████║██║   ██║██║   ██║█████╔╝ 
-                ██║███╗██║██╔══╝  ██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ 
-                ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗
-                ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
-                
-                Choisis Le message a spam : """)
-            os.system("cls")
-            url = input("""
-                ██╗    ██╗███████╗██████╗ ██╗  ██╗ ██████╗  ██████╗ ██╗  ██╗
-                ██║    ██║██╔════╝██╔══██╗██║  ██║██╔═══██╗██╔═══██╗██║ ██╔╝
-                ██║ █╗ ██║█████╗  ██████╔╝███████║██║   ██║██║   ██║█████╔╝ 
-                ██║███╗██║██╔══╝  ██╔══██╗██╔══██║██║   ██║██║   ██║██╔═██╗ 
-                ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗
-                ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
-                
-                Choisis L'url  : """)
-            
-            response = requests.get(url) 
+            webhookspam()
 
-            if response.ok:
-                try:
-                    while True:
-                        data = {"content": message}
-                        r = requests.post(url, json=data)
-                        print(r.status_code, r.text)
-                        time.sleep(5)
-                except Exception as e:
-                    print("Ca nas pas marché", e)
-                    time.sleep(5)
         elif discord == "3":
             os.system("cls")
             print("""
@@ -536,50 +319,11 @@ while True:
 
             time.sleep(10)
         elif discord == "4":
-            os.system("cls")
-            id = input("""
-                ████████╗ ██████╗ ██╗  ██╗███████╗███╗   ██╗
-                ╚══██╔══╝██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║
-                   ██║   ██║   ██║█████╔╝ █████╗  ██╔██╗ ██║
-                   ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║
-                   ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║
-                   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
-                    
-                    Met L'id du gars : """)
-            try:
-                user_id = id
+            idtotoken()
 
-                part1 = base64.b64encode(user_id.encode()).decode()
-                part2 = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
-                part3 = ''.join(random.choices(string.ascii_letters + string.digits, k=18))
-                
-                token = f"{part1}.{part2}.{part3}"
-                
-                print(f"\nToken : \n {token}")
-                time.sleep(2)
-            except:
-                print("Ca na pas marché")
-                time.sleep(2)
         elif discord == "5":
-            os.system("cls")
-            id_bot = int(input("""
-                ██╗███╗   ██╗██╗   ██╗██╗████████╗
-                ██║████╗  ██║██║   ██║██║╚══██╔══╝
-                ██║██╔██╗ ██║██║   ██║██║   ██║   
-                ██║██║╚██╗██║╚██╗ ██╔╝██║   ██║   
-                ██║██║ ╚████║ ╚████╔╝ ██║   ██║   
-                ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝   ╚═╝
+            invit()
 
-                Met L'id de ton bot : """))
-
-            try:
-                id = id_bot
-                print(f"https://discord.com/oauth2/authorize?client_id={id}&permissions=8&integration_type=0&scope=bot")
-                time.sleep(5)
-           
-            except ValueError:
-                print("Problème...")
-                time.sleep(5)
         elif discord == "6":
             discord_checker()
             
