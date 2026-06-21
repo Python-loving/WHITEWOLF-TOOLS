@@ -49,7 +49,11 @@ from code.number import numberchoix
 from code.username import fulluser_name
 from code.googlesearching import googlesearch
 from code.dnslookup import dnslookup
- 
+from code.discord import discord_lookup
+from code.github import githubbb
+from code.leak import leak
+from code.archive import archive
+
 def rpc():
     try:
         rpc = Presence("1441226984024965221")
@@ -151,150 +155,17 @@ while True:
             dnslookup()
 
         elif choix2 == "6":
-            os.system("cls")
-            lookup = input(f""" 
-                        ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗ 
-                        ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗
-                        ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║
-                        ██║  ██║██║╚════██║██║     ██║   ██║██╔══██╗██║  ██║
-                        ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝
-                        ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
-                        
-                        Choisis L'id Du gars que tu veux lookup : """)
-
-            url = f"https://api.vaultcord.com/webhooks/public-lookup/{lookup}"
-
-            try:
-                headers = {
-                    "User-Agent": "Mozilla/5.0"
-                }
-
-                response = requests.get(url, headers=headers, timeout=10)
-
-                if response.ok:
-                    try:
-                        data = response.json()
-                        print(f"Id : {data.get('id')}")
-                        print(f"Username : {data.get('username')}")
-                        print(f"Avatar : {data.get('avatar')}")
-                        print(f"Discriminator : {data.get('discriminator')}")
-                        print(f"Public flags : {data.get('public_flags')}")
-                        print(f"Flags : {data.get('flags')}")
-                        print(f"Global name : {data.get('global_name')}")
-
-                        time.sleep(7)
-                    except ValueError:
-                        print("La réponse n'est pas au format JSON :")
-                        print(response.text)
-                        time.sleep(3)
-
-                else:
-                    print(f"Erreur HTTP {response.status_code}")
-                    print(response.text)
-                    time.sleep(3)
-
-            except requests.exceptions.RequestException as e:
-                print(f"Erreur lors de la requête : {e}")
+            discord_lookup()
 
         elif choix2 == "7":
-            os.system("cls")
-            username = input("""
-             ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗ 
-            ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗
-            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝
-            ██║   ██║██║   ██║   ██╔══██║██║   ██║██╔══██╗
-            ╚██████╔╝██║   ██║   ██║  ██║╚██████╔╝██████╔╝
-             ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
-                Le Username github : """)
-            os.system("cls")
-            nom_repo = input("""
-             ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗ 
-            ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗
-            ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝
-            ██║   ██║██║   ██║   ██╔══██║██║   ██║██╔══██╗
-            ╚██████╔╝██║   ██║   ██║  ██║╚██████╔╝██████╔╝
-             ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
-                Le nom du repo : """)
+            githubbb()
 
-            url = f"https://api.github.com/repos/{username}/{nom_repo}/commits?per_page=1"
-            response = requests.get(url)
-            data = response.json()
-            try:
-                if response.ok:
-                    commit_data = data[0]
-
-                    print(f"Email : {commit_data['commit']['author']['email']}")
-                    print(f"Name  : {commit_data['commit']['author']['name']}")
-                    print(f"date  : {commit_data['commit']['author']['date']}")
-                    print(f"Msg   : {commit_data['commit']['message']}")
-                    print(f"url   : {commit_data['html_url']}")
-                    print(f"sign  : {commit_data['commit']['verification']['signature']}")
-                    print(f"id    : {commit_data['sha']}")
-                    print(f"PDP   : {commit_data['author']['avatar_url']}")
-                    print(f"ABO   : {commit_data['author']['followers_url']}")
-                    print(f"Node  : {commit_data['node_id']}")
-
-                    time.sleep(5)
-                elif not response.ok:
-                    print(response.status_code)
-                    time.sleep(5)
-            except Exception as e:
-                print(f"Error {e}")
-        # API Haveibeen pwned alt
         elif choix2 == "8":
-            os.system("cls")
-            choix_mail = input("""
-                ██╗     ███████╗ █████╗ ██╗  ██╗
-                ██║     ██╔════╝██╔══██╗██║ ██╔╝
-                ██║     █████╗  ███████║█████╔╝ 
-                ██║     ██╔══╝  ██╔══██║██╔═██╗ 
-                ███████╗███████╗██║  ██║██║  ██╗
-                ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
-                Choisis Le mail que tu veux verifié : """)
-            url = f"https://leakcheck.io/api/public?check={choix_mail}"
-            response = requests.get(url)
-            data = response.json()
-            try:
-                if response.ok:
-                    print("Tout les données sont dasn result.json")
-                    time.sleep(5)
-                    with open("result.json", "w", encoding="utf-8") as fichier:
-                        json.dump(data, fichier, ensure_ascii=False, indent=4)
-                else:
-                    print("Aucun Resultas ou bug", response.status_codes)
-                    time.sleep(5)
-            except Exception as e:
-                print(f"Error {e}")
+            leak()
         
         elif choix2 == "9":
-            os.system("cls")
-            choix_url = input(f""" {YELLOW}
-                     █████╗ ██████╗  ██████╗██╗  ██╗██╗██╗   ██╗███████╗
-                    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║██║   ██║██╔════╝
-                    ███████║██████╔╝██║     ███████║██║██║   ██║█████╗  
-                    ██╔══██║██╔══██╗██║     ██╔══██║██║╚██╗ ██╔╝██╔══╝  
-                    ██║  ██║██║  ██║╚██████╗██║  ██║██║ ╚████╔╝ ███████╗
-                    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝  ╚══════╝
-                    
-                    Met le lien de ton site : """)
-            try:
-                url_du_site = choix_url
-                api_url = f"https://archive.org/wayback/available?url={url_du_site}"
-                response = requests.get(api_url)
-                data = response.json()
+            archive()
 
-                if response.ok:
-                    print(f"Status : {data['archived_snapshots']['closest']['status']}")
-                    print(f"Disponible : {data['archived_snapshots']['closest']['available']}")
-                    print(f"Archive : {data['archived_snapshots']['closest']['url']}")
-                    print(f"Timestamp : {data['archived_snapshots']['closest']['timestamp']}")
-                    time.sleep(5)
-                else:
-                    print("Une erreur et survenue")
-                    time.sleep(3)
-            except Exception as e:
-                print(f"Error {e}")
-                time.sleep(3)
         elif choix2 == "10":
             tiktok()
         
@@ -824,7 +695,7 @@ while True:
                     ██║  ███╗██████╔╝███████║██████╔╝██║██╔██╗ ██║██║  ███╗    ██║██████╔╝
                     ██║   ██║██╔══██╗██╔══██║██╔══██╗██║██║╚██╗██║██║   ██║    ██║██╔═══╝ 
                     ╚██████╔╝██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝    ██║██║     
-                    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝╚═╝     
+                     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝╚═╝     
                         
                     Met Ton webhook (Pour tester sur des gens autre que vous allez sur le covid builder) : """)
             except ValueError as e:
