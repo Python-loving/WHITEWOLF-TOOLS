@@ -27,3 +27,6 @@ Choisis Le numéro de téléphone que tu veux lookup : """)
         time.sleep(2)
     except Exception as e:
         print(f"Error {e}")
+
+if __name__ == "__main__":
+    numberchoix()

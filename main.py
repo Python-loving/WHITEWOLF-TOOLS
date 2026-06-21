@@ -46,6 +46,9 @@ from code.ipreputation import ip_reputation
 from code.autofollowinsta import instaautomation
 from code.ip import ipchoix
 from code.number import numberchoix
+from code.username import fulluser_name
+from code.googlesearching import googlesearch
+from code.dnslookup import dnslookup
  
 def rpc():
     try:
@@ -135,83 +138,18 @@ while True:
         if choix2 == "1":
             ipchoix()
 
-        # Ici je mais mon deuxième choçix donc Lookup Number
         elif choix2 == "2":
             numberchoix()
 
         elif choix2 == "3":
-            os.system("cls")
-            username = input("""
-            ██╗   ██╗███████╗███████╗██████╗ ███╗   ██╗ █████╗ ███╗   ███╗███████╗
-            ██║   ██║██╔════╝██╔════╝██╔══██╗████╗  ██║██╔══██╗████╗ ████║██╔════╝
-            ██║   ██║███████╗█████╗  ██████╔╝██╔██╗ ██║███████║██╔████╔██║█████╗  
-            ██║   ██║╚════██║██╔══╝  ██╔══██╗██║╚██╗██║██╔══██║██║╚██╔╝██║██╔══╝  
-            ╚██████╔╝███████║███████╗██║  ██║██║ ╚████║██║  ██║██║ ╚═╝ ██║███████╗
-             ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+            fulluser_name()
 
-            Choisis le username a lookup : """)
-            sites = sites
-            try:
-                for site, url in sites.items():
-                    full_url = url.format(username)
-                    r = requests.get(full_url)
-                    if r.status_code == 200:
-                        print(f"Trouvé sur {site} : {full_url}")
-                    else:
-                        print(f"Rien Trouvé sur {site}")
-            except Exception as e:
-                print(f"Error {e}")
         elif choix2 == "4":
-            os.system("cls")
-            search_google = input("""
-                 ██████╗  ██████╗  ██████╗  ██████╗ ██╗     ███████╗    ███████╗███████╗ █████╗ ██████╗  ██████╗██╗  ██╗
-                ██╔════╝ ██╔═══██╗██╔═══██╗██╔════╝ ██║     ██╔════╝    ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║
-                ██║  ███╗██║   ██║██║   ██║██║  ███╗██║     █████╗      ███████╗█████╗  ███████║██████╔╝██║     ███████║
-                ██║   ██║██║   ██║██║   ██║██║   ██║██║     ██╔══╝      ╚════██║██╔══╝  ██╔══██║██╔══██╗██║     ██╔══██║
-                ╚██████╔╝╚██████╔╝╚██████╔╝╚██████╔╝███████╗███████╗    ███████║███████╗██║  ██║██║  ██║╚██████╗██║  ██║
-                 ╚═════╝  ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚══════╝    ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
-                     
-                Fais ta recherche google : """)
-            try:
-                query = f"{search_google}"
-                url = "https://www.google.com/search?q=" + query
+            googlesearch()
 
-                webbrowser.open(url)
-            except Exception as e:
-                print(f"Error {e}")
-        # on definie le lookup des dns
         elif choix2 == "5":
-            os.system("cls")
-            dns = input("""
-                ██████╗ ███╗   ██╗███████╗    ██╗      ██████╗  ██████╗ ██╗  ██╗██╗   ██╗██████╗ 
-                ██╔══██╗████╗  ██║██╔════╝    ██║     ██╔═══██╗██╔═══██╗██║ ██╔╝██║   ██║██╔══██╗
-                ██║  ██║██╔██╗ ██║███████╗    ██║     ██║   ██║██║   ██║█████╔╝ ██║   ██║██████╔╝
-                ██║  ██║██║╚██╗██║╚════██║    ██║     ██║   ██║██║   ██║██╔═██╗ ██║   ██║██╔═══╝ 
-                ██████╔╝██║ ╚████║███████║    ███████╗╚██████╔╝╚██████╔╝██║  ██╗╚██████╔╝██║     
-                ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     
-                Choisis l'url du site que tu veux lookup : """)
-            api = f"https://api.viewdns.info/abuselookup/?domain={dns}&apikey={api_dns}&output=json"
-            
-            response = requests.get(api)
-            data = response.json()
-            try:
-                if response.ok:
-                    print(f"Tool : {data['query']['tool']}")
-                    print(f"Domaine : {data['query']['domain']}")
-                    print(f"Abuse contact : {data['response']['abusecontact']}")
-                    time.sleep(2)
-                    print("")
-                    print("Tu va ètre renvoyer a l'acueil dans 2s")
-                    time.sleep(2)
-                else:
-                    print(f"Error: {response.status_code}, {response.text}")
-                    time.sleep(2)
-                    print("Tu va ètre renvoyer a l'acueil dans 2s")
-                    time.sleep(2)
-            except Exception as e:
-                print(f"Error {e}")
-        # Ici on crée le DISCORD LOOKUP
-        # Help ai for lookup :)
+            dnslookup()
+
         elif choix2 == "6":
             os.system("cls")
             lookup = input(f""" 
