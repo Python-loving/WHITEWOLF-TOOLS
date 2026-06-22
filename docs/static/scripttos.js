@@ -1,7 +1,13 @@
 let min = 0;
 let max = 1;
 let ok = document.getElementById("allo");
-let btn = document.querySelector(".btn")
+let btn = document.querySelector(".btn");
+let popup = document.getElementById("popup");
+let open = document.getElementById("open");
+let close = document.getElementById("close");
+let pooop = document.querySelector(".popup-content");
+
+
 
 let random = Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -22,3 +28,13 @@ if (random == 1) {
 btn.addEventListener("click", function (e) {
     window.location.href = "index.html"
 })
+
+
+window.onload = function () {
+    document.getElementById("popup").style.display = "flex";
+    pooop.style.backgroundColor = "black"
+};
+
+close.addEventListener("click", function () {
+    popup.style.display = "none";
+});
