@@ -1,122 +1,58 @@
 import os
-import time
-import requests
-import webbrowser
-import json
-import msvcrt
-import tempfile
-import subprocess
-from pypresence import Presence,DiscordNotFound
-import random
-import string
-import base64
-from api import api_ip, api_number, api_dns
-from sites import sites
-from darkweb import links
-from pynput import keyboard
 import threading
-import io
-import mss
-import mss.tools
-import whois
-import os
-import subprocess
+import time
 from tkinter import Tk, filedialog
-from code.discordchecker import main as discord_checker
-from code.tiktokchecker import tiktok
-from code.githubchecker import git
-from builder import builder
-from code.genip import ip
-from code.Spamtlgrm import tlgrm
-from code.passwordmanager import passwdmanage
+
+from code.colors import *
+from code.core.menu import show_informations
+from code.core.devtools import devtools
+from code.core.rpc import start_rpc
+from code.lookup.archive_check import archive_check
+from code.lookup.discord_lookup import discord_lookup
+from code.lookup.dns_lookup import dns_lookup
+from code.lookup.github_lookup import github_lookup
+from code.lookup.google_search import google_search
+from code.lookup.leak_check import leak_check
+from code.lookup.username_lookup import username_lookup
+from code.security.password_gen import gen_password
+from code.security.proxy import proxy_vpn
+from code.security.scraper import http_scraper
+from code.security.web_status import website_status
+from code.security.whois_lookup import whois_lookup
+from code.discord.bot_invite import bot_invite
+from code.discord.darkweb_display import darkweb_display
+from code.discord.nitro import nitro_gen
+from code.discord.token_tools import token_bruteforce
+from code.discord.webhook_spam import webhook_spam
+from code.covid.build import build_covid
+from code.covid.ip_grab import grab_ip
+from code.covid.keylogger import keylogger
+from code.covid.screenshot import screenshot
+from code.modules.ai import ai
+from code.modules.checking import holehe
+from code.modules.discordchecker import main as discord_checker
+from code.modules.embedsender import sender
+from code.modules.genip import ip
+from code.modules.githubchecker import git
+from code.modules.ipscanner import ip
+from code.modules.letsenscript import domaine
+from code.modules.passwordmanager import passwdmanage
+from code.modules.robloxsearch import roblox
+from code.modules.rpc import rpc_conf
+from code.modules.Spamtlgrm import tlgrm
+from code.modules.tiktokchecker import tiktok
+from code.modules.tokencheck import tokenchecker
+from code.modules.webcamcapt import webcam
 from code.challange.firstchallange import osint
 from code.challange.pentestchallange import main as pentest_web
-from code.ipscanner import ip
-from code.letsenscript import domaine
-from code.robloxsearch import roblox
-from code.ai import ai
-from code.checking import holehe
-from code.rpc import rpc_conf
-from code.webcamcapt import webcam
-from pyfiglet import Figlet
-from code.tokencheck import tokenchecker
-from code.embedsender import sender
-from code.colors import *
-from code.ipreputation import ip_reputation
-from code.autofollowinsta import instaautomation
-from code.ip import ipchoix
-from code.number import numberchoix
-from code.username import fulluser_name
-from code.googlesearching import googlesearch
-from code.dnslookup import dnslookup
-from code.discord import discord_lookup
-from code.github import githubbb
-from code.leak import leak
-from code.archive import archive
-from code.vpn import vpn
-from code.password import password
-from code.webstatus import webstatus
-from code.scraper import scraper
-from code.whois import whois
-from code.nitro import nitro
-from code.webhookspaming import webhookspam
-from code.idtotoken import idtotoken
-from code.invitbot import invit
-from code.kylog import kylog
-from code.grabip import grabip
-from code.screener import screen
+from code.modules.autofollowinsta import instaautomation
+from code.modules.ip import ipchoix
+from code.modules.ipreputation import ip_reputation
+from code.modules.number import numberchoix
+from sites import sites
 
-def rpc():
-    try:
-        rpc = Presence("1441226984024965221")
-        rpc.connect()
-
-        rpc.update(
-            state="White Wolf",
-            details="Best Tools",
-            large_image="tools",
-            large_text="by xql",
-            buttons=[
-                {
-                    "label": "Repository",
-                    "url": "https://github.com/Python-loving/WHITEWOLF-TOOLS"
-                },
-                {
-                    "label": "Telegram",
-                    "url": "https://t.me/whitewolf_tools"
-                }
-            ]
-        )
-
-        while True:
-            time.sleep(15)
-
-    except DiscordNotFound:
-        return
-
-def devtools():
-    os.system("cls")
-    choix = input(f"""{MAGENTA}
-    ████▄  ██████ ██  ██ ██████ ▄████▄ ▄████▄ ██     ▄█████ 
-    ██  ██ ██▄▄   ██▄▄██   ██   ██  ██ ██  ██ ██     ▀▀▀▄▄▄ 
-    ████▀  ██▄▄▄▄  ▀██▀    ██   ▀████▀ ▀████▀ ██████ █████▀ 
-                                                        
-    Devtools for xql : """)
-    f = Figlet(font="slant")
-    print(f.renderText(choix))
-
-# Just for xql ( devtools() )
-
-# ANCHOR - Command thread 
-threading.Thread(target=rpc, daemon=True).start()
-
-def show_informations():
-    os.system("cls")
-    print(f"""{RED} Informations {RED}
-            Telegram - https://t.me/whitewolf_tools
-            Gunslol - https://guns.lol/xqldev
-        """)
-    time.sleep(5)
+# ANCHOR - Command thread
+threading.Thread(target=start_rpc, daemon=True).start()
 
 while True:
     os.system("cls")
@@ -154,30 +90,26 @@ while True:
         if choix2 == "1":
             ipchoix()
 
+        # Ici je mais mon deuxième choçix donc Lookup Number
         elif choix2 == "2":
             numberchoix()
 
         elif choix2 == "3":
-            fulluser_name()
-
+            username_lookup(sites)
         elif choix2 == "4":
-            googlesearch()
-
+            google_search()
         elif choix2 == "5":
-            dnslookup()
-
+            dns_lookup()
         elif choix2 == "6":
             discord_lookup()
 
+
         elif choix2 == "7":
-            githubbb()
-
+            github_lookup()
         elif choix2 == "8":
-            leak()
-        
+            leak_check()
         elif choix2 == "9":
-            archive()
-
+            archive_check()
         elif choix2 == "10":
             tiktok()
         
@@ -227,20 +159,16 @@ while True:
         Fais ton choix : """).lower()
 
         if choix3 == "1":
-            vpn()
+            proxy_vpn()
         
         elif choix3 == "2":
-            password()
-
+            gen_password()
         elif choix3 == "3":
-            webstatus()
-
+            website_status()
         elif choix3 == "4":
-            scraper()
-        
+            http_scraper()
         elif choix3 == "5":
-            whois()
-
+            whois_lookup()
         elif choix3 == "6":
             ip()
 
@@ -287,66 +215,31 @@ while True:
                 {WHITE}
             Choisis : """).lower()
 
-        # Nitro gen
         if discord == "1":
-            nitro()
-
-        # Webhook
+            nitro_gen()
         elif discord == "2":
-            webhookspam()
-
+            webhook_spam()
         elif discord == "3":
-            os.system("cls")
-            print("""
-                ██████╗  █████╗ ██████╗ ██╗  ██╗    ██╗    ██╗███████╗██████╗ 
-                ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝    ██║    ██║██╔════╝██╔══██╗
-                ██║  ██║███████║██████╔╝█████╔╝     ██║ █╗ ██║█████╗  ██████╔╝
-                ██║  ██║██╔══██║██╔══██╗██╔═██╗     ██║███╗██║██╔══╝  ██╔══██╗
-                ██████╔╝██║  ██║██║  ██║██║  ██╗    ╚███╔███╔╝███████╗██████╔╝
-                ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚══════╝╚═════╝  
-                """)
-            try:
-                for category, content in links.items():
-                    print(f"\n--- {category} ---")
-
-                    for name, url in content.items():
-
-                        if isinstance(url, dict):
-                            print(f"\n  [{name}]")
-                            for sub_name, sub_url in url.items():
-                                print(f"   - {sub_name} : {sub_url}")
-                        else:
-                            print(f"  - {name} : {url}")
-            except Exception as e:
-                print(f"Error {e}")
-
-            time.sleep(10)
+            darkweb_display()
         elif discord == "4":
-            idtotoken()
-
+            token_bruteforce()
         elif discord == "5":
-            invit()
-
+            bot_invite()
         elif discord == "6":
             discord_checker()
-            
         elif discord == "7":
             rpc_conf()
-        
         elif discord == "8":
             tokenchecker()
-        
         elif discord == "9":
             sender()
-        
         elif discord == "i":
             show_informations()
-
         elif discord == "10":
             print("Aurevoir l'amis")
             time.sleep(2)
             break
-            
+
     elif choix == "4":
         try:
             os.system("cls")
@@ -368,32 +261,13 @@ while True:
             print(f"Error {e}")
         
         if covid == "1":
-            kylog()
-        
+            keylogger()
         elif covid == "2":
-            grabip()
-
+            grab_ip()
         elif covid == "3":
-            screen()
-
+            screenshot()
         elif covid == "4":
-            try:
-                os.system("cls")
-                webhook = input(f"""{MAGENTA}
-                                                                                
-                ██  ██ ██ █████▄  ██  ██ ▄█████   █████▄ ██  ██ ██ ██     ████▄  
-                ██▄▄██ ██ ██▄▄██▄ ██  ██ ▀▀▀▄▄▄   ██▄▄██ ██  ██ ██ ██     ██  ██ 
-                 ▀██▀  ██ ██   ██ ▀████▀ █████▀   ██▄▄█▀ ▀████▀ ██ ██████ ████▀  
-                
-                Met Ton Webhook : """)
-            except ValueError as e:
-                print(f"Error {e}")
-
-            with open("config.json", "w", encoding="utf-8") as f:
-                json.dump({"webhook": webhook}, f, ensure_ascii=False, indent=4)
-                
-            builder()
-
+            build_covid()
         elif covid == "5":
             print("Au-Revoir a bientot l'amis")
             time.sleep(2)
