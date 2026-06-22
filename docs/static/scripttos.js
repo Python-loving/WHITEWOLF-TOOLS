@@ -30,6 +30,11 @@ btn.addEventListener("click", function (e) {
 })
 
 
+open.addEventListener("click", function () {
+    popup.style.display = "flex";
+    pooop.style.backgroundColor = "black";
+});
+
 window.onload = function () {
     document.getElementById("popup").style.display = "flex";
     pooop.style.backgroundColor = "black"
