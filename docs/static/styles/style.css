@@ -1,0 +1,29 @@
+* {
+    background-color: black;
+    color: white;
+}
+
+#allo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 30px;
+    height: 40px;
+}
+
+#arbi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+#copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
