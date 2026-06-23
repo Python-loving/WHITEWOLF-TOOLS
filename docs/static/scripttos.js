@@ -6,8 +6,7 @@ let popup = document.getElementById("popup");
 let open = document.getElementById("open");
 let close = document.getElementById("close");
 let pooop = document.querySelector(".popup-content");
-
-
+const mousmoov = document.querySelector(".mousmoov")
 
 let random = Math.floor(Math.random() * (max - min + 1)) + min;
 
