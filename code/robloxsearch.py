@@ -3,6 +3,7 @@ import requests
 import time
 from colorama import Fore, Back, Style
 import questionary
+from code.colors import *
 
 def roblox():
     os.system("cls")
@@ -17,7 +18,7 @@ def roblox():
     if choix == "Roblox Lookup":
         try:
             os.system("cls")
-            roblox_lookup = input(f"""{Fore.RED}
+            roblox_lookup = input(f"""{RED}
                 ██████╗  ██████╗ ██████╗ ██╗      ██████╗ ██╗  ██╗
                 ██╔══██╗██╔═══██╗██╔══██╗██║     ██╔═══██╗╚██╗██╔╝
                 ██████╔╝██║   ██║██████╔╝██║     ██║   ██║ ╚███╔╝ 

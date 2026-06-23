@@ -2,20 +2,15 @@ import random
 import os
 import string
 import requests
-
+from code.colors import *
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
 
 def git():
-        red = "\033[31m"
-        green = "\033[32m"
-        yellow = "\033[33m"
-        blue = "\033[34m"
-        white = "\033[37m"
-        reset = "\033[0m"
+       
         os.system("cls")
-        main = int(input(f"""{blue}
+        main = int(input(f"""{BLUE}
              ██████╗ ██╗████████╗██╗  ██╗██╗   ██╗██████╗      ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
             ██╔════╝ ██║╚══██╔══╝██║  ██║██║   ██║██╔══██╗    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔════╝██╔══██╗
             ██║  ███╗██║   ██║   ███████║██║   ██║██████╔╝    ██║     ███████║█████╗  ██║     █████╔╝ █████╗  ██████╔╝
@@ -44,7 +39,7 @@ def git():
                         response = requests.get(url, headers=HEADERS, timeout=10)
 
                         if response.status_code == 404:
-                            print(f"{green}Pseudo disponible : {pseudo}{reset}")
+                            print(f"{GREEN}Pseudo disponible : {pseudo}{RESET}")
                             data = {
                             "content": pseudo, 
                             "username": "WhiteWolf", 

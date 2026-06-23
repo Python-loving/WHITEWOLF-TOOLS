@@ -1,0 +1,37 @@
+body {
+    background-color: gray;
+}
+
+.lightbtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    border-radius: 90%;
+}
+
+.cg_p {
+    max-width: 900px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+
+    text-align: center;
+}
+
+.cg_p h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cg_p h3 {
+    margin-top: 25px;
+}
+
+.return {
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 30px;
+}

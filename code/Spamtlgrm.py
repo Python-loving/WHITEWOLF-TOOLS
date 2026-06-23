@@ -3,19 +3,15 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 import os
 import time
 import requests
+from code.colors import *
 
 
 def tlgrm():
-    red = "\033[31m"
-    green = "\033[32m"
-    yellow = "\033[33m"
-    blue = "\033[34m"
-    white = "\033[37m"
-    reset = "\033[0m"
+  
 
     try:
         os.system("cls")
-        tkn = input(f"""{blue}
+        tkn = input(f"""{BLUE}
             ████████╗███████╗██╗     ███████╗ ██████╗ ██████╗  █████╗ ███╗   ███╗
             ╚══██╔══╝██╔════╝██║     ██╔════╝██╔════╝ ██╔══██╗██╔══██╗████╗ ████║
                ██║   █████╗  ██║     █████╗  ██║  ███╗██████╔╝███████║██╔████╔██║
@@ -24,7 +20,7 @@ def tlgrm():
                ╚═╝   ╚══════╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
             Met le Token de ton bot telegram : """)
         os.system("cls")
-        msg = input(f"""{blue}
+        msg = input(f"""{BLUE}
             ████████╗███████╗██╗     ███████╗ ██████╗ ██████╗  █████╗ ███╗   ███╗
             ╚══██╔══╝██╔════╝██║     ██╔════╝██╔════╝ ██╔══██╗██╔══██╗████╗ ████║
                ██║   █████╗  ██║     █████╗  ██║  ███╗██████╔╝███████║██╔████╔██║

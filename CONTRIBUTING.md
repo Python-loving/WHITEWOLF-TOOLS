@@ -36,5 +36,5 @@ WHITEWOLF TOOLS is designed to be:
 Click **Fork** on GitHub and clone your fork:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/WHITEWOLF-TOOLS.git
+git clone https://github.com/Python-loving/WHITEWOLF-TOOLS.git
 cd WHITEWOLF-TOOLS

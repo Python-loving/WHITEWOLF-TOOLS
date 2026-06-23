@@ -4,19 +4,15 @@ import subprocess
 import random
 import string
 import requests
+from code.colors import *
 
 
 def ip():
-        red = "\033[31m"
-        green = "\033[32m"
-        yellow = "\033[33m"
-        blue = "\033[34m"
-        white = "\033[37m"
-        reset = "\033[0m"
+       
 
         try:
             os.system("cls")
-            gen = int(input(f"""{yellow}
+            gen = int(input(f"""{YELLOW}
                  ██████╗ ███████╗███╗   ██╗    ██╗██████╗ 
                 ██╔════╝ ██╔════╝████╗  ██║    ██║██╔══██╗
                 ██║  ███╗█████╗  ██╔██╗ ██║    ██║██████╔╝
@@ -26,7 +22,7 @@ def ip():
                 
                 Met le nombre d'ip que tu veux gen : """))
             os.system("cls")
-            wbk = input(f"""{yellow}
+            wbk = input(f"""{YELLOW}
                  ██████╗ ███████╗███╗   ██╗    ██╗██████╗ 
                 ██╔════╝ ██╔════╝████╗  ██║    ██║██╔══██╗
                 ██║  ███╗█████╗  ██╔██╗ ██║    ██║██████╔╝

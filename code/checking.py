@@ -1,13 +1,13 @@
 from holehe.core import get_functions, import_submodules
 import trio
 import httpx
-from colorama import Fore
+from code.colors import *
 import os
 import time
 
 def holehe():
     os.system("cls")
-    email = input(f"""{Fore.GREEN}
+    email = input(f"""{GREEN}
         ██  ██ ▄████▄ ██     ██████ ██  ██ ██████ 
         ██████ ██  ██ ██     ██▄▄   ██████ ██▄▄   
         ██  ██ ▀████▀ ██████ ██▄▄▄▄ ██  ██ ██▄▄▄▄ 

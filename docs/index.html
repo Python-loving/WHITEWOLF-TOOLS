@@ -6,63 +6,561 @@
     <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
     <title>WHITE WOLF</title>
 
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-dark.min.css">
 
     <style>
-        body{
-            margin:0;
-            background: beige;
-            color:black;
-            font-family:Arial, sans-serif;
+        :root {
+            --bg:      #0d0d0d;
+            --surface: #111111;
+            --border:  #2a2a2a;
+            --text:    #c8c8c8;
+            --muted:   #4a4a4a;
+            --dim:     #6a6a6a;
+            --white:   #efefef;
+            --accent:  #4fc3f7;
         }
 
-        .hero{
-            text-align:center;
-            padding:50px 20px;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .markdown-body{
-            max-width:1000px;
-            margin:40px auto;
-            padding:40px;
-            background:#161b22;
-            border-radius:12px;
-            box-shadow:0 0 20px rgba(0,0,0,.3);
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 48px;
+            height: 52px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(13,13,13,0.92);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-logo {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: .15em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-tag {
+            font-size: .65rem;
+            color: var(--muted);
+            letter-spacing: .05em;
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .72rem;
+            padding: 6px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            letter-spacing: .05em;
+            cursor: pointer;
+            transition: opacity .15s;
+        }
+        .btn:hover { opacity: .75; }
+
+        .btn-fill {
+            background: var(--white);
+            color: #0d0d0d;
+            font-weight: 600;
+        }
+
+        .btn-ghost {
+            color: var(--dim);
+            border: 1px solid var(--border);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-rows: auto auto;
+            padding: 72px 48px 56px;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .ascii-wrap {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #ascii-canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: .1em;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .hero-desc {
+            font-size: .8rem;
+            color: var(--dim);
+            line-height: 1.8;
+            max-width: 380px;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .68rem;
+            color: var(--muted);
+        }
+
+        .stat-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: .6;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 56px 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            border-color: blue;
+            background-color: #0d0d0d;
+        }
+
+        .feature {
+            background: var(--bg);
+            padding: 28px 24px;
+        }
+
+        .feature:first-child { border-radius: 5px 0 0 5px; }
+        .feature:last-child  { border-radius: 0 5px 5px 0; }
+
+        .feature-label {
+            font-size: .62rem;
+            letter-spacing: .18em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: .9rem;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: .72rem;
+            color: var(--dim);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .readme-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 56px 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .section-label {
+            font-size: .62rem;
+            letter-spacing: .18em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .markdown-body {
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 36px 40px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .78rem;
+            line-height: 1.8;
+        }
+
+        .markdown-body { color: var(--text) !important; background: var(--surface) !important; }
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: var(--white) !important; border-bottom-color: var(--border) !important; font-family: 'IBM Plex Mono', monospace !important; }
+        .markdown-body a { color: var(--accent) !important; }
+        .markdown-body code, .markdown-body pre { background: var(--bg) !important; border: 1px solid var(--border) !important; border-radius: 4px !important; font-family: 'IBM Plex Mono', monospace !important; color: var(--text) !important; }
+        .markdown-body hr { border-color: var(--border) !important; }
+        .markdown-body blockquote { border-left-color: var(--border) !important; color: var(--dim) !important; }
+        .markdown-body table th, .markdown-body table td { border-color: var(--border) !important; }
+        .markdown-body table tr:nth-child(2n) { background: var(--bg) !important; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            font-size: .65rem;
+            color: var(--muted);
+            letter-spacing: .05em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-link {
+            font-size: .65rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .05em;
+            transition: color .15s;
+        }
+
+        .footer-link:hover { color: var(--dim); }
+
+        #readme-loading {
+            font-size: .72rem;
+            color: var(--muted);
+            padding: 20px 0;
+        }
+
+        @media (max-width: 700px) {
+            nav { padding: 0 20px; }
+            .hero { padding: 40px 20px 32px; }
+            .hero-meta { grid-template-columns: 1fr; }
+            .hero-stats { align-items: flex-start; }
+            .features { grid-template-columns: 1fr; padding: 20px; }
+            .feature:first-child { border-radius: 5px 5px 0 0; }
+            .feature:last-child  { border-radius: 0 0 5px 5px; }
+            .readme-section { padding: 32px 20px; }
+            .markdown-body { padding: 20px; }
+            footer { flex-direction: column; gap: 12px; padding: 20px; }
         }
     </style>
 </head>
+
 <body>
-    <div style="display:flex;justify-content:center;gap:15px;margin-top:20px;">
-    <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/archive/refs/heads/main.zip"
-        style="padding:12px 20px;background:#161b22;color:white;text-decoration:none;border-radius:8px;">
-        install Tools
-    </a>
 
-    <a href="contributeur.html"
-        style="padding:12px 20px;background:#161b22;color:white;text-decoration:none;border-radius:8px;">
-        Contributeur
-    </a>
+<nav>
+    <div class="nav-left">
+        <a class="nav-logo" href="#">WHITE WOLF</a>
     </div>
-    <div class="hero">
-        <h1>What is WHITE-WOLF ?</h1>
+    <div class="nav-right">
+        <a class="btn btn-ghost" href="cgu.html">cgu</a>
+        <a class="btn btn-ghost" href="contributeur.html">contributors</a>
+        <a class="btn btn-fill" href="https://github.com/Python-loving/WHITEWOLF-TOOLS/archive/refs/heads/main.zip">↓ install</a>
+        
+    </div>
+</nav>
 
-        <p>
-            White Wolf is a tools for cyber security, discord and lookup.
-        </p>
+<div class="hero">
+
+    <div class="ascii-wrap">
+        <canvas id="ascii-canvas"></canvas>
     </div>
 
-    <article class="markdown-body" id="markdown-content"></article>
+    <div class="hero-meta">
+        <div>
+            <h1 class="hero-title">WHITE WOLF</h1>
+            <p class="hero-desc">
+                Toolkit open source pour la cybersécurité,<br>
+                les outils Discord et le lookup réseau.
+            </p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><span class="stat-dot"></span>Python 3.11.9</div>
+            <div class="stat"><span class="stat-dot"></span>Open Source / MIT</div>
+            <div class="stat"><span class="stat-dot"></span>Cross-platform</div>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</div>
 
-    <script>
-        fetch("README.md")
-            .then(response => response.text())
-            .then(markdown => {
-                document.getElementById("markdown-content").innerHTML = marked.parse(markdown);
-            });
-    </script>
+<hr class="section-divider">
+
+<!-- FEATURES -->
+<div style="max-width:1000px;margin:56px auto;padding:0 48px;">
+    <div class="features">
+        <div class="feature">
+            <div class="feature-label">01</div>
+            <div class="feature-title">Cybersécurité</div>
+            <p class="feature-desc">Scan réseau, analyse de ports, détection de vulnérabilités et audits automatisés.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-label">02</div>
+            <div class="feature-title">Discord Tools</div>
+            <p class="feature-desc">Outils de modération, bots et utilitaires pour serveurs Discord à grande échelle.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-label">03</div>
+            <div class="feature-title">Network Lookup</div>
+            <p class="feature-desc">Résolution DNS, WHOIS, géolocalisation IP et cartographie d'infrastructure.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="readme-section">
+    <div class="section-header">
+        <span class="section-label">README.md</span>
+        <div class="section-line"></div>
+        <a class="btn btn-ghost" href="https://github.com/Python-loving/WHITEWOLF-TOOLS" style="font-size:.62rem;padding:4px 12px;">GitHub ↗</a>
+    </div>
+    <article class="markdown-body" id="markdown-content">
+        <span id="readme-loading">chargement…</span>
+    </article>
+</div>
+
+<footer>
+    <span class="footer-copy">© 2026 WHITE WOLF — MIT License</span>
+    <div class="footer-links">
+        <a class="footer-link" href="https://github.com/Python-loving/WHITEWOLF-TOOLS">GitHub</a>
+        <a class="footer-link" href="cgu.html">CGU</a>
+        <a class="footer-link" href="contributeur.html">Contributors</a>
+        <a class="footer-link" href="https://github.com/Python-loving/WHITEWOLF-TOOLS/issues">Issues</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(function () {
+    const ART = [
+        "    ██╗    ██╗██╗  ██╗██╗████████╗███████╗    ██╗    ██╗ ██████╗ ██╗     ███████╗",
+        "    ██║    ██║██║  ██║██║╚══██╔══╝██╔════╝    ██║    ██║██╔═══██╗██║     ██╔════╝",
+        "    ██║ █╗ ██║███████║██║   ██║   █████╗      ██║ █╗ ██║██║   ██║██║     █████╗  ",
+        "    ██║███╗██║██╔══██║██║   ██║   ██╔══╝      ██║███╗██║██║   ██║██║     ██╔══╝  ",
+        "    ╚███╔███╔╝██║  ██║██║   ██║   ███████╗    ╚███╔███╔╝╚██████╔╝███████╗██║     ",
+        "     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝     ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝    "
+    ];
+
+    const COLS = ART[0].length;
+    const ROWS = ART.length;
+
+    const canvas = document.getElementById('ascii-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const FONT_SIZE = 12;
+    const LINE_H    = 14.4;
+    const FONT      = `${FONT_SIZE}px "IBM Plex Mono", monospace`;
+
+    function resize() {
+        const w = canvas.parentElement.clientWidth;
+        const scale = w / (COLS * FONT_SIZE * 0.605);
+        const h = ROWS * LINE_H * scale;
+        canvas.width  = Math.round(w);
+        canvas.height = Math.round(h);
+    }
+
+    resize();
+    window.addEventListener('resize', () => { resize(); });
+
+    const charGlitch   = new Map(); 
+    const rowShift     = new Map(); 
+    let flickerOpacity = 1;
+
+    const GLITCH_CHARS = '░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αβΣσµτΦΘΩδ∞∩≡';
+
+    function spawnCharGlitch() {
+        const row = Math.floor(Math.random() * ROWS);
+        const line = ART[row];
+        const candidates = [];
+        for (let i = 0; i < line.length; i++) if (line[i] !== ' ') candidates.push(i);
+        if (!candidates.length) return;
+        const col = candidates[Math.floor(Math.random() * candidates.length)];
+        const key = row * 1000 + col;
+        charGlitch.set(key, {
+            row, col,
+            char: GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)],
+            ttl: 2 + Math.random() * 6
+        });
+        setTimeout(spawnCharGlitch, 40 + Math.random() * 120);
+    }
+
+    function spawnRowShift() {
+        const row = Math.floor(Math.random() * ROWS);
+        const dx = (Math.random() - 0.5) * 14;
+        const dy = (Math.random() - 0.5) * 2;
+        rowShift.set(row, {
+            dx, dy,
+            ghost: Math.random() < 0.5,
+            ttl: 1 + Math.random() * 4
+        });
+        setTimeout(spawnRowShift, 80 + Math.random() * 300);
+    }
+
+    function spawnDoubleShift() {
+        const r1 = Math.floor(Math.random() * ROWS);
+        const r2 = (r1 + 1) % ROWS;
+        const dx = (Math.random() - 0.5) * 20;
+        [r1, r2].forEach(r => rowShift.set(r, { dx, dy: 0, ghost: true, ttl: 1 + Math.random() * 3 }));
+        setTimeout(spawnDoubleShift, 400 + Math.random() * 1200);
+    }
+
+    function spawnFlicker() {
+        flickerOpacity = 0.6 + Math.random() * 0.4;
+        setTimeout(() => {
+            flickerOpacity = 1;
+            setTimeout(spawnFlicker, 800 + Math.random() * 3000);
+        }, 60 + Math.random() * 100);
+    }
+
+    spawnCharGlitch();
+    spawnRowShift();
+    spawnDoubleShift();
+    spawnFlicker();
+
+    function draw(ts) {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const scaleX = w / (COLS * FONT_SIZE * 0.605);
+        const scaleY = h / (ROWS * LINE_H);
+
+        ctx.save();
+        ctx.scale(scaleX, scaleY);
+        ctx.font = FONT;
+        ctx.textBaseline = 'top';
+
+        const dt = 1 / 60;
+
+        for (let r = 0; r < ROWS; r++) {
+            const line = ART[r];
+            const y    = r * LINE_H;
+
+            let sh = rowShift.get(r);
+            if (sh) {
+                sh.ttl -= dt;
+                if (sh.ttl <= 0) { rowShift.delete(r); sh = null; }
+            }
+
+            const offsetX = sh ? sh.dx : 0;
+            const offsetY = sh ? sh.dy : 0;
+
+            if (sh && sh.ghost) {
+                ctx.globalAlpha = 0.18 * flickerOpacity;
+                ctx.fillStyle   = '#4fc3f7';
+                ctx.fillText(line, offsetX + 3, y + offsetY + 1);
+                ctx.globalAlpha = 1;
+            }
+
+            ctx.globalAlpha = flickerOpacity;
+            ctx.fillStyle   = '#efefef';
+
+            for (let c = 0; c < line.length; c++) {
+                const key = r * 1000 + c;
+                const g   = charGlitch.get(key);
+                if (g) {
+                    g.ttl -= dt;
+                    if (g.ttl <= 0) { charGlitch.delete(key); }
+                }
+                const ch = (g && g.ttl > 0) ? g.char : line[c];
+                ctx.fillText(ch, c * FONT_SIZE * 0.605 + offsetX, y + offsetY);
+            }
+
+            ctx.globalAlpha = 1;
+        }
+
+        ctx.restore();
+        requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+})();
+
+window.addEventListener("DOMContentLoaded", () => {
+    fetch("README.md")
+        .then(r => r.ok ? r.text() : Promise.reject())
+        .then(md => {
+            document.getElementById("markdown-content").innerHTML = window.marked.parse(md);
+        })
+        .catch(() => {
+            document.getElementById("markdown-content").innerHTML =
+                '<span style="color:#4a4a4a;font-size:.72rem;">README non disponible — <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS" style="color:#4fc3f7;">voir sur GitHub ↗</a></span>';
+        });
+});
+</script>
 
 </body>
 </html>

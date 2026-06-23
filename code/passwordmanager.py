@@ -2,15 +2,11 @@ from cryptography.fernet import Fernet
 import json
 import os
 import time
+from code.colors import *
 
 
 def passwdmanage():
-    red = "\033[31m"
-    green = "\033[32m"
-    yellow = "\033[33m"
-    blue = "\033[34m"
-    white = "\033[37m"
-    reset = "\033[0m"
+    
     os.system("cls")
     choix = input(f"""{green}
         ██████╗  █████╗ ███████╗███████╗██╗    ██╗ ██████╗ ██████╗ ██████╗ 
@@ -36,7 +32,7 @@ def passwdmanage():
     try: 
         if choix == "2":
             os.system("cls")
-            ky = input(f"""{white}
+            ky = input(f"""{WHITE}
                 ██╗  ██╗███████╗██╗   ██╗
                 ██║ ██╔╝██╔════╝╚██╗ ██╔╝
                 █████╔╝ █████╗   ╚████╔╝ 
@@ -46,7 +42,7 @@ def passwdmanage():
                 
                 Met ta key : """)
             os.system("cls")
-            add = input(f"""{blue}
+            add = input(f"""{BLUE}
                  █████╗ ██████╗ ██████╗     ██████╗  █████╗ ███████╗███████╗██╗    ██╗ ██████╗ ██████╗ ██████╗ 
                 ██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔══██╗██╔════╝██╔════╝██║    ██║██╔═══██╗██╔══██╗██╔══██╗
                 ███████║██║  ██║██║  ██║    ██████╔╝███████║███████╗███████╗██║ █╗ ██║██║   ██║██████╔╝██║  ██║
@@ -74,7 +70,7 @@ def passwdmanage():
     try:    
         if choix == "3":
             os.system("cls")
-            ky_list = input(f"""{red}
+            ky_list = input(f"""{RED}
                     ██╗     ██╗███████╗████████╗
                     ██║     ██║██╔════╝╚══██╔══╝
                     ██║     ██║███████╗   ██║   

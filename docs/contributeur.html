@@ -1,130 +1,357 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contributeurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
+    <title>WHITE WOLF — Contributors</title>
 
-  <link rel="icon" href="https://i.postimg.cc/gk3fSryy/Icon.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
-    }
+    <style>
+        :root {
+            --bg:      #0d0d0d;
+            --surface: #111111;
+            --border:  #2a2a2a;
+            --contri:  blue;
+            --name:    yellow;
+            --text:    #c8c8c8;
+            --muted:   #4a4a4a;
+            --dim:     #6a6a6a;
+            --white:   #efefef;
+            --accent:  #4fc3f7;
+        }
 
-    h1 {
-      text-align: center;
-      margin-top: 30px;
-    }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 48px;
+            height: 52px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(13,13,13,0.92);
+            backdrop-filter: blur(8px);
+        }
 
-    .card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 15px;
-      width: 180px;
-      text-align: center;
-      transition: 0.2s;
-    }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #58a6ff;
-    }
+        .nav-logo {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: .15em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-    .card img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid #30363d;
-    }
+        .nav-tag {
+            font-size: .65rem;
+            color: var(--muted);
+            letter-spacing: .05em;
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
 
-    .name {
-      margin-top: 10px;
-      font-weight: bold;
-    }
+        .btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .72rem;
+            padding: 6px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            letter-spacing: .05em;
+            cursor: pointer;
+            transition: opacity .15s;
+            color: var(--dim);
+            border: 1px solid var(--border);
+        }
+        .btn:hover { opacity: .75; }
 
-    .contrib {
-      font-size: 13px;
-      color: #8b949e;
-      margin-top: 5px;
-    }
+        .page-header {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 64px 48px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .back-btn {
-    display: inline-block;
-    margin: 15px;
-    padding: 10px 15px;
-    background: #4268e6;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-  }
+        .page-header-left h1 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: .1em;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
 
-  .back-btn:hover {
-    background: black;
-    transform: translateY(-2px);
-  }
-  </style>
+        .page-header-left p {
+            font-size: .75rem;
+            color: var(--dim);
+            font-weight: 300;
+        }
+
+        .contrib-count {
+            font-size: .65rem;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .contrib-count span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: .05em;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 48px 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-label {
+            font-size: .62rem;
+            letter-spacing: .18em;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--contri);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .card {
+            background: var(--bg);
+            padding: 24px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: background .15s;
+            display: block;
+        }
+
+        .card:hover {
+            background: var(--surface);
+        }
+
+        .card img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 0 auto 14px;
+            filter: grayscale(20%);
+            transition: filter .15s;
+        }
+
+        .card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .card .name {
+            font-size: .75rem;
+            color: var(--name);
+            font-weight: 500;
+            margin-bottom: 6px;
+            word-break: break-all;
+        }
+
+        .card .contrib {
+            font-size: .62rem;
+            color: var(--contri);
+            letter-spacing: .05em;
+        }
+
+        .card .rank {
+            font-size: .58rem;
+            color: var(--border);
+            margin-bottom: 12px;
+            letter-spacing: .1em;
+        }
+
+        .card[data-rank="1"] .rank { color: #b8860b; }
+        .card[data-rank="2"] .rank { color: #808080; }
+        .card[data-rank="3"] .rank { color: #7a4a2a; }
+
+        .status {
+            font-size: .75rem;
+            color: var(--muted);
+            padding: 40px 0;
+            text-align: center;
+            width: 100%;
+            background: var(--bg);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            font-size: .65rem;
+            color: var(--muted);
+            letter-spacing: .05em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-link {
+            font-size: .65rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .05em;
+            transition: color .15s;
+        }
+
+        .footer-link:hover { color: var(--dim); }
+
+        @media (max-width: 700px) {
+            nav { padding: 0 20px; }
+            .page-header { padding: 40px 20px 32px; flex-direction: column; align-items: flex-start; gap: 20px; }
+            .contrib-count { text-align: left; }
+            .container { padding: 32px 20px 60px; }
+            footer { flex-direction: column; gap: 12px; padding: 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-  <h1>Contributeurs GitHub</h1>
+<nav>
+    <div class="nav-left">
+        <a class="nav-logo" href="index.html">WHITE WOLF</a>
+        <span class="nav-tag">contributors</span>
+    </div>
+    <a class="btn" href="index.html">← retour</a>
+</nav>
 
-  <a class="back-btn" href="https://python-loving.github.io/WHITEWOLF-TOOLS/">
-  ⬅ Retour au site
-  </a>
-  <div class="container">
-    <div class="grid" id="list"></div>
-  </div>
+<div class="page-header">
+    <div class="page-header-left">
+        <h1>Contributors</h1>
+        <p>Les gens qui ont participé au projet.</p>
+    </div>
+    <div class="contrib-count">
+        <span id="total-count">—</span>
+        contributeurs
+    </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="container">
+    <div class="section-header">
+        <span class="section-label">GitHub · Python-loving/WHITEWOLF-TOOLS</span>
+        <div class="section-line"></div>
+    </div>
+    <div class="grid" id="list">
+        <p class="status">chargement…</p>
+    </div>
+</div>
+
+<footer>
+    <span class="footer-copy">© 2026 WHITE WOLF — MIT License</span>
+    <div class="footer-links">
+        <a class="footer-link" href="index.html">Accueil</a>
+        <a class="footer-link" href="https://github.com/Python-loving/WHITEWOLF-TOOLS">GitHub</a>
+        <a class="footer-link" href="https://github.com/Python-loving/WHITEWOLF-TOOLS/issues">Issues</a>
+        <a class="footer-link" href="cgu.html">cgu</a>
+    </div>
+</footer>
 
 <script>
-async function loadContributors() {
-  const res = await fetch("https://api.github.com/repos/Python-loving/WHITEWOLF-TOOLS/contributors");
-  const data = await res.json();
+    async function loadContributors() {
+        const list  = document.getElementById("list");
+        const count = document.getElementById("total-count");
 
-  const list = document.getElementById("list");
+        try {
+            const res  = await fetch("https://api.github.com/repos/Python-loving/WHITEWOLF-TOOLS/contributors");
+            const data = await res.json();
 
-  data.forEach(user => {
-    const card = document.createElement("a");
-    card.href = user.html_url;
-    card.target = "_blank";
-    card.className = "card";
+            list.innerHTML = '';
+            count.textContent = data.length;
 
-    card.innerHTML = `
-      <img src="${user.avatar_url}" alt="avatar">
-      <div class="name">${user.login}</div>
-      <div class="contrib">${user.contributions} contributions</div>
-    `;
+            const RANKS = ['#1', '#2', '#3'];
 
-    list.appendChild(card);
-  });
-}
+            data.forEach((user, i) => {
+                const card = document.createElement("a");
+                card.href        = user.html_url;
+                card.target      = "_blank";
+                card.className   = "card";
+                card.dataset.rank = i + 1;
+                card.innerHTML   = `
+                    <div class="rank">${RANKS[i] ?? ''}</div>
+                    <img src="${user.avatar_url}&s=96" alt="${user.login}" loading="lazy">
+                    <div class="name">${user.login}</div>
+                    <div class="contrib">${user.contributions} commits</div>
+                `;
+                list.appendChild(card);
+            });
 
-loadContributors();
+        } catch {
+            list.innerHTML = '<p class="status">impossible de charger les contributeurs — <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS" style="color:#4fc3f7;">voir sur GitHub ↗</a></p>';
+            count.textContent = '?';
+        }
+    }
+
+    loadContributors();
 </script>
 
 </body>
