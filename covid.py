@@ -18,8 +18,6 @@ from code.error import error
 import cv2
 from code.colors import *
 
-
-
 os.system("cls")
 print(f""" {YELLOW}
             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡠⠖⢉⣌⢆⠀⠀⠀⠀⠀
