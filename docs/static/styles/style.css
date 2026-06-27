@@ -17,6 +17,19 @@ h1 {
 .btn {
     border-radius: 30px;
     height: 2rem;
+    transition: 0.50s ease;
+}
+
+.btn:hover {
+    background-color: aliceblue;
+    color: black;
+    font-weight: bold;
+    border-color: blue;
+}
+
+.btn:active {
+    background-color: orange;
+    transform: translateY(-2px);
 }
 
 #arbi {
