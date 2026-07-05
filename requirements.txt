@@ -14,3 +14,7 @@ holehe
 whois
 pyfiglet
 instagrapi
+questionary
+openai
+opencv
+keyboard

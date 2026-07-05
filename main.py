@@ -65,6 +65,7 @@ from code.invitbot import invit
 from code.kylog import kylog
 from code.grabip import grabip
 from code.screener import screen
+from code.contributeur import contributeur
 
 def rpc():
     try:
@@ -129,9 +130,9 @@ while True:
              ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝     
         [I]. Informations                                      
 
-            1. [Lookup]    4. [Covid]
+            1. [Lookup]    4. [Covid]   7. [Quit]
             2. [Sécurity]  5. [Automation]
-            3. [Discord]   6. [Quit]
+            3. [Discord]   6. [Contributeur]
 
             Fais ton choix : """).lower()
         
@@ -421,8 +422,11 @@ while True:
         elif automation == "i":
             show_informations()
 
-    # Ici on a mis le quit si la personne a lancé sans fair expres
     elif choix == "6":
+        contributeur()
+
+    # Ici on a mis le quit si la personne a lancé sans fair expres
+    elif choix == "7":
         print("Au-Revoir a bientot l'ami")
         time.sleep(2)
         break
