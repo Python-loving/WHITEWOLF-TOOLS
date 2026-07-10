@@ -1,361 +1,278 @@
-# WhiteWolf Tools
+# 🐺 WhiteWolf Tools
 
-Suite d'outils en ligne de commande (CLI) pour **OSINT**, **sécurité**, **Discord** et utilitaires divers. Interface en menus ASCII — lance tout depuis `main.py`.
+<p align="center">
+  <img src="image/whitewolf.png" alt="WhiteWolf Logo" width="200" />
+</p>
 
-> **Python 3 requis** — Windows recommandé (certaines fonctions utilisent `msvcrt`, Microsoft Edge, `taskkill`, `mss`, etc.).
+<p align="center">
+  <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/stargazers"><img src="https://img.shields.io/github/stars/Python-loving/WHITEWOLF-TOOLS?style=for-the-badge&color=yellow" alt="Stars"></a>
+  <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/network/members"><img src="https://img.shields.io/github/forks/Python-loving/WHITEWOLF-TOOLS?style=for-the-badge&color=blue" alt="Forks"></a>
+  <a href="https://github.com/Python-loving/WHITEWOLF-TOOLS/issues"><img src="https://img.shields.io/github/issues/Python-loving/WHITEWOLF-TOOLS?style=for-the-badge&color=red" alt="Issues"></a>
+  <img src="https://img.shields.io/badge/OS-Windows-blue?style=for-the-badge&logo=windows" alt="OS Windows">
+  <img src="https://img.shields.io/badge/Made%20With-Python-3776AB?style=for-the-badge&logo=python" alt="Made With Python">
+</p>
 
 ---
 
-## Structure du projet
+## 📖 Présentation
+
+**WhiteWolf Tools** est une suite d'outils en ligne de commande (CLI) polyvalente et complète conçue pour l'**OSINT**, la **sécurité**, l'**automatisation** et la gestion de **Discord**. Dotée d'une interface en menus ASCII élégante et entièrement interactive, elle rassemble de nombreux scripts de recherche d'informations et d'utilitaires dans un point d'entrée unique : `main.py`.
+
+> [!WARNING]
+> **Recommandation Système** : Windows est fortement recommandé en raison de dépendances système spécifiques comme `msvcrt` (lecture clavier native), Microsoft Edge, `mss` (captures d'écran Windows), OpenCV et des commandes de gestion de processus (`taskkill`). Python 3 est requis.
+
+---
+
+## 🛠️ Structure du Projet
 
 ```
 WHITEWOLF-TOOLS/
-├── main.py                        # Point d'entrée — menus et logique interactive
-├── api.py                         # Clés API (ipify, apilayer, viewdns) — ignoré par Git
-├── sites.py                       # Plateformes pour le lookup username
-├── darkweb.py                     # Liens .onion par catégorie (menu Discord → Darkweb)
-├── covid.py                       # Script autonome (voir section Covid)
-├── scanner.py                     # Scan de tokens Discord (navigateurs + app Discord)
-├── builder.py                     # Build .exe de covid.py (PyArmor + PyInstaller)
-├── Icon.ico                       # Icône du projet
-├── Virus-explain.md               # Guide rapide pour covid.py + builder
-├── SECURITY.md                    # Avertissements légaux et responsabilité
-├── requirements.txt               # Dépendances pip
+├── main.py                        # Menu principal et point d'entrée de l'application
+├── api.py                         # Clés d'API (ipify, apilayer, viewdns) — Ignoré par Git
+├── sites.py                       # Base de données d'URLs pour le lookup username
+├── darkweb.py                     # Annuaire catégorisé de liens .onion (Darkweb)
+├── covid.py                       # Code source du chargeur autonome (voir section Covid)
+├── scanner.py                     # Extracteur autonome de jetons Discord (Browsers & Apps)
+├── builder.py                     # Compilateur et obfuscateur de covid.py (via PyArmor & PyInstaller)
+├── Icon.ico                       # Icône Windows utilisée pour la compilation
+├── Virus-explain.md               # Documentation explicative dédiée au module Covid/Stealer
+├── SECURITY.md                    # Avertissements légaux et politique de responsabilité
+├── requirements.txt               # Dépendances requises du projet
 ├── image/
-│   └── whitewolf.png              # Image du projet
-├── proxy/                         # Dossier proxy (ressources)
-└── code/
-    ├── discordchecker.py          # 4C Checker Discord
-    ├── tiktokchecker.py           # 4C Checker TikTok
-    ├── githubchecker.py           # 4C Checker GitHub (pseudos disponibles)
-    ├── ipscanner.py               # Scanner de ports (1–65535) via socket
-    ├── nukerdiscord.py            # Discord Nuker bot (WIP)
-    ├── mrrobot.py                 # Script Mr Robot
-    ├── genip.py                   # Génération d'IP aléatoires → webhook
-    ├── Spamtlgrm.py               # Spam bot Telegram via token bot
-    ├── passwordmanager.py         # Gestionnaire de mots de passe chiffré (Fernet)
-    └── challange/
-        ├── firstchallange.py      # Challenge OSINT interactif
-        ├── pentestchallange.py    # Challenge Pentest Web
-        └── osint.png              # Image du challenge OSINT
+│   └── whitewolf.png              # Logo du projet
+└── code/                          # Scripts fonctionnels unitaires
+    ├── discordchecker.py          # Vérification de pseudos Discord à 4 caractères
+    ├── tiktokchecker.py           # Vérification de pseudos TikTok à 4 caractères
+    ├── githubchecker.py           # Vérification de pseudos GitHub à 4 caractères
+    ├── ipscanner.py               # Scanner de ports TCP local (1–65535) via sockets
+    ├── nukerdiscord.py            # Script d'administration/destruction de serveur Discord (WIP)
+    ├── mrrobot.py                 # Script thématique interactif Mr. Robot
+    ├── genip.py                   # Générateur et rapporteur d'IP aléatoires
+    ├── Spamtlgrm.py               # Outil de spam automatisé via bot Telegram
+    ├── passwordmanager.py         # Table de coffre-fort chiffrée (algorithme Fernet/AES)
+    ├── letsenscript.py            # Outil de détection de version SSL/TLS
+    ├── robloxsearch.py            # Lookup d'utilisateurs Roblox par ID via API
+    ├── ai.py                      # Assistant virtuel propulsé par l'API Groq (OpenAI Client)
+    ├── checking.py                # Scanner de comptes par e-mail (outil Holehe)
+    ├── rpc.py                     # Configuration du Discord Rich Presence (RPC)
+    ├── tokencheck.py              # Analyseur de jetons (tokens) Discord
+    ├── embedsender.py             # Expéditeur d'embeds personnalisés sur webhook Discord
+    ├── colors.py                  # Palettes de couleurs ANSI pour la CLI
+    ├── ipreputation.py            # Évaluation de la réputation de sécurité d'une IP
+    ├── autofollowinsta.py         # Script d'interaction robotisée Instagram (instagrapi)
+    ├── ip.py                      # Lookup d'IP détaillé (localisation, FAI)
+    ├── number.py                  # Lookup d'informations sur un numéro de téléphone
+    ├── username.py                # Moteur de recherche de pseudonyme multi-sites
+    ├── googlesearching.py         # Script d'assistance de recherche Google
+    ├── dnslookup.py               # Outil de lookup d'abuse par nom de domaine
+    ├── discord.py                 # Lookup de profils public Discord par identifiant
+    ├── github.py                  # Info-collecteur de dépôts et profils GitHub
+    ├── leak.py                    # Scanner de fuites de données de courriels (leakcheck.io)
+    ├── archive.org                # Recherche de snapshots Wayback Machine
+    ├── vpn.py                     # Gestionnaire de proxy Edge et isolation
+    ├── password.py                # Générateur de mots de passe forts configurables
+    ├── webstatus.py               # Mesure de latence et de code de réponse HTTP
+    ├── scraper.py                 # Extraction des en-têtes HTTP bruts
+    ├── whois.py                   # Analyseur complet WHOIS de nom de domaine
+    ├── nitro.py                   # Générateur de liens de cadeaux Discord Nitro
+    ├── webhookspaming.py          # Bombardement HTTP sur webhook Discord
+    ├── idtotoken.py               # Outil générateur d'ébauches de tokens Discord par ID
+    ├── invitbot.py                # Module d'invitation rapide de bots Discord administrateur
+    ├── kylog.py                   # Enregistreur de touches clavier autonome
+    ├── grabip.py                  # Récupérateur d'IP publique par service externe
+    ├── screener.py                # Capture d'écran programmée
+    ├── contributeur.py            # Récupérateur dynamique de contributeurs GitHub
+    └── challange/                 # Répertoire des défis ludiques intégrés
+        ├── firstchallange.py      # Défi OSINT axé géographie et observation
+        ├── pentestchallange.py    # Défi d'introduction au Pentest d'applications web
+        └── osint.png              # Image support pour le challenge OSINT
 ```
 
 ---
 
-## Arbre des commandes (`main.py`)
+## 🗺️ Arbre des Commandes Interactif
+
+Ci-dessous, la cartographie complète de l'interface utilisateur de `main.py` :
 
 ```
 python main.py
 │
-├── [I] Informations ─────────► Telegram, Guns.lol (5 s puis retour)
+├── [I] Informations ────────► Affiche les liens de contact (5s puis retour)
 │
-├── 1. LOOKUP
+├── 1. [Lookup]
 │   ├── [I] Informations
-│   ├── 1.  IP ──────────────────► geo.ipify.org (pays, ville, ISP, VPN)
-│   ├── 2.  Number ──────────────► apilayer.net (pays, format, opérateur)
-│   ├── 3.  Username ────────────► scan multi-sites (sites.py)
-│   ├── 4.  Google ──────────────► ouvre la recherche dans le navigateur
-│   ├── 5.  DNS ─────────────────► viewdns.info (abuse contact)
-│   ├── 6.  Discord ─────────────► vaultcord (profil par ID)
-│   ├── 7.  Github ──────────────► dernier commit public (email auteur, etc.)
-│   ├── 8.  Leak Mail ───────────► leakcheck.io → result.json
-│   ├── 9.  Archive Web ─────────► archive.org (snapshots Wayback)
-│   ├── 10. 4C Tiktok ───────────► checker TikTok (code/tiktokchecker.py)
-│   ├── 11. 4C Github ───────────► checker GitHub (code/githubchecker.py)
-│   ├── 12. Github Check ────────► checker GitHub (code/githubchecker.py)
-│   ├── 13. IP Scanner ──────────► scan de ports 1–65535 (code/ipscanner.py)
-│   └── 14. Quit
+│   ├── 1.  [IP] ───────────────► Diagnostic d'IP (geo.ipify.org)
+│   ├── 2.  [Number] ───────────► Informations de téléphones (apilayer.net)
+│   ├── 3.  [Username] ─────────► Recherche de pseudo multi-sites (sites.py)
+│   ├── 4.  [Google] ───────────► Automatisation de recherche Google
+│   ├── 5.  [Dns] ──────────────► Abuse domain lookup (viewdns.info)
+│   ├── 6.  [DISCORD] ──────────► Recherche d'utilisateur par ID (Vaultcord)
+│   ├── 7.  [Github] ───────────► Statut & dernier commit public d'un profil/repo
+│   ├── 8.  [Leak Mail] ────────► Vérification de piratage de mail (leakcheck.io)
+│   ├── 9.  [Archive Web] ──────► Snapshots d'un domaine ou URL (archive.org)
+│   ├── 10. [4C Tiktok] ────────► Moteur d'acquisition de pseudos TikTok @4carac
+│   ├── 11. [4C Github] ────────► Recherche massive de pseudos GitHub libres
+│   ├── 12. [IP Scanner] ───────► Analyseur de ports réseau ouverts (1-65535)
+│   ├── 13. [SSL / TLS] ────────► Diagnostic de version cryptographique SSL/TLS
+│   ├── 14. [Roblox] ───────────► Collecteur d'informations de joueur par ID
+│   ├── 15. [AI] ───────────────► Assistant de discussion basé sur l'IA Groq
+│   ├── 16. [Holehe] ───────────► Détection multi-sites de création de compte e-mail
+│   └── 17. [Quit]
 │
-├── 2. SECURITY
+├── 2. [Sécurity]
 │   ├── [I] Informations
-│   ├── 1.  PROXY (VPN) ─────────► Edge + proxy HTTP (durée min. 10 s)
-│   ├── 2.  Gen Password ────────► mot de passe aléatoire (min. 10 car.)
-│   ├── 3.  Status Website ──────► temps de réponse HTTP (ms)
-│   ├── 4.  Scraper ─────────────► en-têtes HTTP → result.txt
-│   ├── 5.  Whois ───────────────► whois du domaine
-│   ├── 6.  Gen IP ──────────────► génération d'IP (code/genip.py)
-│   ├── 7.  Spam Telegram ───────► bot spam Telegram (code/Spamtlgrm.py)
-│   ├── 8.  Passwd Manager ──────► gestionnaire de mots de passe (code/passwordmanager.py)
-│   ├── 9.  Osint ───────────────► challenge OSINT (code/challange/firstchallange.py)
-│   ├── 10. Pentest Web ─────────► challenge Pentest (code/challange/pentestchallange.py)
-│   └── 11. Quit
+│   ├── 1.  [PROXY(VPN)] ───────► Tunnel proxy Edge isolé (10s minimum)
+│   ├── 2.  [Gen Password] ─────► Générateur de chaînes de mots de passe robustes
+│   ├── 3.  [Status Website] ───► Vérification de code d'état HTTP et latence
+│   ├── 4.  [Scraper] ──────────► Extraction d'en-têtes HTTP (result.txt)
+│   ├── 5.  [Whois] ────────────► Données de registre WHOIS
+│   ├── 6.  [Gen IP] ───────────► Émetteur d'IP aléatoires vers webhook
+│   ├── 7.  [Spam Telegram] ────► Bot spammer de chat Telegram via API
+│   ├── 8.  [Passwd Manager] ───► Coffre-fort de mots de passe durci (Fernet AES)
+│   ├── 9.  [Osint] ────────────► Défi de géolocalisation OSINT (carte & heure)
+│   ├── 10. [Pentest Web] ──────► Challenge d'introduction à la sécurité web
+│   ├── 11. [Webcam] ───────────► Capture d'image caméra locale et dump webhook
+│   ├── 12. [Ip reput] ─────────► Score de risques et de malveillance d'IP
+│   └── 13. [Quit]
 │
-├── 3. DISCORD
+├── 3. [Discord]
 │   ├── [I] Informations
-│   ├── 1. Nitro Gen ───────────► codes gift aléatoires → nitro.txt si valide
-│   ├── 2. Spaming Webhook ─────► POST en boucle (toutes les 5 s)
-│   ├── 3. Darkweb ─────────────► affiche les liens (darkweb.py)
-│   ├── 4. Token BruteForce ────► génère un token factice depuis un ID
-│   ├── 5. Bot to id ───────────► URL d'invitation OAuth2 (permissions 8)
-│   ├── 6. 4C Checker ──────────► checker Discord (code/discordchecker.py)
-│   └── 7. Quit
+│   ├── 1.  [Nitro Gen] ────────► Générateur brut de codes Nitro (nitro.txt)
+│   ├── 2.  [Spaming Webhook] ──► Flot de requêtes HTTP sur webhook toutes les 5s
+│   ├── 3.  [Darkweb] ──────────► Annuaire thématique de liens onion
+│   ├── 4.  [Token BruteForce] ─► Générateur d'échantillons de tokens par ID
+│   ├── 5.  [Bot to id] ────────► URL d'invitation de bot Administrateur (Scope 8)
+│   ├── 6.  [4c Checker] ───────► Analyse de disponibilité de pseudos 4c Discord
+│   ├── 7.  [rpc_conf] ─────────► Panneau de configuration du Rich Presence Discord
+│   ├── 8.  [Token check] ──────► Inspecteur de validité et propriétaire de token
+│   ├── 9.  [Webhook sender] ───► Générateur d'embeds élaborés sur webhook Discord
+│   └── 10. [Quit]
 │
-├── 4. COVID (menu utilitaires)
-│   ├── 1. KeyLogger ───────────► frappe clavier → webhook Discord
-│   ├── 2. Grabing IP ──────────► IP publique → webhook Discord
-│   ├── 3. ScreenShot ──────────► capture d'écran → webhook Discord
-│   ├── 4. Build Covid ─────────► compile covid.py en .exe (builder.py)
-│   └── 5. Quit
+├── 4. [Covid] (Menu Utilitaires / Trojan)
+│   ├── 1.  [KeyLogger] ────────► Enregistrement clavier local vers webhook Discord
+│   ├── 2.  [Grabing IP] ───────► Détection d'IP publique de la cible vers webhook
+│   ├── 3.  [ScreenShot] ───────► Capture d'écran en tâche de fond vers webhook
+│   ├── 4.  [Build Covid] ──────► Génération de l'exécutable obfusqué interactif
+│   └── 5.  [Quit]
 │
-└── 5. Quit (accueil)
+├── 5. [Automation]
+│   ├── 1.  [Instagram Auto Follow] ► Automatisation d'interactions Instagram
+│   └── 2.  [Quit]
+│
+├── 6. [Contributeur] ────────► Affichage dynamique des contributeurs du dépôt
+│
+└── 7. [Quit]
 ```
-
-**Raccourci global :** `[I]` ou `[i]` sur chaque sous-menu → `show_informations()`.
 
 ---
 
-## Détail des fonctionnalités
+## 🔍 Détails Fonctionnels & Techniques
 
-### Lookup (1)
+### 1. Lookup
+Ensemble de scripts de recherche d'informations sur des cibles publiques ou privées.
 
-| Choix          | Entrée           | API / source                                | Sortie                            |
-| -------------- | ---------------- | ------------------------------------------- | --------------------------------- |
-| IP             | Adresse IP       | [ipify](https://geo.ipify.org)              | IP, pays, ville, ISP, VPN         |
-| Number         | Numéro E.164     | [apilayer](http://apilayer.net)             | Pays, formats, carrier            |
-| Username       | Pseudo           | 30+ sites (`sites.py`)                      | URLs où le profil répond 200      |
-| Google         | Requête          | Navigateur système                          | Onglet Google Search              |
-| DNS            | Domaine          | [viewdns](https://api.viewdns.info)         | Abuse contact                     |
-| Discord        | ID utilisateur   | vaultcord.com                               | username, avatar, flags, clan…    |
-| Github         | user + repo      | api.github.com                              | email/nom/date du dernier commit  |
-| Leak Mail      | Email            | leakcheck.io                                | `result.json`                     |
-| Archive Web    | URL              | archive.org                                 | Snapshot Wayback le plus proche   |
-| 4C Tiktok      | Nombre + webhook | Génération de pseudos                       | Résultats via webhook             |
-| 4C Github      | Nombre + webhook | Génération d'essais (code/githubchecker.py) | Résultats via webhook             |
-| Github Check   | Pseudo GitHub    | `code/githubchecker.py`                     | Statut disponibilité du pseudo    |
-| **IP Scanner** | Adresse IP       | `socket` (local)                            | Liste des ports ouverts (1–65535) |
-
-**Sites username** (extrait) : GitHub, Reddit, TikTok, Instagram, X, Facebook, Twitch, Steam, GitLab, Medium, Roblox, Chess.com, Linktree, Gravatar… — liste complète dans `sites.py`.
-
-### IP Scanner (`code/ipscanner.py`)
-
-Scanner de ports TCP complet sur une IP cible :
-
-- Teste les **65 535 ports** via `socket.connect_ex` (timeout 100 ms)
-- Affiche uniquement les **ports ouverts**
-- Interface interactive via `questionary`
-
-### Security (2)
-
-| Choix          | Description                                                                                                                         |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| PROXY (VPN)    | Lance Microsoft Edge avec `--proxy-server`, vérifie l'IP via ipify, arrêt au timeout ou touche clavier                              |
-| Gen Password   | `ascii_letters` + `digits` + `punctuation`, longueur ≥ 10                                                                           |
-| Status Website | `GET` sur l'URL → délai en millisecondes                                                                                            |
-| Scraper        | `HEAD` → affiche et enregistre les headers dans `result.txt`                                                                        |
-| Whois          | Informations WHOIS du domaine (registrar, dates, DNS…)                                                                              |
-| Gen IP         | Génère des adresses IP aléatoires et les envoie via webhook                                                                         |
-| Spam Telegram  | Bot spam Telegram — demande un token bot + message, envoie 98 fois en boucle via `/start`                                           |
-| Passwd Manager | Gestionnaire de mots de passe chiffré via Fernet (gen clé, ajout mdp chiffré, déchiffrement)                                        |
-| Osint          | Challenge OSINT interactif — trouver une ville, un office de tourisme et une date à partir d'une image (`code/challange/osint.png`) |
-| Pentest Web    | Challenge Pentest Web interactif (`code/challange/pentestchallange.py`)                                                             |
-
-### Discord (3)
-
-| Choix            | Description                                                  | Fichier généré |
-| ---------------- | ------------------------------------------------------------ | -------------- |
-| Nitro Gen        | Teste `https://discord.gift/{16 chars}` en boucle            | `nitro.txt`    |
-| Spaming Webhook  | Envoie `{ "content": message }` en POST                      | —              |
-| Darkweb          | Liste par catégorie (moteurs, marchés, wikis…)               | —              |
-| Token BruteForce | `base64(user_id).random.random` (démo, non fonctionnel réel) | —              |
-| Bot to id        | Lien `oauth2/authorize` admin (perm 8)                       | —              |
-| 4C Checker       | Génération / vérification de pseudos Discord                 | —              |
-
-**Catégories Darkweb** (`darkweb.py`) : Search Engine, Bitcoin Anonymity, DDoS, Market, Cooks, Torrents, Social Media, Wikis, Government, Communities, Educational.
-
-### Covid (4)
-
-| Choix       | Description                                                      |
-| ----------- | ---------------------------------------------------------------- |
-| KeyLogger   | `pynput` → chaque touche postée sur un webhook (buffer 1 s)      |
-| Grabing IP  | IP via `checkip.amazonaws.com` → webhook                         |
-| ScreenShot  | Capture d'écran via `mss` → webhook Discord                      |
-| Build Covid | Ouvre `builder.py` — compile `covid.py` en `covid-exe/Tools.exe` |
-
-#### Script autonome `covid.py`
-
-`covid.py` regroupe plusieurs actions au lancement (webhook à configurer ligne 40) :
-
-1. **Discord injection** — scan des tokens via `scanner.py` (Chrome, Brave, Edge, Opera, Discord…)
-2. **Grab IP** — envoi de l'IP publique
-3. **Dir** — listing `dir /s` (tronqué à 1900 car.)
-4. **Screenshot** — capture d'écran
-5. **Dossier** — création de dossiers `Virus*` sur le bureau + ouverture de `cmd`
-6. **Shutdown** — redémarrage forcé de la machine
-7. **KeyLogger** — écoute clavier en arrière-plan
-
-> Guide pas à pas : voir [`Virus-explain.md`](Virus-explain.md).
-
-#### Builder (`builder.py`)
-
-Pipeline de compilation :
-
-1. Choix d'une icône `.ico` (dialogue Tkinter)
-2. Obfuscation avec **PyArmor** (`obf/covid.py`)
-3. Packaging **PyInstaller** (`--onefile --noconsole`) → `covid-exe/Tools.exe`
-
-Dépendances build : `pyarmor`, `pyinstaller`.
-
-#### Scanner (`scanner.py`)
-
-Scan des tokens Discord stockés localement :
-
-- Navigateurs Chromium (Chrome, Brave, Edge, Opera, Vivaldi, Yandex…)
-- Applications Discord (stable, PTB, Canary, Dev)
-- Décryptage via `win32crypt` + `pycryptodome` (optionnel)
-
-Test en standalone :
-
-```bash
-python scanner.py
-```
-
-### Discord Nuker (`code/nukerdiscord.py`)
-
-> ⚠️ **WIP** — En cours de développement (rate limiting Discord en cours de résolution).
-
-Bot de nuker Discord via token :
-
-- Demande un **token bot** et un **ID de serveur**
-- Récupère la liste des membres du serveur
-- Ban automatiquement tous les membres
-
-### Password Manager (`code/passwordmanager.py`)
-
-Gestionnaire de mots de passe avec chiffrement **Fernet** (symétrique AES) :
-
-| Option    | Description                                                 |
-| --------- | ----------------------------------------------------------- |
-| Gen Key   | Génère une clé Fernet → `key.txt`                           |
-| Add Mdps  | Chiffre un mot de passe avec la clé → `encrypted.txt`       |
-| List mdps | Déchiffre et affiche le mot de passe depuis `encrypted.txt` |
-
-> ⚠️ Conserve ta `key.txt` — sans elle, le déchiffrement est impossible.
-
-### Spam Telegram (`code/Spamtlgrm.py`)
-
-Bot spam Telegram activé via la commande `/start` :
-
-- Demande un **token bot** Telegram et un **message** à spammer
-- Envoie le message **98 fois** à chaque commande `/start`
-- Fonctionne en boucle continue (`run_polling`)
-
-### Challenge OSINT (`code/challange/firstchallange.py`)
-
-Challenge de géolocalisation OSINT interactif basé sur une image (`osint.png`) :
-
-| Question                        | Format attendu                                          |
-| ------------------------------- | ------------------------------------------------------- |
-| Nom de la ville                 | minuscules                                              |
-| Nom de l'office de tourisme     | minuscules (sans le préfixe "Destination Méditerranée") |
-| Date de publication de la photo | `jj/mm/aaaa`                                            |
-
-Score sur 3 points — un point par bonne réponse.
-
-### Challenge Pentest Web (`code/challange/pentestchallange.py`)
-
-Challenge interactif orienté pentest web — accessible depuis Security → 10.
+| Nom de l'Outil | Fichier Source | Technologie / API | Rôle principal |
+| :--- | :--- | :--- | :--- |
+| **IP Lookup** | `code/ip.py` | [IPify](https://geo.ipify.org/) | Extraction de géolocalisation d'IP (Pays, ville, FAI, proxy/VPN). |
+| **Phone Lookup** | `code/number.py` | [Apilayer](http://apilayer.net) | Obtention du pays et de l'opérateur d'un numéro international. |
+| **Username Seek** | `code/username.py` | `sites.py` | Résolution de présence de pseudonymes sur plus de 30 plateformes web. |
+| **DNS Lookup** | `code/dnslookup.py` | [ViewDNS](https://api.viewdns.info/) | Recherche d'adresses d'abus techniques sur un domaine. |
+| **Discord Lookup**| `code/discord.py` | Vaultcord API | Lecture et extraction de données d'un profil par Identifiant Unique. |
+| **GitHub Tracker** | `code/github.py` | GitHub REST API | Récupération des emails et détails du dernier commit de la cible. |
+| **Email Leak** | `code/leak.py` | LeakCheck API | Identification de compromissions d'emails (enregistré en JSON). |
+| **Wayback Machine**| `code/archive.py` | Wayback API | Récupération d'historiques de captures de pages web. |
+| **4C Tiktok/Git** | `code/tiktokchecker.py`/`code/githubchecker.py` | Web Requests | Détection de pseudonymes disponibles à 4 lettres. |
+| **IP Scanner** | `code/ipscanner.py` | Sockets (locales) | Identification des ports TCP ouverts (1 à 65535) en multi-thread. |
+| **SSL/TLS Tool** | `code/letsenscript.py` | `ssl` & `socket` | Identification des versions de sécurité SSL/TLS acceptées. |
+| **Roblox Lookup** | `code/robloxsearch.py`| Roblox API | Extraction de profils de jeux complexes à partir de l'ID. |
+| **Holehe Lookup**  | `code/checking.py` | Holehe Engine | Scan asynchrone (trio/httpx) des comptes liés à un e-mail. |
 
 ---
 
-## Installation
+### 2. Security
+Défis interactifs d'apprentissage, chiffrement local et vérifications d'infrastructures.
+
+*   **Proxy VPN (`code/vpn.py`)** : Ouvre une session Microsoft Edge sous environnement temporaire via un proxy HTTP passé en entrée. Mesure la persistance.
+*   **Password Generator (`code/password.py`)** : Génère un mot de passe robuste basé sur les spécifications de sécurité standard de longueur personnalisable.
+*   **Password Encrypter (`code/passwordmanager.py`)** : Coffre-fort cryptographique local utilisant la spécification **Fernet** (chiffrement symétrique AES 128 bits). Génère une clé de stockage `key.txt` et intègre un chiffrement/déchiffrement à la volée.
+*   **Interactive Challenges (`code/challange/`)** :
+    *   *OSINT Challenge* : Examine l'image `osint.png` pour répondre à des questions interactives (localisation, heure de prise, date exacte) et gagner des points.
+    *   *Web Pentest Challenge* : Environnement ludique évaluant la capacité à détecter des failles de sécurité courantes.
+
+---
+
+### 3. Discord
+Panoplie d'outils Discord à but de test d'intrusion, audit et notifications par webhook.
+
+*   **Audit Webhook (`code/webhookspaming.py`, `code/embedsender.py`)** : Permet soit de bombarder un Webhook de requêtes à haute fréquence, soit de lui transmettre des enrichissements structurés (embeds) dotés d'images, de titres et de données.
+*   **User Validity (`code/tokencheck.py`)** : Analyse la validité technique d'un token d'utilisateur Discord et extrait les informations associées (Pseudonyme, numéro de téléphone relié, adresse e-mail, abonnement Nitro ou non).
+
+---
+
+### 4. Trojan & Autostart (Covid / Stealer)
+Le sous-menu **Covid** permet de configurer, tester et packager un compilateur de programmes malveillants à visée éducative.
+
+> [!CAUTION]
+> Les scripts de cette section collectent des données utilisateur sensibles en tâche de fond. Assurez-vous de mener ces audits sous un cadre strictement autorisé.
+
+**Actions de `covid.py` au démarrage :**
+1. **Extraction de Tokens Discord (`scanner.py`)** : Recherche et décryptage des jetons Discord enregistrés au sein des répertoires de navigateurs basés sur Chromium ou de l'application officielle d'arrière-plan.
+2. **Reconnaissance Système** : Récupération de l'IP publique, listing récursif des fichiers utilisateur (`dir /s`) et envoi des données sur webhook.
+3. **Persistance & Gofile** : Extraction et envoi de l'historique Google Chrome vers un hébergeur temporaire sécurisé (gofile.io).
+4. **Keylogger & Screenshot** : Moteur asynchrone capturant continuellement les frappes de touches et l'affichage écran vers le webhook de contrôle.
+5. **Builder (`builder.py`)** : Compresse, obfusque via **PyArmor** et encapsule l'entièreté de `covid.py` et ses modules dans un simple binaire Windows (`covid-exe/Tools.exe`) prêt à l'exécution.
+
+---
+
+## 🚀 Installation & Utilisation
+
+### Prérequis
+- Un interpréteur **Python 3.9+** fonctionnel.
+- Droits Administrateurs sous Windows recommandés pour l'utilisation optimale de certains outils système.
+
+### Procédure d'installation
 
 ```bash
-git clone <url-du-repo>
+# 1. Cloner le projet
+git clone https://github.com/Python-loving/WHITEWOLF-TOOLS.git
+
+# 2. Entrer dans le répertoire de travail
 cd WHITEWOLF-TOOLS
+
+# 3. Installer les dépendances tierces requises
 pip install -r requirements.txt
+
+# 4. Initialiser la structure d'API (obligatoire pour les scripts d'API)
+python -c "import os; open('api.py', 'w').write('api_ip = \"\"\napi_number = \"\"\napi_dns = \"\"\n')"
+
+# 5. Démarrer l'interface
 python main.py
 ```
 
-### Dépendances (`requirements.txt`)
+### Configuration des clés d'API
 
-| Package               | Usage                                               |
-| --------------------- | --------------------------------------------------- |
-| `requests`            | Toutes les requêtes HTTP                            |
-| `pynput`              | KeyLogger (menu Covid + `covid.py`)                 |
-| `mss`                 | Captures d'écran                                    |
-| `python-telegram-bot` | Spam bot Telegram (`code/Spamtlgrm.py`)             |
-| `python-whois`        | Lookup WHOIS (menu Security)                        |
-| `cryptography`        | Chiffrement Fernet (`code/passwordmanager.py`)      |
-| `pillow`              | Manipulation d'images                               |
-| `pywin32`             | Décryptage des tokens (`scanner.py`)                |
-| `pycryptodome`        | Décryptage AES des cookies Chromium (`scanner.py`)  |
-| `pyarmor`             | Obfuscation avant build (`builder.py`)              |
-| `pyinstaller`         | Compilation en `.exe` (`builder.py`)                |
-| `questionary`         | Interface de sélection interactive (`ipscanner.py`) |
-| `discord.py`          | Discord Nuker (`code/nukerdiscord.py`)              |
-
-Modules standard utilisés : `os`, `time`, `json`, `webbrowser`, `msvcrt`, `tempfile`, `subprocess`, `random`, `string`, `base64`, `threading`, `socket`, `sqlite3`, `io`, `tkinter`.
-
----
-
-## Configuration API (`api.py`)
-
-Le fichier `api.py` est **ignoré par Git** (`.gitignore`). Crée-le à la racine du projet :
+Le fichier `api.py` regroupe vos clés privées et ne doit pas faire l'objet de commits Git. Configurez vos jetons dans ce dernier :
 
 ```python
-api_ip = "ta_cle_ipify"
-api_number = "ta_cle_apilayer"
-api_dns = "ta_cle_viewdns"
+# api.py
+api_ip = "VOTRE_CLE_GEO_IPIFY"
+api_number = "VOTRE_CLE_APILAYER"
+api_dns = "VOTRE_CLE_VIEWDNS"
 ```
 
-| Variable     | Service                                      | Utilisé pour       |
-| ------------ | -------------------------------------------- | ------------------ |
-| `api_ip`     | [geo.ipify.org](https://geo.ipify.org)       | Lookup IP          |
-| `api_number` | [apilayer.net](http://apilayer.net)          | Lookup téléphone   |
-| `api_dns`    | [api.viewdns.info](https://api.viewdns.info) | Lookup DNS / abuse |
+---
 
-Remplace les valeurs par **tes propres clés** — ne commite jamais de secrets en public.
+## 🔒 Clause de Non-Responsabilité
 
-Les autres lookups (Discord, Github, Leak Mail, Google, Archive) n'utilisent pas `api.py`.
+Ce référentiel est fourni exclusivement à des fins d'éducation, de sensibilisation et d'audit de sécurité autorisé. Les auteurs et contributeurs déclinent toute responsabilité en cas d'utilisation abusive, de dommages causés par l'exécution de ces outils, ou de violation des conditions d'utilisation d'infrastructures tierces.
+
+Veuillez consulter le document [`SECURITY.md`](SECURITY.md) pour de plus amples détails juridiques.
 
 ---
 
-## Fichiers générés à l'exécution
+## 🤝 Équipe & Crédits
+*   **Développeur Principal** : [xql](https://guns.lol/xqldev)
+*   **Canal Telegram** : https://t.me/whitewolf_tools
+*   **Contributeurs** : Affichés dynamiquement via l'option 6 du menu principal.
 
-| Fichier / dossier         | Créé par                                            |
-| ------------------------- | --------------------------------------------------- |
-| `result.json`             | Lookup → Leak Mail                                  |
-| `result.txt`              | Security → Scraper                                  |
-| `nitro.txt`               | Discord → Nitro Gen (codes potentiellement valides) |
-| `key.txt`                 | Security → Passwd Manager → Gen Key                 |
-| `encrypted.txt`           | Security → Passwd Manager → Add Mdps                |
-| `covid-exe/Tools.exe`     | Covid → Build Covid (`builder.py`)                  |
-| `build/`, `dist/`, `obf/` | Dossiers temporaires du builder (supprimés/recréés) |
-
----
-
-## Fichiers ignorés par Git (`.gitignore`)
-
-| Fichier / pattern                  | Raison                                |
-| ---------------------------------- | ------------------------------------- |
-| `api.py`                           | Clés API secrètes                     |
-| `*.json`, `*.txt`                  | Fichiers de résultats et clés générés |
-| `*.log`, `*.tmp`                   | Fichiers temporaires                  |
-| `ransom_ware.py`                   | Script sensible exclu du dépôt        |
-| `__pycache__/`, `*.pyc`            | Bytecode Python                       |
-| `env/`, `venv/`, `.venv/`          | Environnements virtuels               |
-| `.env`, `config.json`, `keys.json` | Configs secrètes                      |
-| `profile/`, `webdriver/`           | Données de session navigateur         |
-
----
-
-## Liens & crédits
-
-- **Telegram** — https://t.me/whitewolf_tools
-- **Guns.lol** — https://guns.lol/xqldev
-
----
-
-## Avertissement
-
-Utilise ces outils uniquement sur des systèmes et des données **dont tu as l'autorisation**. Les fonctions type keylogger, scan de tokens, spam webhook, nuker ou génération de tokens peuvent violer les lois et les conditions d'utilisation des services concernés.
-
-Consulte [`SECURITY.md`](SECURITY.md) pour les conditions complètes d'utilisation et de responsabilité.
-
-## Image
-
-<img src="https://i.postimg.cc/L5hGh7tc/image.png" />
-
----
-
-_Love My friends :)_ — _Don't wait, just do it :)_
+_Fait avec ❤️ par les membres de la meute WhiteWolf._
