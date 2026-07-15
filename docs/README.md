@@ -1,7 +1,7 @@
 # 🐺 WhiteWolf Tools
 
 <p align="center">
-  <img src="image/whitewolf.png" alt="WhiteWolf Logo" width="200" />
+  <img src="https://i.postimg.cc/NFLR2rCM/image.png" alt="WhiteWolf Logo" width="200" />
 </p>
 
 <p align="center">
